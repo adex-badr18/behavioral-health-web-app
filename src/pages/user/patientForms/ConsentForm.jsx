@@ -4,10 +4,10 @@ import { MdOutlineHome } from "react-icons/md";
 import LinkButton from "../../../components/LinkButton";
 import Breadcrumb from "../../../components/Breadcrumb";
 
-export const patientFormLoader = ({ params }) => {
+export const consentFormLoader = ({ params }) => {
     const slug = params.slug;
 
-    const formInfo = [...dataCollectionForms, ...signatureForms, ...programForms].filter(
+    const formInfo = programForms.filter(
         (form) => form.slug === slug
     );
 
@@ -19,7 +19,7 @@ export const patientFormLoader = ({ params }) => {
           };
 };
 
-const PatientForm = () => {
+const ConsentForm = () => {
     const formObj = useLoaderData();
 
     if (formObj.status === "error") {
@@ -57,4 +57,4 @@ const PatientForm = () => {
     );
 };
 
-export default PatientForm;
+export default ConsentForm;

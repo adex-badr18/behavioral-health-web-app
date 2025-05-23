@@ -15,6 +15,9 @@ import SelfPayAgreement from "./components/selfPay/SelfPayAgreement";
 import TerminationPolicy from "./components/terminationPolicy/TerminationPolicy";
 import TreatmentConsentForm from "./components/treatmentConsent/TreatmentConsentForm";
 
+// Programs
+import Omhc from "./consentForms/omhc/Omhc";
+
 export const dataCollectionForms = [
     {
         id: 1,
@@ -98,6 +101,98 @@ export const dataCollectionForms = [
     },
 ];
 
+export const programForms = [
+    {
+        id: 1,
+        slug: "omhc-consent",
+        title: "OMHC Consent",
+        shortName: "OMHC Consent",
+        description: "",
+        link: "/forms/consent/omhc-consent/1",
+        component: <Omhc />,
+    },
+    {
+        id: 2,
+        slug: "prp-consent",
+        title: "PRP - Adults",
+        shortName: "PRP - Adults",
+        description: "",
+        link: "/forms/consent/prp-consent",
+        component: <ControlledSubstanceForm />,
+    },
+    {
+        id: 3,
+        slug: "asam-0.5-early-intervention",
+        title: "ASAM 0.5 Early Intervention",
+        shortName: "ASAM 0.5 Early Intervention",
+        description: "",
+        link: "/forms/consent/asam-0.5-early-intervention",
+        component: <NoticeOfPrivacy />,
+    },
+    {
+        id: 4,
+        slug: "asam-1.0-outpatient-treatment",
+        title: "ASAM Level 1.0 Outpatient Treatment",
+        shortName: "ASAM Level 1.0 Outpatient Treatment",
+        description: "",
+        link: "/forms/consent/asam-1.0-outpatient-treatment",
+        component: <PatientInfoConsent />,
+    },
+    {
+        id: 5,
+        slug: "asam-2.1-outpatient-treatment",
+        title: "ASAM Level 2.1 Outpatient Treatment",
+        shortName: "ASAM Level 2.1 Outpatient Treatment",
+        description: "",
+        link: "/forms/consent/asam-2.1-outpatient-treatment",
+        component: <PatientInfoConsent />,
+    },
+    {
+        id: 6,
+        slug: "asam-2.5-outpatient-treatment",
+        title: "ASAM Level 2.5 Outpatient Treatment",
+        shortName: "ASAM Level 2.5 Outpatient Treatment",
+        description: "",
+        link: "/forms/consent/asam-2.5-outpatient-treatment",
+        component: <PatientInfoConsent />,
+    },
+    {
+        id: 7,
+        slug: "community-housing",
+        title: "Community Housing",
+        shortName: "Community Housing",
+        description: "",
+        link: "/forms/consent/community-housing",
+        component: <SelfPayAgreement />,
+    },
+    {
+        id: 8,
+        slug: "dui-dwi",
+        title: "DUI/DWI",
+        shortName: "DUI/DWI",
+        description: "",
+        link: "/forms/consent/dui-dwi",
+        component: <ReleaseReceive />,
+    },
+    {
+        id: 9,
+        slug: "supported-employment",
+        title: "Supported Employment",
+        shortName: "Supported Employment",
+        description: "",
+        link: "/forms/consent/supported-employment",
+        component: <TerminationPolicy />,
+    },
+    {
+        id: 10,
+        slug: "medication-assisted-weight-loss",
+        title: "Medication-Assisted Weight Loss",
+        shortName: "Medication-Assisted Weight Loss",
+        description: "",
+        link: "/forms/consent/medication-assisted-weight-loss",
+        component: <TreatmentConsentForm />,
+    },
+];
 export const signatureForms = [
     {
         id: 1,
@@ -212,9 +307,17 @@ export const educationOptions = [
 
 export const raceOptions = [
     { id: 1, text: "White", value: "White" },
-    { id: 2, text: "Black or African American", value: "Black Or African American" },
+    {
+        id: 2,
+        text: "Black or African American",
+        value: "Black Or African American",
+    },
     { id: 3, text: "Asian", value: "Asian" },
-    { id: 4, text: "Native American or Alaska Native", value: "Native American Or Alaska Native" },
+    {
+        id: 4,
+        text: "Native American or Alaska Native",
+        value: "Native American Or Alaska Native",
+    },
     { id: 5, text: "Multiracial", value: "Multiracial" },
     { id: 6, text: "Prefer Not to Say", value: "Prefer Not To Say" },
 ];
@@ -307,7 +410,11 @@ export const referralSourceOptions = [
 ];
 
 export const referralTherapistOptions = [
-    { id: 1, text: "Mental Health Therapist/MD", value: "Mental Health Therapist/MD" },
+    {
+        id: 1,
+        text: "Mental Health Therapist/MD",
+        value: "Mental Health Therapist/MD",
+    },
     { id: 2, text: "Facility", value: "Facility" },
 ];
 

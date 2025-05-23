@@ -39,6 +39,7 @@ import MoodDisorderAssessmentForm from "./pages/admin/patients/components/forms/
 import ScreeningForm from "./pages/admin/patients/components/forms/ScreeningForm";
 import IntakeForm from "./pages/admin/patients/components/forms/IntakeForm";
 import Programs from "./pages/user/programs/Programs";
+import ConsentForm, { consentFormLoader } from "./pages/user/patientForms/ConsentForm";
 
 const DATA = {
     id: 0,
@@ -199,12 +200,10 @@ const router = createBrowserRouter([
                     {
                         path: "/about",
                         element: <About />,
-                        loader: programLoader,
                     },
                     {
                         path: "/contact",
                         element: <Contact />,
-                        loader: programLoader,
                     },
                     {
                         path: "/programs/:id",
@@ -218,7 +217,6 @@ const router = createBrowserRouter([
                     {
                         path: "/appointment",
                         element: <Appointment />,
-                        // loader: programLoader,
                     },
                     {
                         path: "/forms",
@@ -232,6 +230,11 @@ const router = createBrowserRouter([
                         path: "/forms/:slug",
                         element: <PatientForm />,
                         loader: patientFormLoader,
+                    },
+                    {
+                        path: "/forms/consent/:slug/:id",
+                        element: <ConsentForm />,
+                        loader: consentFormLoader,
                     },
                     {
                         path: "/review",
