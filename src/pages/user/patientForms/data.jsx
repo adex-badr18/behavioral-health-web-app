@@ -17,6 +17,7 @@ import TreatmentConsentForm from "./components/treatmentConsent/TreatmentConsent
 
 // Programs
 import Omhc from "./consentForms/omhc/Omhc";
+import Prp from "./consentForms/prp/Prp";
 
 export const dataCollectionForms = [
     {
@@ -117,8 +118,8 @@ export const programForms = [
         title: "PRP - Adults",
         shortName: "PRP - Adults",
         description: "",
-        link: "/forms/consent/prp-consent",
-        component: <ControlledSubstanceForm />,
+        link: "/forms/consent/prp-consent/1",
+        component: <Prp />,
     },
     {
         id: 3,

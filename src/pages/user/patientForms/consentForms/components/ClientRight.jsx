@@ -1,16 +1,19 @@
-import { Page } from "@react-pdf/renderer";
+import { View } from "@react-pdf/renderer";
 import {
     Paragraph,
     Title,
-    Subtitle,
     NumberedList,
     FlexBetweenContainer,
+    FlexGapContainer,
+    SignatureImage,
+    BoldText,
+    UnderlinedText,
 } from "./pdfFormComponents";
 import { clientRights } from "./data";
 
-const ClientRight = () => {
+const ClientRight = ({ signature, date }) => {
     return (
-        <Page size="A4" style={{ padding: 40 }}>
+        <View>
             <Title>The Rights of Clients</Title>
 
             <Paragraph>
@@ -43,8 +46,18 @@ const ClientRight = () => {
                 purpose.
             </Paragraph>
 
-            <FlexBetweenContainer></FlexBetweenContainer>
-        </Page>
+            <FlexBetweenContainer>
+                <FlexGapContainer>
+                    <BoldText>Signature of Client:</BoldText>
+                    <SignatureImage src={signature} />
+                </FlexGapContainer>
+
+                <FlexGapContainer>
+                    <BoldText>Date:</BoldText>
+                    <UnderlinedText>{date}</UnderlinedText>
+                </FlexGapContainer>
+            </FlexBetweenContainer>
+        </View>
     );
 };
 

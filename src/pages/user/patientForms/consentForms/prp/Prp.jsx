@@ -1,9 +1,217 @@
-import React from 'react'
+import { Document, Page } from "@react-pdf/renderer";
+import PdfPreview from "../../../../../components/PdfPreview";
+import ClientRight from "../components/ClientRight";
+import RightAcknowledgement from "../components/RightAcknowledgement";
+import ConsentForServices from "../components/ConsentForServices";
+import MedicationAgreement from "../components/MedicationAgreement";
+import Hipaa from "../components/Hipaa";
+import { PageWrapper } from "../components/pdfFormComponents";
+import signature from "../../../../../assets/signature.jpg";
+import MarylandNotice from "../components/MarylandNotice";
+import BillInsurance from "../components/BillInsurance";
+import ReleaseReceive from "../components/ReleaseReceive";
+import GrievancePolicy from "../components/GrievancePolicy";
+import TelehealthConsent from "../components/TelehealthConsent";
+import MessageRemindersConsent from "../components/MessageRemindersConsent";
+import CounsellingConfidentialityConsent from "../components/CounsellingConfidentialityConsent";
+import CareCoordinationConsent from "../components/CareCoordinationConsent";
+import ItpConsent from "../components/ItpConsent";
+import ProfessionalConduct from "../components/ProfessionalConduct";
+import ClientOrientation from "../components/ClientOrientation";
+import Packets from "../components/Packets";
+import PrpAdmissionLetter from "../components/PrpAdmissionLetter";
+import PrpServicesConsent from "../components/PrpServicesConsent";
+import TransportationLiability from "../components/TransportationLiability";
 
 const Prp = () => {
-  return (
-    <div>Prp</div>
-  )
-}
+    return (
+        <PdfPreview
+            Doc={
+                <Document>
+                    {[
+                        <Packets
+                            list={[
+                                "Copy of Photo ID -Send or Bring in during first visit",
+                                "Copy of Insurance Card- Send or Bring in during first visit",
+                                "Client’s Rights Acknowledgement",
+                                "Consent for the Services",
+                                "HIPAA Authorization Form",
+                                "Notice of Policies and Practices to Protect the Privacy of Your Health Information.",
+                                "Grievance Policy",
+                                "Records Release",
+                                "Counseling Confidentiality",
+                                "Coordination of Care",
+                                "ITP Agreement",
+                            ]}
+                            title="CONSENT FOR SERVICES FORMS"
+                        />,
+                        <ClientRight signature={signature} date="05/12/2025" />,
+                        <RightAcknowledgement
+                            fullName="Jacquiline Johnson"
+                            signature={signature}
+                            date="05/12/2025"
+                        />,
+                        <PrpAdmissionLetter
+                            data={{
+                                fullName: "Taylor Smith",
+                                dob: "01/04/1985",
+                            }}
+                        />,
+                        <PrpServicesConsent
+                            data={{
+                                fullName: "Taylor Smith",
+                                dob: "01/04/1985",
+                                preferredServices: [
+                                    { title: "On-Site Only", value: false },
+                                    { title: "Off-Site Only", value: false },
+                                    {
+                                        title: "Both On-Site and Off-Site (Selecting both gives you greater flexibility. Participation in both settings is not required but allows for a more comprehensive treatment approach.)",
+                                        value: true,
+                                    },
+                                ],
+                                signature: signature,
+                                date: "05/12/2024",
+                            }}
+                        />,
+                        <MedicationAgreement
+                            fullName="Johnson Tulip"
+                            whoYouAre={{ client: true, parent: false }}
+                            dob={`05/21/1990`}
+                            pharmacy={`The Gideon Pharmacy`}
+                            prescribedMedications={[
+                                "Paracetamol",
+                                "Procold",
+                                "Coughtalin",
+                            ]}
+                            signature={signature}
+                            date={`05/05/2023`}
+                        />,
+                        <Hipaa signature={signature} date="05/12/2025" />,
+                        <MarylandNotice
+                            signature={signature}
+                            date="05/12/2025"
+                        />,
+                        <BillInsurance
+                            fullName="Jackson Williams"
+                            clientAddress="204 Potomac Street Maryland 214567"
+                            insuranceCompany="Medicare"
+                            signature={signature}
+                            date="02/23/2025"
+                        />,
+                        <ReleaseReceive
+                            data={{
+                                fullName: "Johnson Tulip",
+                                programs: {
+                                    mentalHealthServices: true,
+                                    PRP: false,
+                                    substanceUseTreatment: false,
+                                },
+                                dob: `05/21/1990`,
+                                permissions: {
+                                    release: true,
+                                    receive: false,
+                                    verballyDiscussTheInformationCheckedWithTheSecondPartyAsDirectedBelow: false,
+                                },
+                                secondParty: {
+                                    name: "Gideon Health Care",
+                                    phone: "4103423456",
+                                    fax: "4109871234",
+                                },
+                                itemsCovered: {
+                                    acknowledgementOfReceiptOfServices: true,
+                                    diagnosis: true,
+                                    labResults: false,
+                                    progressNote: false,
+                                    medicationRecord: true,
+                                    intakeAssessment: false,
+                                    treatmentPlan: true,
+                                    clinicalSummary: false,
+                                    psychologicalSummary: false,
+                                    other: "",
+                                },
+                                signature: signature,
+                                date: `05/05/2023`,
+                            }}
+                        />,
+                        <GrievancePolicy
+                            fullName="Jack Wilshere"
+                            signature={signature}
+                            date="01/01/2025"
+                        />,
+                        <TelehealthConsent
+                            signature={signature}
+                            date="01/01/2025"
+                        />,
+                        <MessageRemindersConsent
+                            data={{
+                                fullName: "Johnson Williams",
+                                phone: "4102345678",
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
+                        />,
+                        <CounsellingConfidentialityConsent
+                            data={{
+                                fullName: "Johnson Williams",
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
+                        />,
+                        <CareCoordinationConsent
+                            data={{
+                                fullName: "Johnson Williams",
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
+                        />,
+                        <TransportationLiability
+                            data={{
+                                fullName: "Johnson Williams",
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
+                        />,
+                        <ItpConsent
+                            data={{
+                                fullName: "Johnson Williams",
+                                dob: "01/04/1990",
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
+                        />,
+                        <ProfessionalConduct
+                            data={{
+                                fullName: "Johnson Williams",
+                                dob: "01/04/1990",
+                                initial: "AB",
+                                acceptanceChoices: [
+                                    {
+                                        title: "Yes, I understand and have been given the opportunity to ask questions about Advance Directives and the MOLST form.",
+                                        value: true,
+                                    },
+                                    {
+                                        title: "No, I decline to discuss this at this time.",
+                                        value: false,
+                                    },
+                                ],
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
+                        />,
+                        <ClientOrientation
+                            data={{
+                                fullName: "Johnson Williams",
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
+                        />,
+                    ].map((consentForm, index) => (
+                        <PageWrapper key={index}>{consentForm}</PageWrapper>
+                    ))}
+                </Document>
+            }
+        />
+    );
+};
 
-export default Prp
+export default Prp;
