@@ -18,6 +18,8 @@ import TreatmentConsentForm from "./components/treatmentConsent/TreatmentConsent
 // Programs
 import Omhc from "./consentForms/omhc/Omhc";
 import Prp from "./consentForms/prp/Prp";
+import CommunityHousing from "./consentForms/communityHousing/CommunityHousing";
+import EarlyIntervention from "./consentForms/earlyIntervention/EarlyIntervention";
 
 export const dataCollectionForms = [
     {
@@ -128,7 +130,7 @@ export const programForms = [
         shortName: "ASAM 0.5 Early Intervention",
         description: "",
         link: "/forms/consent/asam-0.5-early-intervention",
-        component: <NoticeOfPrivacy />,
+        component: <EarlyIntervention />,
     },
     {
         id: 4,
@@ -164,7 +166,7 @@ export const programForms = [
         shortName: "Community Housing",
         description: "",
         link: "/forms/consent/community-housing",
-        component: <SelfPayAgreement />,
+        component: <CommunityHousing />,
     },
     {
         id: 8,

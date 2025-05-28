@@ -217,13 +217,19 @@ export const UnderlinedText = ({ children }) => (
     <Text style={styles.underlinedText}>{children}</Text>
 );
 
-export const Subtitle = ({ children, alignCenter = false, style = {} }) => (
+export const Subtitle = ({
+    children,
+    alignCenter = false,
+    style = {},
+    ...rest
+}) => (
     <Text
         style={[
             styles.subtitle,
             style,
             { textAlign: alignCenter ? "center" : "left" },
         ]}
+        {...rest}
     >
         {children}
     </Text>

@@ -1,3 +1,5 @@
+import { BoldText, Paragraph } from "./pdfFormComponents";
+
 export const clientRights = [
     {
         id: 1,
@@ -578,10 +580,343 @@ export const prpServicesList = [
         id: 1,
         title: "On-Site Services",
         descr: "Group-based programs held at our facility, including but not limited to educational workshops, independent living skills training, social development activities, and chronic health condition management.",
-    }, 
+    },
     {
         id: 2,
         title: "Off-Site Services",
         descr: "Community-based support, including home visits, assistance with attending medical and psychiatric appointments, community integration, and the development and implementation of Certified Treatment Plans.",
     },
-]
+];
+
+export const housingList1 = [
+    {
+        id: 1,
+        text: "Structured residential environment with 24-hour on-site support staff",
+    },
+    {
+        id: 2,
+        text: "Linkage to outpatient behavioral health services (IOP, OMHC, MAT, PRP)",
+    },
+    {
+        id: 3,
+        text: "Case management, vocational support, and discharge planning",
+    },
+    {
+        id: 4,
+        text: "Life skills education (e.g., hygiene, budgeting, cooking)",
+    },
+    { id: 5, text: "Transportation coordination and assistance" },
+    { id: 6, text: "Relapse prevention and peer recovery coaching" },
+];
+
+export const housingList2 = [
+    { id: 1, text: "Be at least 18 years old" },
+    { id: 2, text: "Have a primary diagnosis of substance use disorder (SUD)" },
+    {
+        id: 3,
+        text: "Be medically and psychiatrically stable (not requiring 24-hour nursing or inpatient treatment)",
+    },
+    {
+        id: 4,
+        text: "Be actively engaged in or willing to engage in outpatient behavioral health services (e.g., IOP, MAT, OMHC, PRP)",
+    },
+    {
+        id: 5,
+        text: "Have a willingness to reside in a structured, recovery-oriented setting",
+    },
+    {
+        id: 6,
+        text: "Be capable of self-care with or without minimal assistance",
+    },
+    {
+        id: 7,
+        text: "Be free of active withdrawal symptoms (or cleared by detox facility prior to admission)",
+    },
+    {
+        id: 8,
+        text: "Demonstrate commitment to sobriety and willingness to submit to random substance screenings",
+    },
+    {
+        id: 9,
+        text: "Be willing to participate in communal living responsibilities (e.g., chores, meetings, shared space)",
+    },
+    {
+        id: 10,
+        text: "Be free from a current, untreated violent behavioral disorder or active aggressive threats",
+    },
+    { id: 11, text: "Not pose an immediate risk to self or others" },
+];
+
+export const residentialCareList1 = [
+    {
+        id: 1,
+        text: "This is a recovery-focused, structured housing program, not a medical detoxification or inpatient psychiatric facility.",
+    },
+    {
+        id: 2,
+        text: "I am expected to comply with the housing structure, including daily living routines, mandatory meetings, chores, curfews, and sober peer community engagement.",
+    },
+    {
+        id: 3,
+        text: "I must remain engaged in outpatient services (e.g., IOP, OMHC, MAT, or PRP) as a requirement of my housing agreement.",
+    },
+    {
+        id: 4,
+        text: "I will collaborate with staff on an individualized housing and recovery plan.",
+    },
+];
+
+export const residentialCareList2 = [
+    { id: 1, text: "Be treated with dignity and respect" },
+    { id: 2, text: "Live in a safe, clean, and supportive environment" },
+    { id: 3, text: "Receive culturally competent and non-discriminatory care" },
+    {
+        id: 4,
+        text: "Confidentiality and privacy of personal and health information",
+    },
+    {
+        id: 5,
+        text: "Participate in decisions about my housing and recovery plan",
+    },
+    { id: 6, text: "File a grievance without fear of retaliation" },
+];
+
+export const residentialCareList3 = [
+    { id: 1, text: "Respecting staff and fellow residents" },
+    { id: 2, text: "Following all rules and safety policies" },
+    { id: 3, text: "Reporting safety concerns promptly" },
+    { id: 4, text: "Participating actively in my recovery and housing plan" },
+    {
+        id: 5,
+        text: "Maintaining sobriety and submitting to testing as required",
+    },
+];
+
+export const housingRulesList1 = [
+    {
+        id: 1,
+        text: (
+            <Paragraph>
+                Submit to{" "}
+                <BoldText>
+                    random and scheduled drug and alcohol testing
+                </BoldText>
+            </Paragraph>
+        ),
+    },
+    { id: 2, text: "Maintain abstinence from all non-prescribed substances" },
+    { id: 3, text: "Abide by curfew policies" },
+    {
+        id: 4,
+        text: "Complete assigned chores and participate in community meetings",
+    },
+    { id: 5, text: "Follow visitor policies and restrictions" },
+    {
+        id: 6,
+        text: "Not bring prohibited items onto the premises (e.g., weapons, drugs, alcohol, drug paraphernalia)",
+    },
+    {
+        id: 7,
+        text: "Use respectful communication and non-violent behavior at all times",
+    },
+    {
+        id: 8,
+        text: "Refrain from harassment, threats, theft, or destruction of property",
+    },
+    { id: 9, text: "Adhere to fire safety and emergency protocols" },
+];
+
+export const housingRulesList2 = [
+    {
+        id: 1,
+        text: "I will disclose all medications during admission and provide updates as changes occur",
+    },
+    {
+        id: 2,
+        text: "I agree to store my medications as directed by staff (e.g., locked storage or staff-controlled dispensary)",
+    },
+    { id: 3, text: "I will not share, trade, or misuse medications" },
+    { id: 4, text: "I will take medications only as prescribed" },
+    {
+        id: 5,
+        text: "I will inform staff immediately if I lose, misplace, or miss doses of medication",
+    },
+];
+
+export const housingRulesList3 = [
+    {
+        id: 1,
+        text: "Housing fees (if applicable) must be paid according to my agreement",
+    },
+    {
+        id: 2,
+        text: "I will receive a clear explanation of payment terms, covered services, and refund policies",
+    },
+    {
+        id: 3,
+        text: "BrightLife is not responsible for lost, stolen, or damaged personal property",
+    },
+    { id: 4, text: "I am encouraged to keep valuables secure and limited" },
+    {
+        id: 5,
+        text: "Property left after discharge may be disposed of after 7 days unless arrangements are made.",
+    },
+];
+
+export const dischargePlanningList1 = [
+    { id: 1, text: "Substance use or failure to submit to testing" },
+    { id: 2, text: "Violent, threatening, or harassing behavior" },
+    {
+        id: 3,
+        text: "Repeated rule violations or failure to engage in services",
+    },
+    { id: 4, text: "Unauthorized absences" },
+    { id: 5, text: "Possession of contraband" },
+    { id: 6, text: "Voluntary departure" },
+];
+
+export const dischargePlanningList2 = [
+    {
+        id: 1,
+        text: "Staff will offer referrals to shelters, treatment, or crisis care if needed",
+    },
+    { id: 2, text: "A discharge summary will be provided upon request" },
+    { id: 3, text: "Personal belongings must be removed within 7 days" },
+];
+
+export const dischargePlanningList3 = [
+    {
+        id: 1,
+        text: (
+            <Paragraph>
+                My records are protected under <BoldText>HIPAA</BoldText> and{" "}
+                <BoldText>42 CFR Part 2</BoldText>
+            </Paragraph>
+        ),
+    },
+    {
+        id: 2,
+        text: "Information will only be shared with my written consent or as required by law (e.g., emergencies, abuse reporting, court order)",
+    },
+    {
+        id: 3,
+        text: "I will be asked to sign ROI forms for coordination with case managers, probation, MAT providers, outpatient clinicians, or others involved in my care",
+    },
+];
+
+export const dischargePlanningList4 = [
+    {
+        id: 1,
+        text: "I can file a grievance in writing if I feel my rights are violated",
+    },
+    {
+        id: 2,
+        text: "Grievances are reviewed by a supervisor or program director",
+    },
+    { id: 3, text: "I will not be retaliated against for filing a grievance" },
+    {
+        id: 4,
+        text: "Grievance forms are available from staff and posted in common areas",
+    },
+];
+
+export const housingConsentList = [
+    {
+        id: 1,
+        text: "Certify that I have reviewed and understand the Residential Supportive Housing Program packet",
+    },
+    { id: 2, text: "Understand my rights and responsibilities" },
+    {
+        id: 3,
+        text: "Agree to abide by the rules and participate in the recovery-focused community",
+    },
+    {
+        id: 4,
+        text: "Understand the consequences of noncompliance or violation",
+    },
+    {
+        id: 5,
+        text: "Consent to receive services and reside at BrightLife’s ASAM Level 3.1 facility",
+    },
+];
+
+export const earlyInterventionList1 = [
+    { id: 1, text: "Screening and brief assessments" },
+    { id: 2, text: "Psychoeducation about substance use and associated risks" },
+    {
+        id: 3,
+        text: "Brief intervention using motivational interviewing techniques",
+    },
+    { id: 4, text: "Support in making informed decisions about substance use" },
+    {
+        id: 5,
+        text: "Referral to treatment, if needed, based on further clinical evaluation",
+    },
+];
+
+export const earlyInterventionList2 = [
+    {
+        id: 1,
+        text: "Early Intervention typically includes 1 to 3 sessions, either individual or group-based.",
+    },
+    { id: 2, text: "These services are preventive and educational in nature." },
+    {
+        id: 3,
+        text: "No diagnosis or formal substance use treatment is provided at this level.",
+    },
+    {
+        id: 4,
+        text: "Participation is voluntary and I may discontinue at any time without penalty.",
+    },
+    {
+        id: 5,
+        text: "If I am later determined to require a higher level of care (ASAM 1.0 or above), I will be referred appropriately.",
+    },
+];
+
+export const earlyInterventionList3 = [
+    {
+        id: 1,
+        text: "My information is protected by strict federal confidentiality regulations.",
+    },
+    {
+        id: 2,
+        text: "No information will be shared without my written consent except under limited exceptions (e.g., mandated reporting, court order, medical emergency).",
+    },
+    {
+        id: 3,
+        text: "I may revoke any consent to release information at any time.",
+    },
+];
+
+export const earlyInterventionList4 = [
+    { id: 1, text: "Ask questions at any time" },
+    { id: 2, text: "Decline or discontinue services" },
+    {
+        id: 3,
+        text: "Request information about other available services or referrals",
+    },
+];
+
+export const earlyInterventionList5 = [
+    { id: 1, text: "Outpatient treatment (ASAM 1.0 or above)" },
+    { id: 2, text: "Mental health evaluation" },
+    { id: 3, text: "Medication-assisted treatment (MAT)" },
+    { id: 4, text: "Other health or support services" },
+];
+
+export const earlyInterventionList6 = [
+    {
+        id: 1,
+        text: "I have read and understood the nature and purpose of BrightLife’s Early Intervention services.",
+    },
+    { id: 2, text: "I have been given the opportunity to ask questions." },
+    {
+        id: 3,
+        text: "I voluntarily consent to receive services under ASAM Level 0.5.",
+    },
+    {
+        id: 4,
+        text: "I understand that no formal diagnosis or treatment is being rendered at this level of care.",
+    },
+];

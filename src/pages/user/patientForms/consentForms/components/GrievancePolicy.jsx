@@ -12,7 +12,7 @@ import {
 } from "./pdfFormComponents";
 import { grievancePolicyList } from "./data";
 
-const GrievancePolicy = ({ fullName, signature, date }) => {
+const GrievancePolicy = ({ fullName, signature, date, otherText }) => {
     return (
         <View>
             <Title>Notification of Grievance Policy</Title>
@@ -47,6 +47,8 @@ const GrievancePolicy = ({ fullName, signature, date }) => {
                     <UnderlinedText>{date}</UnderlinedText>
                 </FlexGapContainer>
             </FlexBetweenContainer>
+
+            {otherText && <Paragraph>{otherText}</Paragraph>}
         </View>
     );
 };

@@ -8,12 +8,23 @@ import {
     BoldText,
     UnderlinedText,
     NumberedList,
+    Subtitle,
+    FlexColContainer,
 } from "./pdfFormComponents";
 
-const Packets = ({ list, title }) => {
+const Packets = ({ list, title, subtitle, otherText }) => {
     return (
         <View>
             <Title>{title}</Title>
+
+            <FlexColContainer containerStyle={{ marginBottom: 12 }}>
+                {subtitle && (
+                    <Subtitle style={{ marginVertical: 0, fontSize: 13 }}>
+                        {subtitle}
+                    </Subtitle>
+                )}
+                {otherText && <BoldText>{otherText}</BoldText>}
+            </FlexColContainer>
 
             {list.map((item, index) => (
                 <Paragraph key={index}>{item}</Paragraph>

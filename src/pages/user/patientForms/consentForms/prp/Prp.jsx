@@ -1,8 +1,7 @@
-import { Document, Page } from "@react-pdf/renderer";
+import { Document } from "@react-pdf/renderer";
 import PdfPreview from "../../../../../components/PdfPreview";
 import ClientRight from "../components/ClientRight";
 import RightAcknowledgement from "../components/RightAcknowledgement";
-import ConsentForServices from "../components/ConsentForServices";
 import MedicationAgreement from "../components/MedicationAgreement";
 import Hipaa from "../components/Hipaa";
 import { PageWrapper } from "../components/pdfFormComponents";

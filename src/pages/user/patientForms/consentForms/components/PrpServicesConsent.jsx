@@ -13,8 +13,7 @@ import {
     CheckboxImage,
 } from "./pdfFormComponents";
 
-import { prpServicesList } from "./data";
-
+import { prpServicesList } from "./data"
 import checkedImg from "../../../../../assets/checked.png";
 import uncheckedImg from "../../../../../assets/unchecked.png";
 
