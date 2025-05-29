@@ -1249,3 +1249,98 @@ export const duiOverviewList6 = [
     },
     { id: 4, text: "Payment of all applicable fees" },
 ];
+
+export const weightLossList1 = [
+    { id: 1, text: "Complete Metabolic Panel (CMP)" },
+    { id: 2, text: "Lipid Panel" },
+    { id: 3, text: "Thyroid Stimulating Hormone (TSH)" },
+];
+
+export const weightLossList2 = [
+    { id: 1, text: "Payment is required at the time services are rendered." },
+    { id: 2, text: "Insurance is not accepted for weight loss treatment." },
+    { id: 3, text: "I may request a superbill for potential out-of-network reimbursement, but reimbursement is not guaranteed." },
+    { id: 4, text: "Acceptable payment methods include Visa, MasterCard, American Express, Discover, HSA/FSA, and cash." },
+    { id: 5, text: "No refunds will be issued for services already rendered or after medications have been dispensed." },
+];
+
+export const weightLossList3 = [
+    { id: 1, text: "Appetite suppressant medications, such as phentermine, may be prescribed off-label beyond the 12-week duration or higher dosages than FDA labeling suggests." },
+    { id: 2, text: "This treatment is solely for weight management and not a replacement for primary or specialized medical care." },
+    { id: 3, text: "I must continue seeing my primary care provider for ongoing non-weight-related medical conditions." },
+    { id: 4, text: "Treatment may include dietary counseling, exercise planning, behavior modification, vitamin supplementation (e.g., B12 injections), and pharmacological support." },
+];
+
+export const weightLossList4 = [
+    { id: 1, text: "There is limited long-term data on appetite suppressant safety beyond 12 weeks." },
+    { id: 2, text: "Risks include but are not limited to: increased blood pressure, heart palpitations, insomnia, nervousness, dry mouth, gastrointestinal discomfort, dizziness, and psychological effects." },
+    { id: 3, text: "More serious risks include pulmonary hypertension and heart valve disease." },
+];
+
+export const weightLossList5 = [
+    { id: 1, text: "Follow prescribed treatment protocols." },
+    { id: 2, text: "Attend follow-up appointments." },
+    { id: 3, text: "Comply with lab work requirements." },
+    { id: 4, text: "Avoid sharing medications." },
+    { id: 5, text: "Notify the clinic if I become pregnant or develop new health issues." },
+];
+
+export const weightLossList6 = [
+    { id: 1, text: "Common: dry mouth, insomnia, constipation, nervousness, increased heart rate, dizziness, mood swings" },
+    { id: 2, text: "Serious (rare): primary pulmonary hypertension, heart valve abnormalities, allergic reactions, stroke, seizure, suicidal thoughts (if predisposed)" },
+];
+
+export const weightLossList7 = [
+    { id: 1, text: "Weight loss outcomes vary." },
+    { id: 2, text: "Sustained weight loss requires ongoing effort and lifestyle changes." },
+    { id: 3, text: "BrightLife cannot guarantee any specific result." },
+];
+
+export const weightLossList8 = [
+    { id: 1, text: "BMI ≥ 30 or ≥ 27 with comorbid condition" },
+    { id: 2, text: "No history of medullary thyroid carcinoma (MTC) or MEN2" },
+    { id: 3, text: "No history of pancreatitis, severe GI disorder, or suicidal ideation" },
+];
+
+export const weightLossList9 = [
+    { id: 1, text: "CMP, TSH, Lipid Panel" },
+    { id: 2, text: "HbA1c (recommended)" },
+];
+
+export const weightLossList10 = [
+    { id: 1, text: "Nausea, vomiting, diarrhea, decreased appetite, fatigue, constipation, bloating" },
+];
+
+export const weightLossList11 = [
+    { id: 1, text: "Pancreatitis, gallbladder disease, kidney impairment, allergic reactions, thyroid tumors (rare)" },
+];
+
+export const weightLossList12 = [
+    { id: 1, text: "This compounded form is taken under the tongue." },
+    { id: 2, text: "Food, beverages, and smoking can affect absorption." },
+    { id: 3, text: "May cause mouth irritation or other adverse effects." },
+    { id: 4, text: "I agree to provide a 4-week food log to support my treatment response." },
+    { id: 5, text: "I understand the sublingual form is not FDA approved and results may vary." },
+];
+
+export const weightLossList13 = [
+    { id: 1, text: "May support fat metabolism, energy, and mood." },
+    { id: 2, text: "B12 and amino acid blends may be used." },
+    { id: 3, text: "Common side effects: injection site discomfort, nausea, mild headache" },
+    { id: 4, text: "Serious (rare) effects: hives, allergic reaction, rapid heartbeat, breathing difficulty" },
+];
+
+export const weightLossList14 = [
+    { id: 1, text: "I am not pregnant." },
+    { id: 2, text: "I understand that phentermine and other anorectics must not be taken during pregnancy." },
+    { id: 3, text: "I agree to notify BrightLife immediately if I become pregnant." },
+];
+
+export const weightLossList15 = [
+    { id: 1, text: "I have read and understand this form." },
+    { id: 2, text: "All questions have been answered to my satisfaction." },
+    { id: 3, text: "I voluntarily consent to weight loss treatment at BrightLife Enhancement Services." },
+    { id: 4, text: "I may withdraw consent and discontinue treatment at any time." },
+];
+
+

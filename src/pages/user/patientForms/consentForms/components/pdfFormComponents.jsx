@@ -182,6 +182,12 @@ const styles = StyleSheet.create({
         width: "47%",
         borderBottom: "1px solid black",
     },
+    sectionDivider: {
+        width: "100%",
+        borderBottomWidth: 1,
+        borderBottomColor: "#080808",
+        marginVertical: 16,
+    },
 });
 
 export const Paragraph = ({
@@ -215,6 +221,12 @@ export const BoldText = ({ children, style }) => (
 
 export const UnderlinedText = ({ children }) => (
     <Text style={styles.underlinedText}>{children}</Text>
+);
+
+export const SectionDivider = ({ children, style = {}, ...rest }) => (
+    <View style={{ ...styles.sectionDivider, ...style }} {...rest}>
+        {children}
+    </View>
 );
 
 export const Subtitle = ({

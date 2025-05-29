@@ -22,6 +22,7 @@ import CommunityHousing from "./consentForms/communityHousing/CommunityHousing";
 import EarlyIntervention from "./consentForms/earlyIntervention/EarlyIntervention";
 import Outpatient from "./consentForms/outpatient/Outpatient";
 import DuiDwi from "./consentForms/duiDwi/DuiDwi";
+import WeightLoss from "./consentForms/weightloss/WeightLoss";
 
 export const dataCollectionForms = [
     {
@@ -131,7 +132,7 @@ export const programForms = [
         title: "ASAM 0.5 Early Intervention",
         shortName: "ASAM 0.5 Early Intervention",
         description: "",
-        link: "/forms/consent/asam-0.5-early-intervention",
+        link: "/forms/consent/asam-0.5-early-intervention/1",
         component: <EarlyIntervention />,
     },
     {
@@ -140,7 +141,7 @@ export const programForms = [
         title: "ASAM Level 1.0 Outpatient Treatment",
         shortName: "ASAM Level 1.0 Outpatient Treatment",
         description: "",
-        link: "/forms/consent/asam-1.0-outpatient-treatment",
+        link: "/forms/consent/asam-1.0-outpatient-treatment/1",
         component: <Outpatient />,
     },
     {
@@ -149,7 +150,7 @@ export const programForms = [
         title: "ASAM Level 2.1 Outpatient Treatment",
         shortName: "ASAM Level 2.1 Outpatient Treatment",
         description: "",
-        link: "/forms/consent/asam-2.1-outpatient-treatment",
+        link: "/forms/consent/asam-2.1-outpatient-treatment/1",
         component: <Outpatient />,
     },
     {
@@ -158,7 +159,7 @@ export const programForms = [
         title: "ASAM Level 2.5 Outpatient Treatment",
         shortName: "ASAM Level 2.5 Outpatient Treatment",
         description: "",
-        link: "/forms/consent/asam-2.5-outpatient-treatment",
+        link: "/forms/consent/asam-2.5-outpatient-treatment/1",
         component: <Outpatient />,
     },
     {
@@ -167,7 +168,7 @@ export const programForms = [
         title: "Community Housing",
         shortName: "Community Housing",
         description: "",
-        link: "/forms/consent/community-housing",
+        link: "/forms/consent/community-housing/1",
         component: <CommunityHousing />,
     },
     {
@@ -176,7 +177,7 @@ export const programForms = [
         title: "DUI/DWI",
         shortName: "DUI/DWI",
         description: "",
-        link: "/forms/consent/dui-dwi",
+        link: "/forms/consent/dui-dwi/1",
         component: <DuiDwi />,
     },
     {
@@ -185,7 +186,7 @@ export const programForms = [
         title: "Supported Employment",
         shortName: "Supported Employment",
         description: "",
-        link: "/forms/consent/supported-employment",
+        link: "/forms/consent/supported-employment/1",
         component: <TerminationPolicy />,
     },
     {
@@ -194,8 +195,8 @@ export const programForms = [
         title: "Medication-Assisted Weight Loss",
         shortName: "Medication-Assisted Weight Loss",
         description: "",
-        link: "/forms/consent/medication-assisted-weight-loss",
-        component: <TreatmentConsentForm />,
+        link: "/forms/consent/medication-assisted-weight-loss/1",
+        component: <WeightLoss />,
     },
 ];
 export const signatureForms = [
