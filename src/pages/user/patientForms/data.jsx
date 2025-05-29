@@ -21,6 +21,7 @@ import Prp from "./consentForms/prp/Prp";
 import CommunityHousing from "./consentForms/communityHousing/CommunityHousing";
 import EarlyIntervention from "./consentForms/earlyIntervention/EarlyIntervention";
 import Outpatient from "./consentForms/outpatient/Outpatient";
+import DuiDwi from "./consentForms/duiDwi/DuiDwi";
 
 export const dataCollectionForms = [
     {
@@ -176,7 +177,7 @@ export const programForms = [
         shortName: "DUI/DWI",
         description: "",
         link: "/forms/consent/dui-dwi",
-        component: <ReleaseReceive />,
+        component: <DuiDwi />,
     },
     {
         id: 9,

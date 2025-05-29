@@ -1,9 +1,82 @@
-import React from 'react'
+import { Document } from "@react-pdf/renderer";
+import PdfPreview from "../../../../../components/PdfPreview";
+import ClientRight from "../components/ClientRight";
+import RightAcknowledgement from "../components/RightAcknowledgement";
+import ConsentForServices from "../components/ConsentForServices";
+import { PageWrapper } from "../components/pdfFormComponents";
+import signature from "../../../../../assets/signature.jpg";
+import BillInsurance from "../components/BillInsurance";
+import GrievancePolicy from "../components/GrievancePolicy";
+import TelehealthConsent from "../components/TelehealthConsent";
+import MessageRemindersConsent from "../components/MessageRemindersConsent";
+import ClientOrientation from "../components/ClientOrientation";
+import Packets from "../components/Packets";
+import DuiOverview from "../components/DuiOverview";
 
 const DuiDwi = () => {
-  return (
-    <div>DuiDwi</div>
-  )
-}
+    return (
+        <PdfPreview
+            Doc={
+                <Document>
+                    {[
+                        <Packets
+                            list={[
+                                "Copy of Photo ID -Send or Bring in during first visit",
+                                "Copy of Insurance Card- Send or Bring in during first visit",
+                                "Client’s Rights Acknowledgement",
+                                "Consent for the Services",
+                                "HIPAA Authorization Form",
+                                "Notice of Policies and Practices to Protect the Privacy of Your Health Information.",
+                                "Grievance Policy",
+                            ]}
+                            title="Early Intervention (ASAM Level 0.5) Packet"
+                        />,
+                        <ClientRight signature={signature} date="05/12/2025" />,
+                        <RightAcknowledgement
+                            fullName="Jacquiline Johnson"
+                            signature={signature}
+                            date="05/12/2025"
+                        />,
+                        <DuiOverview
+                            data={{
+                                fullName: "Johnson Williams",
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
+                        />,
+                        <GrievancePolicy
+                            fullName="Jack Wilshere"
+                            signature={signature}
+                            date="01/01/2025"
+                            otherText="For questions or assistance with filing a grievance, contact the Client Rights Representative
+                during business hours (9:00 AM - 4:00 PM)."
+                        />,
+                        <TelehealthConsent
+                            signature={signature}
+                            date="01/01/2025"
+                        />,
+                        <MessageRemindersConsent
+                            data={{
+                                fullName: "Johnson Williams",
+                                phone: "4102345678",
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
+                        />,
+                        <ClientOrientation
+                            data={{
+                                fullName: "Johnson Williams",
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
+                        />,
+                    ].map((consentForm, index) => (
+                        <PageWrapper key={index}>{consentForm}</PageWrapper>
+                    ))}
+                </Document>
+            }
+        />
+    );
+};
 
-export default DuiDwi
+export default DuiDwi;

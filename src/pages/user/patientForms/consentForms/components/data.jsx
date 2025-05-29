@@ -976,11 +976,26 @@ export const matList1 = [
 ];
 
 export const matList2 = [
-    { id: 1, text: "The purpose of MAT is to reduce cravings, prevent relapse, and stabilize recovery." },
-    { id: 2, text: "MAT is used in conjunction with behavioral therapy and is not a standalone treatment." },
-    { id: 3, text: "I must comply with scheduled lab work, urine drug screens, pill/film counts, and regular provider reviews." },
-    { id: 4, text: "Medication risks include but are not limited to sedation, respiratory depression, liver damage, allergic reaction, dependency, or diversion." },
-    { id: 5, text: "I may refuse or withdraw from MAT at any time, though doing so may alter my treatment course." },
+    {
+        id: 1,
+        text: "The purpose of MAT is to reduce cravings, prevent relapse, and stabilize recovery.",
+    },
+    {
+        id: 2,
+        text: "MAT is used in conjunction with behavioral therapy and is not a standalone treatment.",
+    },
+    {
+        id: 3,
+        text: "I must comply with scheduled lab work, urine drug screens, pill/film counts, and regular provider reviews.",
+    },
+    {
+        id: 4,
+        text: "Medication risks include but are not limited to sedation, respiratory depression, liver damage, allergic reaction, dependency, or diversion.",
+    },
+    {
+        id: 5,
+        text: "I may refuse or withdraw from MAT at any time, though doing so may alter my treatment course.",
+    },
 ];
 
 export const matList3 = [
@@ -991,16 +1006,31 @@ export const matList3 = [
 ];
 
 export const matList4 = [
-    { id: 1, text: "Testing helps ensure accountability, supports treatment integrity, and informs clinical decision-making." },
+    {
+        id: 1,
+        text: "Testing helps ensure accountability, supports treatment integrity, and informs clinical decision-making.",
+    },
     { id: 2, text: "Refusal to test may be treated as noncompliance." },
-    { id: 3, text: "A positive result may result in additional counseling, treatment plan adjustment, or referral to a higher level of care." },
-    { id: 4, text: "Results may be shared with referral sources, probation, or other authorized parties with written consent or court order." },
+    {
+        id: 3,
+        text: "A positive result may result in additional counseling, treatment plan adjustment, or referral to a higher level of care.",
+    },
+    {
+        id: 4,
+        text: "Results may be shared with referral sources, probation, or other authorized parties with written consent or court order.",
+    },
 ];
 
 export const matList5 = [
     { id: 1, text: "Maintain confidentiality of all group discussions." },
-    { id: 2, text: "Avoid any behavior that is threatening, disruptive, or disrespectful." },
-    { id: 3, text: "Refrain from attending groups under the influence of substances." },
+    {
+        id: 2,
+        text: "Avoid any behavior that is threatening, disruptive, or disrespectful.",
+    },
+    {
+        id: 3,
+        text: "Refrain from attending groups under the influence of substances.",
+    },
     { id: 4, text: "Accept constructive feedback and follow group rules." },
 ];
 
@@ -1011,47 +1041,211 @@ export const matList6 = [
 ];
 
 export const matList7 = [
-    { id: 1, text: "Confirm my attendance, engagement, and progress with supervising entities" },
-    { id: 2, text: "Notify the court/probation officer of missed appointments, positive drug tests, or noncompliance" },
-    { id: 3, text: "Submit required reports as needed to support legal or diversionary programs" },
+    {
+        id: 1,
+        text: "Confirm my attendance, engagement, and progress with supervising entities",
+    },
+    {
+        id: 2,
+        text: "Notify the court/probation officer of missed appointments, positive drug tests, or noncompliance",
+    },
+    {
+        id: 3,
+        text: "Submit required reports as needed to support legal or diversionary programs",
+    },
 ];
 
 export const matList8 = [
-    { id: 1, text: "I will be assessed for medical risk using validated screening tools." },
-    { id: 2, text: "I may be referred to a detox center or hospital if medically unstable." },
-    { id: 3, text: "A withdrawal management protocol will be created and monitored if I remain in care." },
-    { id: 4, text: "MAT or symptom management medications may be used as part of the plan." },
+    {
+        id: 1,
+        text: "I will be assessed for medical risk using validated screening tools.",
+    },
+    {
+        id: 2,
+        text: "I may be referred to a detox center or hospital if medically unstable.",
+    },
+    {
+        id: 3,
+        text: "A withdrawal management protocol will be created and monitored if I remain in care.",
+    },
+    {
+        id: 4,
+        text: "MAT or symptom management medications may be used as part of the plan.",
+    },
 ];
 
 export const matList9 = [
-    { id: 1, text: "Relapse is a known part of recovery for many individuals." },
-    { id: 2, text: "Risk of overdose increases after periods of abstinence due to lowered tolerance." },
+    {
+        id: 1,
+        text: "Relapse is a known part of recovery for many individuals.",
+    },
+    {
+        id: 2,
+        text: "Risk of overdose increases after periods of abstinence due to lowered tolerance.",
+    },
     { id: 3, text: "Overdose may result in serious injury or death." },
-    { id: 4, text: "I will receive education on:", subItems: ["Naloxone (Narcan) use and access", "Safe use/harm reduction strategies (if applicable)", "Community recovery supports and aftercare planning"] },
+    {
+        id: 4,
+        text: "I will receive education on:",
+        subItems: [
+            "Naloxone (Narcan) use and access",
+            "Safe use/harm reduction strategies (if applicable)",
+            "Community recovery supports and aftercare planning",
+        ],
+    },
 ];
 
 export const matList10 = [
     { id: 1, text: "Abstain from using non-prescribed substances." },
-    { id: 2, text: "Attend scheduled appointments or notify staff in advance of cancellation." },
-    { id: 3, text: "I participate in therapy, case management, and educational groups." },
+    {
+        id: 2,
+        text: "Attend scheduled appointments or notify staff in advance of cancellation.",
+    },
+    {
+        id: 3,
+        text: "I participate in therapy, case management, and educational groups.",
+    },
     { id: 4, text: "Submit to testing as required." },
     { id: 5, text: "Engage in recovery planning and goal setting." },
-    { id: 6, text: "Maintain respectful conduct toward all staff and clients." },
+    {
+        id: 6,
+        text: "Maintain respectful conduct toward all staff and clients.",
+    },
     { id: 7, text: "Follow the facility rules and safety procedures." },
 ];
 
 export const matList11 = [
-    { id: 1, text: "My early warning signs of emotional or substance use relapse" },
+    {
+        id: 1,
+        text: "My early warning signs of emotional or substance use relapse",
+    },
     { id: 2, text: "Personal triggers and high-risk situations" },
     { id: 3, text: "Emergency coping tools and contact list" },
-    { id: 4, text: "Steps to take if I feel unsafe or in danger of relapse/overdose" },
-    { id: 5, text: "Local emergency and crisis resources including:", subItems: ["988 Suicide & Crisis Lifeline", "Nearest Emergency Room", "Local Crisis Center or Mobile Crisis Team"] },
+    {
+        id: 4,
+        text: "Steps to take if I feel unsafe or in danger of relapse/overdose",
+    },
+    {
+        id: 5,
+        text: "Local emergency and crisis resources including:",
+        subItems: [
+            "988 Suicide & Crisis Lifeline",
+            "Nearest Emergency Room",
+            "Local Crisis Center or Mobile Crisis Team",
+        ],
+    },
 ];
 
 export const matList12 = [
     { id: 1, text: "I have read or had this document read to me in full." },
-    { id: 2, text: "I have had the opportunity to ask questions and receive clear answers." },
-    { id: 3, text: "I understand the risks, benefits, and limitations of this treatment." },
-    { id: 4, text: "I voluntarily agree to participate in substance use disorder services at BrightLife" },
-    { id: 5, text: "Enhancement Services under the conditions outlined above." },
+    {
+        id: 2,
+        text: "I have had the opportunity to ask questions and receive clear answers.",
+    },
+    {
+        id: 3,
+        text: "I understand the risks, benefits, and limitations of this treatment.",
+    },
+    {
+        id: 4,
+        text: "I voluntarily agree to participate in substance use disorder services at BrightLife",
+    },
+    {
+        id: 5,
+        text: "Enhancement Services under the conditions outlined above.",
+    },
+];
+
+export const duiOverviewList1 = [
+    {
+        id: 1,
+        text: "The physical, emotional, and legal consequences of substance use while driving",
+    },
+    {
+        id: 2,
+        text: "The impact of alcohol and drug use on decision-making, reaction time, and public safety",
+    },
+    {
+        id: 3,
+        text: "Alternatives to impaired driving and relapse prevention strategies",
+    },
+    {
+        id: 4,
+        text: "Maryland state laws related to impaired driving and license reinstatement",
+    },
+];
+
+export const duiOverviewList2 = [
+    {
+        id: 1,
+        text: "Participation is either voluntary or court/probation mandated.",
+    },
+    {
+        id: 2,
+        text: "This program may satisfy conditions for probation, license reinstatement, or court diversion as determined by the court or Department of Motor Vehicles (MVA).",
+    },
+    {
+        id: 3,
+        text: "Successful completion is based on full attendance and engagement.",
+    },
+    {
+        id: 4,
+        text: "I may be discharged for noncompliance with attendance or conduct expectations.",
+    },
+];
+
+export const duiOverviewList3 = [
+    {
+        id: 1,
+        text: "Court-mandated reporting if required under signed release",
+    },
+    { id: 2, text: "Threats to harm myself or others" },
+    {
+        id: 3,
+        text: "Suspicion of child, elder, or vulnerable adult abuse or neglect",
+    },
+    { id: 4, text: "Medical emergencies or other legal exceptions" },
+];
+
+export const duiOverviewList4 = [
+    { id: 1, text: "Attend all scheduled sessions fully and arrive on time" },
+    { id: 2, text: "Participate respectfully and without disruption" },
+    {
+        id: 3,
+        text: "Refrain from being under the influence of alcohol or drugs during class",
+    },
+    {
+        id: 4,
+        text: "Complete all assignments, reflections, or quizzes as directed",
+    },
+    { id: 5, text: "Follow facilitator and program guidelines" },
+];
+
+export const duiOverviewList5 = [
+    {
+        id: 1,
+        text: "Program fees are due at or before the first session unless a payment plan is arranged in writing",
+    },
+    {
+        id: 2,
+        text: "Missed sessions may require rescheduling and incur additional fees",
+    },
+    {
+        id: 3,
+        text: "Completion certificates will only be issued upon full attendance and payment",
+    },
+    {
+        id: 4,
+        text: "No refunds are issued for partial attendance or dismissal due to policy violation",
+    },
+];
+
+export const duiOverviewList6 = [
+    { id: 1, text: "Attendance at all scheduled sessions" },
+    { id: 2, text: "Full participation and respectful engagement" },
+    {
+        id: 3,
+        text: "Successful completion of any required quizzes, activities, or worksheets",
+    },
+    { id: 4, text: "Payment of all applicable fees" },
 ];
