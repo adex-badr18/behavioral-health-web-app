@@ -20,6 +20,7 @@ import Omhc from "./consentForms/omhc/Omhc";
 import Prp from "./consentForms/prp/Prp";
 import CommunityHousing from "./consentForms/communityHousing/CommunityHousing";
 import EarlyIntervention from "./consentForms/earlyIntervention/EarlyIntervention";
+import Outpatient from "./consentForms/outpatient/Outpatient";
 
 export const dataCollectionForms = [
     {
@@ -139,7 +140,7 @@ export const programForms = [
         shortName: "ASAM Level 1.0 Outpatient Treatment",
         description: "",
         link: "/forms/consent/asam-1.0-outpatient-treatment",
-        component: <PatientInfoConsent />,
+        component: <Outpatient />,
     },
     {
         id: 5,
@@ -148,7 +149,7 @@ export const programForms = [
         shortName: "ASAM Level 2.1 Outpatient Treatment",
         description: "",
         link: "/forms/consent/asam-2.1-outpatient-treatment",
-        component: <PatientInfoConsent />,
+        component: <Outpatient />,
     },
     {
         id: 6,
@@ -157,7 +158,7 @@ export const programForms = [
         shortName: "ASAM Level 2.5 Outpatient Treatment",
         description: "",
         link: "/forms/consent/asam-2.5-outpatient-treatment",
-        component: <PatientInfoConsent />,
+        component: <Outpatient />,
     },
     {
         id: 7,

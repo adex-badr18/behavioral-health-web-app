@@ -920,3 +920,138 @@ export const earlyInterventionList6 = [
         text: "I understand that no formal diagnosis or treatment is being rendered at this level of care.",
     },
 ];
+
+export const substanceUseList1 = [
+    { id: 1, text: "Comprehensive assessment and diagnosis" },
+    { id: 2, text: "Individual, family, and group counseling" },
+    { id: 3, text: "Case management and coordination of care" },
+    {
+        id: 4,
+        text: "Psychiatric evaluation and medication management (as indicated)",
+    },
+    { id: 5, text: "Psychoeducation and relapse prevention" },
+    {
+        id: 6,
+        text: "Medication-assisted treatment (MAT), if clinically indicated",
+    },
+    { id: 7, text: "Drug/alcohol screening and toxicology monitoring" },
+    { id: 8, text: "Peer support services and life skills training" },
+];
+
+export const substanceUseList2 = [
+    {
+        id: 1,
+        text: "Information that identifies me as a client in treatment cannot be shared without my written consent.",
+    },
+    {
+        id: 2,
+        text: "Disclosures are permitted only in specific situations such as a medical emergency, mandated reporting (e.g., child abuse), approved audits or evaluations, or court order compliant with Part 2.",
+    },
+    {
+        id: 3,
+        text: "Violation of 42 CFR Part 2 is a federal offense and subject to penalties.",
+    },
+    {
+        id: 4,
+        text: "I may revoke any release of information at any time unless required by law.",
+    },
+];
+
+export const matList1 = [
+    {
+        id: 1,
+        title: "Buprenorphine/Naloxone (Suboxone)",
+        descr: "Partial opioid agonist",
+    },
+    {
+        id: 2,
+        title: "Methadone",
+        descr: "Full opioid agonist (administered through a licensed OTP)",
+    },
+    {
+        id: 3,
+        title: "Naltrexone/Vivitrol",
+        descr: "Opioid or alcohol antagonist",
+    },
+];
+
+export const matList2 = [
+    { id: 1, text: "The purpose of MAT is to reduce cravings, prevent relapse, and stabilize recovery." },
+    { id: 2, text: "MAT is used in conjunction with behavioral therapy and is not a standalone treatment." },
+    { id: 3, text: "I must comply with scheduled lab work, urine drug screens, pill/film counts, and regular provider reviews." },
+    { id: 4, text: "Medication risks include but are not limited to sedation, respiratory depression, liver damage, allergic reaction, dependency, or diversion." },
+    { id: 5, text: "I may refuse or withdraw from MAT at any time, though doing so may alter my treatment course." },
+];
+
+export const matList3 = [
+    { id: 1, text: "Urinalysis (instant and lab-based)" },
+    { id: 2, text: "Saliva/oral swabs" },
+    { id: 3, text: "Breathalyzer" },
+    { id: 4, text: "EtG (alcohol metabolite testing)" },
+];
+
+export const matList4 = [
+    { id: 1, text: "Testing helps ensure accountability, supports treatment integrity, and informs clinical decision-making." },
+    { id: 2, text: "Refusal to test may be treated as noncompliance." },
+    { id: 3, text: "A positive result may result in additional counseling, treatment plan adjustment, or referral to a higher level of care." },
+    { id: 4, text: "Results may be shared with referral sources, probation, or other authorized parties with written consent or court order." },
+];
+
+export const matList5 = [
+    { id: 1, text: "Maintain confidentiality of all group discussions." },
+    { id: 2, text: "Avoid any behavior that is threatening, disruptive, or disrespectful." },
+    { id: 3, text: "Refrain from attending groups under the influence of substances." },
+    { id: 4, text: "Accept constructive feedback and follow group rules." },
+];
+
+export const matList6 = [
+    { id: 1, text: "Monitor ongoing abstinence and safety" },
+    { id: 2, text: "Verify MAT compliance and detect possible misuse" },
+    { id: 3, text: "Respond to clinical or behavioral concerns in treatment" },
+];
+
+export const matList7 = [
+    { id: 1, text: "Confirm my attendance, engagement, and progress with supervising entities" },
+    { id: 2, text: "Notify the court/probation officer of missed appointments, positive drug tests, or noncompliance" },
+    { id: 3, text: "Submit required reports as needed to support legal or diversionary programs" },
+];
+
+export const matList8 = [
+    { id: 1, text: "I will be assessed for medical risk using validated screening tools." },
+    { id: 2, text: "I may be referred to a detox center or hospital if medically unstable." },
+    { id: 3, text: "A withdrawal management protocol will be created and monitored if I remain in care." },
+    { id: 4, text: "MAT or symptom management medications may be used as part of the plan." },
+];
+
+export const matList9 = [
+    { id: 1, text: "Relapse is a known part of recovery for many individuals." },
+    { id: 2, text: "Risk of overdose increases after periods of abstinence due to lowered tolerance." },
+    { id: 3, text: "Overdose may result in serious injury or death." },
+    { id: 4, text: "I will receive education on:", subItems: ["Naloxone (Narcan) use and access", "Safe use/harm reduction strategies (if applicable)", "Community recovery supports and aftercare planning"] },
+];
+
+export const matList10 = [
+    { id: 1, text: "Abstain from using non-prescribed substances." },
+    { id: 2, text: "Attend scheduled appointments or notify staff in advance of cancellation." },
+    { id: 3, text: "I participate in therapy, case management, and educational groups." },
+    { id: 4, text: "Submit to testing as required." },
+    { id: 5, text: "Engage in recovery planning and goal setting." },
+    { id: 6, text: "Maintain respectful conduct toward all staff and clients." },
+    { id: 7, text: "Follow the facility rules and safety procedures." },
+];
+
+export const matList11 = [
+    { id: 1, text: "My early warning signs of emotional or substance use relapse" },
+    { id: 2, text: "Personal triggers and high-risk situations" },
+    { id: 3, text: "Emergency coping tools and contact list" },
+    { id: 4, text: "Steps to take if I feel unsafe or in danger of relapse/overdose" },
+    { id: 5, text: "Local emergency and crisis resources including:", subItems: ["988 Suicide & Crisis Lifeline", "Nearest Emergency Room", "Local Crisis Center or Mobile Crisis Team"] },
+];
+
+export const matList12 = [
+    { id: 1, text: "I have read or had this document read to me in full." },
+    { id: 2, text: "I have had the opportunity to ask questions and receive clear answers." },
+    { id: 3, text: "I understand the risks, benefits, and limitations of this treatment." },
+    { id: 4, text: "I voluntarily agree to participate in substance use disorder services at BrightLife" },
+    { id: 5, text: "Enhancement Services under the conditions outlined above." },
+];
