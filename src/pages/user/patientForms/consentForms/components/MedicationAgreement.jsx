@@ -15,15 +15,17 @@ import {
 import checkedImg from "../../../../../assets/checked.png";
 import uncheckedImg from "../../../../../assets/unchecked.png";
 
-const MedicationAgreement = ({
-    fullName,
-    dob,
-    whoYouAre,
-    prescribedMedications,
-    pharmacy,
-    signature,
-    date,
-}) => {
+const MedicationAgreement = ({ data }) => {
+    const {
+        fullName,
+        dob,
+        whoYouAre,
+        prescribedMedications,
+        pharmacy,
+        signature,
+        date,
+    } = data;
+
     return (
         <View>
             <Title>Medication Agreement</Title>
@@ -40,15 +42,15 @@ const MedicationAgreement = ({
                 </FlexGapContainer>
             </FlexBetweenContainer>
 
-            <FlexGapContainer containerStyle={{gap: 30}}>
+            <FlexGapContainer containerStyle={{ gap: 30 }}>
                 <Paragraph>I am the: </Paragraph>
 
-                {Object.entries(whoYouAre).map(([key, value], index) => (
+                {whoYouAre.map((choice, index) => (
                     <FlexGapContainer key={index}>
                         <CheckboxImage
-                            src={value ? checkedImg : uncheckedImg}
+                            src={choice.value ? checkedImg : uncheckedImg}
                         />
-                        <OrdinaryText>{key}</OrdinaryText>
+                        <OrdinaryText>{choice.title}</OrdinaryText>
                     </FlexGapContainer>
                 ))}
             </FlexGapContainer>
@@ -63,7 +65,7 @@ const MedicationAgreement = ({
                 />
             </View>
 
-            <FlexGapContainer containerStyle={{marginTop: 12}}>
+            <FlexGapContainer containerStyle={{ marginTop: 12 }}>
                 <BoldText>My last known pharmacy:</BoldText>
                 <UnderlinedText>{pharmacy}</UnderlinedText>
             </FlexGapContainer>

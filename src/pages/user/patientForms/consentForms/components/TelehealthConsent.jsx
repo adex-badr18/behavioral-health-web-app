@@ -9,13 +9,15 @@ import {
     BoldText,
     UnderlinedText,
     FlexColContainer,
-    Subtitle
+    Subtitle,
 } from "./pdfFormComponents";
 import { telehealthList1, telehealthList2 } from "./data";
 
-const TelehealthConsent = ({ signature, date }) => {
+const TelehealthConsent = ({ data }) => {
+    const { signature, date } = data;
+
     return (
-        <View style={{fontSize: 11}}>
+        <View style={{ fontSize: 11 }}>
             <Title>Telehealth Services Informed Consent</Title>
 
             <FlexColContainer>
@@ -33,12 +35,14 @@ const TelehealthConsent = ({ signature, date }) => {
             <NumberedList
                 title="I understand that I have the rights with respect to telehealth:"
                 items={telehealthList1}
-                titleStyle={{fontWeight: "bold"}}
-                containerStyle={{marginBottom: 5}}
-                bulletListStyle={{paddingLeft: 50}}
+                titleStyle={{ fontWeight: "bold" }}
+                containerStyle={{ marginBottom: 5 }}
+                bulletListStyle={{ paddingLeft: 50 }}
             />
 
-            <Subtitle style={{marginVertical: 3}}>Consent to The Use of Telehealth</Subtitle>
+            <Subtitle style={{ marginVertical: 3 }}>
+                Consent to The Use of Telehealth
+            </Subtitle>
 
             <NumberedList
                 title="By signing this form, I certify:"
@@ -46,7 +50,7 @@ const TelehealthConsent = ({ signature, date }) => {
                 isBullet={true}
             />
 
-            <FlexBetweenContainer style={{marginVertical: 3}}>
+            <FlexBetweenContainer style={{ marginVertical: 3 }}>
                 <FlexGapContainer>
                     <BoldText>Signature:</BoldText>
                     <SignatureImage src={signature} />

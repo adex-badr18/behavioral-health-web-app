@@ -9,7 +9,9 @@ import {
     UnderlinedText,
 } from "./pdfFormComponents";
 
-const RightAcknowledgement = ({ fullName, signature, date }) => {
+const RightAcknowledgement = ({ data }) => {
+    const { fullName, signature, date } = data;
+
     return (
         <View>
             <Title>Client’s Rights Acknowledgement Form</Title>

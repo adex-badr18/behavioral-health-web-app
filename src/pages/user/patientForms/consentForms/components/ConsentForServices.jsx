@@ -11,7 +11,9 @@ import {
 } from "./pdfFormComponents";
 import { consentForServicesList } from "./data";
 
-const ConsentForServices = ({ signature, date }) => {
+const ConsentForServices = ({ data }) => {
+    const { signature, date } = data;
+
     return (
         <View>
             <Title>Consent For Services</Title>
@@ -20,7 +22,7 @@ const ConsentForServices = ({ signature, date }) => {
             <NumberedList
                 title="This is to notify you/ your child/ ward has been found eligible and accepted to receive mental health services from BrightLife Enhancement Services, LLC, (BLES). The acceptance is based on the following:"
                 items={consentForServicesList}
-                bulletListStyle={{paddingLeft: 50}}
+                bulletListStyle={{ paddingLeft: 50 }}
             />
 
             <FlexBetweenContainer>

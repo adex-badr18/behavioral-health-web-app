@@ -9,9 +9,17 @@ import {
     BoldText,
     UnderlinedText,
 } from "./pdfFormComponents";
-import { marylandNoticeList1, marylandNoticeList2, marylandNoticeList3, marylandNoticeList4, marylandNoticeList5 } from "./data";
+import {
+    marylandNoticeList1,
+    marylandNoticeList2,
+    marylandNoticeList3,
+    marylandNoticeList4,
+    marylandNoticeList5,
+} from "./data";
 
-const MarylandNotice = ({ signature, date }) => {
+const MarylandNotice = ({ data }) => {
+    const { signature, date } = data;
+
     return (
         <View>
             <Title>Maryland Notice Form</Title>

@@ -34,7 +34,7 @@ const ReleaseReceive = ({ data }) => {
             <Title>AUTHOURIZATION TO RELEASE/RECEIVE INFORMATION</Title>
 
             <FlexColContainer>
-                <FlexGapContainer containerStyle={{alignItems: "flex-start"}}>
+                <FlexGapContainer containerStyle={{ alignItems: "flex-start" }}>
                     <BoldText>Agency:</BoldText>
                     <FlexColContainer containerStyle={{ gap: 2 }}>
                         <OrdinaryText>
@@ -49,13 +49,14 @@ const ReleaseReceive = ({ data }) => {
                 <FlexGapContainer containerStyle={{ gap: 30 }}>
                     <BoldText>Program: </BoldText>
 
-                    {Object.entries(programs).map(([key, value], index) => (
+                    {programs.map((choice, index) => (
                         <FlexGapContainer key={index}>
                             <CheckboxImage
-                                src={value ? checkedImg : uncheckedImg}
+                                src={choice.value ? checkedImg : uncheckedImg}
                             />
                             <OrdinaryText>
-                                {key === "PRP" ? key : formatCamelCase(key)}
+                                {choice.title}
+                                {/* {key === "PRP" ? key : formatCamelCase(key)} */}
                             </OrdinaryText>
                         </FlexGapContainer>
                     ))}
@@ -84,12 +85,12 @@ const ReleaseReceive = ({ data }) => {
             </Paragraph>
 
             <FlexColContainer containerStyle={{ gap: 0 }}>
-                {Object.entries(permissions).map(([key, value], index) => (
+                {permissions.map((choice, index) => (
                     <FlexGapContainer key={index}>
                         <CheckboxImage
-                            src={value ? checkedImg : uncheckedImg}
+                            src={choice.value ? checkedImg : uncheckedImg}
                         />
-                        <OrdinaryText>{formatCamelCase(key)}</OrdinaryText>
+                        <OrdinaryText>{choice.title}</OrdinaryText>
                     </FlexGapContainer>
                 ))}
             </FlexColContainer>
@@ -126,16 +127,22 @@ const ReleaseReceive = ({ data }) => {
                         flexWrap: "wrap",
                     }}
                 >
-                    {Object.entries(itemsCovered).map(([key, value], index) => (
+                    {itemsCovered.map((choice, index) => (
                         <FlexGapContainer key={index}>
                             <CheckboxImage
-                                src={value ? checkedImg : uncheckedImg}
+                                src={choice.value ? checkedImg : uncheckedImg}
                             />
-                            <OrdinaryText>
-                                {key === "other"
-                                    ? `${key}: ${value}`
-                                    : formatCamelCase(key)}
-                            </OrdinaryText>
+
+                            {choice.title.toLowerCase() === "others" ? (
+                                <OrdinaryText>
+                                    <OrdinaryText>{choice.title}:</OrdinaryText>{" "}
+                                    <UnderlinedText>
+                                        {choice.value}
+                                    </UnderlinedText>
+                                </OrdinaryText>
+                            ) : (
+                                <OrdinaryText>{choice.title}</OrdinaryText>
+                            )}
                         </FlexGapContainer>
                     ))}
                 </FlexGapContainer>

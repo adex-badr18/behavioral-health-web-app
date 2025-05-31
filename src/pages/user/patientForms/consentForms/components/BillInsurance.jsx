@@ -9,13 +9,9 @@ import {
     UnderlinedText,
 } from "./pdfFormComponents";
 
-const BillInsurance = ({
-    fullName,
-    clientAddress,
-    insuranceCompany,
-    signature,
-    date,
-}) => {
+const BillInsurance = ({ data }) => {
+    const { fullName, clientAddress, insuranceCompany, signature, date } = data;
+    
     return (
         <View>
             <Title>Authorization To Bill Insurance</Title>

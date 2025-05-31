@@ -37,15 +37,24 @@ const CommunityHousing = () => {
                             subtitle="Admission & Consent Packet"
                             otherText="Effective Date: 2025"
                         />,
-                        <ClientRight signature={signature} date="05/12/2025" />,
+                        <ClientRight
+                            data={{
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
+                        />,
                         <RightAcknowledgement
-                            fullName="Jacquiline Johnson"
-                            signature={signature}
-                            date="05/12/2025"
+                            data={{
+                                fullName: "Johnson Williams",
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
                         />,
                         <ConsentForServices
-                            signature={signature}
-                            date="05/12/2025"
+                            data={{
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
                         />,
                         <HousingOverview />,
                         <ResidentialCare />,
@@ -59,22 +68,26 @@ const CommunityHousing = () => {
                             }}
                         />,
                         <BillInsurance
-                            fullName="Jackson Williams"
-                            clientAddress="204 Potomac Street Maryland 214567"
-                            insuranceCompany="Medicare"
-                            signature={signature}
-                            date="02/23/2025"
+                            data={{
+                                fullName: "Jackson Williams",
+                                clientAddress:
+                                    "204 Potomac Street Maryland 214567",
+                                insuranceCompany: "Medicare",
+                                signature: signature,
+                                date: "02/23/2025",
+                            }}
                         />,
                         <GrievancePolicy
-                            fullName="Jack Wilshere"
-                            signature={signature}
-                            date="01/01/2025"
-                            otherText="For questions or assistance with filing a grievance, contact the Client Rights Representative
-                            during business hours (9:00 AM - 4:00 PM)."
+                            data={{
+                                fullName: "Johnson Williams",
+                                signature: signature,
+                                date: "03/04/2024",
+                                otherText:
+                                    "For questions or assistance with filing a grievance, contact the Client Rights Representative during business hours (9:00 AM - 4:00 PM).",
+                            }}
                         />,
                         <TelehealthConsent
-                            signature={signature}
-                            date="01/01/2025"
+                            data={{ signature: signature, date: "03/04/2024" }}
                         />,
                         <MessageRemindersConsent
                             data={{

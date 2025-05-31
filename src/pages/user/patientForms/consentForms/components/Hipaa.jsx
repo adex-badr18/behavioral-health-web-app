@@ -9,7 +9,9 @@ import {
     UnderlinedText,
 } from "./pdfFormComponents";
 
-const Hipaa = ({ signature, date }) => {
+const Hipaa = ({ data }) => {
+    const { signature, date } = data;
+
     return (
         <View>
             <Title>HIPAA Acknowledgement</Title>

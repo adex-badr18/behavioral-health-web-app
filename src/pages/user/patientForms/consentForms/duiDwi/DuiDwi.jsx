@@ -31,11 +31,18 @@ const DuiDwi = () => {
                             ]}
                             title="Early Intervention (ASAM Level 0.5) Packet"
                         />,
-                        <ClientRight signature={signature} date="05/12/2025" />,
+                        <ClientRight
+                            data={{
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
+                        />,
                         <RightAcknowledgement
-                            fullName="Jacquiline Johnson"
-                            signature={signature}
-                            date="05/12/2025"
+                            data={{
+                                fullName: "Johnson Williams",
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
                         />,
                         <DuiOverview
                             data={{
@@ -45,15 +52,15 @@ const DuiDwi = () => {
                             }}
                         />,
                         <GrievancePolicy
-                            fullName="Jack Wilshere"
-                            signature={signature}
-                            date="01/01/2025"
-                            otherText="For questions or assistance with filing a grievance, contact the Client Rights Representative
-                during business hours (9:00 AM - 4:00 PM)."
+                            data={{
+                                fullName: "Johnson Williams",
+                                signature: signature,
+                                date: "03/04/2024",
+                                otherText:"For questions or assistance with filing a grievance, contact the Client Rights Representative during business hours (9:00 AM - 4:00 PM)."
+                            }}
                         />,
                         <TelehealthConsent
-                            signature={signature}
-                            date="01/01/2025"
+                            data={{ signature: signature, date: "03/04/2024" }}
                         />,
                         <MessageRemindersConsent
                             data={{

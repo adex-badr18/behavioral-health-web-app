@@ -409,7 +409,7 @@ export const GridLayout = ({ items, descriptiveText, columnStyle = {} }) => {
         <View style={styles.grid}>
             {items.map((item, index) => (
                 <View key={index} style={{ ...styles.column, ...columnStyle }}>
-                    <Text>{`${index + 1}. ${item}`}</Text>
+                    <Text>{item}</Text>
                 </View>
             ))}
         </View>

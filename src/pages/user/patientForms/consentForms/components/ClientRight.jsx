@@ -11,7 +11,9 @@ import {
 } from "./pdfFormComponents";
 import { clientRights } from "./data";
 
-const ClientRight = ({ signature, date }) => {
+const ClientRight = ({ data }) => {
+    const { signature, date } = data;
+
     return (
         <View>
             <Title>The Rights of Clients</Title>

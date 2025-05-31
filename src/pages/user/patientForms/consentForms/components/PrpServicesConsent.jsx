@@ -57,12 +57,12 @@ const PrpServicesConsent = ({ data }) => {
                 <Paragraph>
                     Please indicate your preferred service setting:
                 </Paragraph>
-                {preferredServices.map((service, index) => (
+                {preferredServices.map((choice, index) => (
                     <FlexGapContainer containerStyle={{alignItems: "flex-start"}} key={index}>
                         <CheckboxImage
-                            src={service.value ? checkedImg : uncheckedImg}
+                            src={choice.value ? checkedImg : uncheckedImg}
                         />
-                        <OrdinaryText>{service.title}</OrdinaryText>
+                        <OrdinaryText>{choice.title}</OrdinaryText>
                     </FlexGapContainer>
                 ))}
             </FlexColContainer>

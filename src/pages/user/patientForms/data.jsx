@@ -187,7 +187,7 @@ export const programForms = [
         shortName: "Supported Employment",
         description: "",
         link: "/forms/consent/supported-employment/1",
-        component: <TerminationPolicy />,
+        component: <Prp />,
     },
     {
         id: 10,

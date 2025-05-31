@@ -44,11 +44,18 @@ const Prp = () => {
                             ]}
                             title="CONSENT FOR SERVICES FORMS"
                         />,
-                        <ClientRight signature={signature} date="05/12/2025" />,
+                        <ClientRight
+                            data={{
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
+                        />,
                         <RightAcknowledgement
-                            fullName="Jacquiline Johnson"
-                            signature={signature}
-                            date="05/12/2025"
+                            data={{
+                                fullName: "Johnson Williams",
+                                signature: signature,
+                                date: "03/04/2024",
+                            }}
                         />,
                         <PrpAdmissionLetter
                             data={{
@@ -73,73 +80,145 @@ const Prp = () => {
                             }}
                         />,
                         <MedicationAgreement
-                            fullName="Johnson Tulip"
-                            whoYouAre={{ client: true, parent: false }}
-                            dob={`05/21/1990`}
-                            pharmacy={`The Gideon Pharmacy`}
-                            prescribedMedications={[
-                                "Paracetamol",
-                                "Procold",
-                                "Coughtalin",
-                            ]}
-                            signature={signature}
-                            date={`05/05/2023`}
+                            data={{
+                                fullName: "Johnson Tulip",
+                                whoYouAre: [
+                                    {
+                                        title: "Client",
+                                        value: true,
+                                    },
+                                    {
+                                        title: "Parent",
+                                        value: false,
+                                    },
+                                ],
+                                dob: `05/21/1990`,
+                                pharmacy: `The Gideon Pharmacy`,
+                                prescribedMedications: [
+                                    "Paracetamol",
+                                    "Procold",
+                                    "Coughtalin",
+                                ],
+                                signature: signature,
+                                date: `05/05/2023`,
+                            }}
                         />,
-                        <Hipaa signature={signature} date="05/12/2025" />,
+                        <Hipaa
+                            data={{
+                                signature: signature,
+                                date: "05/12/2025",
+                            }}
+                        />,
                         <MarylandNotice
-                            signature={signature}
-                            date="05/12/2025"
+                            data={{
+                                signature: signature,
+                                date: "05/12/2025",
+                            }}
                         />,
                         <BillInsurance
-                            fullName="Jackson Williams"
-                            clientAddress="204 Potomac Street Maryland 214567"
-                            insuranceCompany="Medicare"
-                            signature={signature}
-                            date="02/23/2025"
+                            data={{
+                                fullName: "Jackson Williams",
+                                clientAddress:
+                                    "204 Potomac Street Maryland 214567",
+                                insuranceCompany: "Medicare",
+                                signature: signature,
+                                date: "02/23/2025",
+                            }}
                         />,
                         <ReleaseReceive
                             data={{
                                 fullName: "Johnson Tulip",
-                                programs: {
-                                    mentalHealthServices: true,
-                                    PRP: false,
-                                    substanceUseTreatment: false,
-                                },
+                                programs: [
+                                    {
+                                        title: "Mental Health Services",
+                                        value: true,
+                                    },
+                                    {
+                                        title: "PRP",
+                                        value: false,
+                                    },
+                                    {
+                                        title: "Substance Use Treatment",
+                                        value: false,
+                                    },
+                                ],
                                 dob: `05/21/1990`,
-                                permissions: {
-                                    release: true,
-                                    receive: false,
-                                    verballyDiscussTheInformationCheckedWithTheSecondPartyAsDirectedBelow: false,
-                                },
+                                permissions: [
+                                    {
+                                        title: "Release",
+                                        value: true,
+                                    },
+                                    {
+                                        title: "Receive",
+                                        value: false,
+                                    },
+                                    {
+                                        title: "Verbally discuss the information checked with the second party as directed below",
+                                        value: false,
+                                    },
+                                ],
                                 secondParty: {
                                     name: "Gideon Health Care",
                                     phone: "4103423456",
                                     fax: "4109871234",
                                 },
-                                itemsCovered: {
-                                    acknowledgementOfReceiptOfServices: true,
-                                    diagnosis: true,
-                                    labResults: false,
-                                    progressNote: false,
-                                    medicationRecord: true,
-                                    intakeAssessment: false,
-                                    treatmentPlan: true,
-                                    clinicalSummary: false,
-                                    psychologicalSummary: false,
-                                    other: "",
-                                },
+                                itemsCovered: [
+                                    {
+                                        title: "Acknowledgement of receipt of services",
+                                        value: true,
+                                    },
+                                    {
+                                        title: "Diagnosis",
+                                        value: false,
+                                    },
+                                    {
+                                        title: "Lab Results",
+                                        value: false,
+                                    },
+                                    {
+                                        title: "Progress Note",
+                                        value: true,
+                                    },
+                                    {
+                                        title: "Medication Record",
+                                        value: true,
+                                    },
+                                    {
+                                        title: "Intake Assessment",
+                                        value: false,
+                                    },
+                                    {
+                                        title: "Treatment Plan",
+                                        value: false,
+                                    },
+                                    {
+                                        title: "Clinical Summary",
+                                        value: false,
+                                    },
+                                    {
+                                        title: "Psychological Summary",
+                                        value: false,
+                                    },
+                                    {
+                                        title: "Others",
+                                        value: "",
+                                    },
+                                ],
                                 signature: signature,
                                 date: `05/05/2023`,
                             }}
                         />,
                         <GrievancePolicy
-                            fullName="Jack Wilshere"
-                            signature={signature}
-                            date="01/01/2025"
+                            data={{
+                                fullName: "Johnson Williams",
+                                signature: signature,
+                                date: "03/04/2024",
+                                otherText:
+                                    "For questions or assistance with filing a grievance, contact the Client Rights Representative during business hours (9:00 AM - 5:00 PM).",
+                            }}
                         />,
                         <TelehealthConsent
-                            signature={signature}
-                            date="01/01/2025"
+                            data={{ signature: signature, date: "03/04/2024" }}
                         />,
                         <MessageRemindersConsent
                             data={{
