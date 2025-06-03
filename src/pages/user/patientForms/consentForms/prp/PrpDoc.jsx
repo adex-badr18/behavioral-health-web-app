@@ -1,12 +1,9 @@
-import { Document, Page } from "@react-pdf/renderer";
-import PdfPreview from "../../../../../components/PdfPreview";
+import { Document } from "@react-pdf/renderer";
 import ClientRight from "../components/ClientRight";
 import RightAcknowledgement from "../components/RightAcknowledgement";
-import ConsentForServices from "../components/ConsentForServices";
 import MedicationAgreement from "../components/MedicationAgreement";
 import Hipaa from "../components/Hipaa";
 import { PageWrapper } from "../components/pdfFormComponents";
-import signature from "../../../../../assets/signature.jpg";
 import MarylandNotice from "../components/MarylandNotice";
 import BillInsurance from "../components/BillInsurance";
 import ReleaseReceive from "../components/ReleaseReceive";
@@ -22,8 +19,11 @@ import Packets from "../components/Packets";
 
 import { getFullAddress, getFullName } from "../../utils";
 import { convertIsoDateToReadable, formatToMMDDYYYY } from "../../../../utils";
+import PrpAdmissionLetter from "../components/PrpAdmissionLetter";
+import PrpServicesConsent from "../components/PrpServicesConsent";
+import TransportationLiability from "../components/TransportationLiability";
 
-const OmhcDoc = ({ formData }) => {
+const PrpDoc = ({ formData }) => {
     const fullName = getFullName({
         firstName: formData.basicInfo.firstName,
         middleName: formData.basicInfo.middleName,
@@ -37,7 +37,7 @@ const OmhcDoc = ({ formData }) => {
             {[
                 <Packets
                     list={[
-                        "Copy of Photo ID - Send or Bring in during first visit",
+                        "Copy of Photo ID -Send or Bring in during first visit",
                         "Copy of Insurance Card- Send or Bring in during first visit",
                         "Client’s Rights Acknowledgement",
                         "Consent for the Services",
@@ -68,8 +68,17 @@ const OmhcDoc = ({ formData }) => {
                             "",
                     }}
                 />,
-                <ConsentForServices
+                <PrpAdmissionLetter
                     data={{
+                        fullName,
+                        dob: formatToMMDDYYYY(formData?.basicInfo?.dob) || "",
+                    }}
+                />,
+                <PrpServicesConsent
+                    data={{
+                        fullName,
+                        dob: formatToMMDDYYYY(formData?.basicInfo?.dob) || "",
+                        preferredServices: formData.preferredServices,
                         signature: formData?.data?.signature,
                         date:
                             convertIsoDateToReadable(formData?.data?.date) ||
@@ -179,6 +188,15 @@ const OmhcDoc = ({ formData }) => {
                             "",
                     }}
                 />,
+                <TransportationLiability
+                    data={{
+                        fullName,
+                        signature: formData?.data?.signature,
+                        date:
+                            convertIsoDateToReadable(formData?.data?.date) ||
+                            "",
+                    }}
+                />,
                 <ItpConsent
                     data={{
                         fullName,
@@ -217,4 +235,4 @@ const OmhcDoc = ({ formData }) => {
     );
 };
 
-export default OmhcDoc;
+export default PrpDoc;

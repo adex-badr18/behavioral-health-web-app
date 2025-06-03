@@ -13,12 +13,22 @@ import {
     CheckboxImage,
 } from "./pdfFormComponents";
 
-import { prpServicesList } from "./data"
+import { prpServicesList } from "./data";
 import checkedImg from "../../../../../assets/checked.png";
 import uncheckedImg from "../../../../../assets/unchecked.png";
+import { formatOptionsForPdf } from "../../utils";
 
 const PrpServicesConsent = ({ data }) => {
     const { fullName, dob, preferredServices, signature, date } = data;
+    const formattedPreferredServices = formatOptionsForPdf(
+        [
+            "On-Site Only",
+            "Off-Site Only",
+            "Both On-Site and Off-Site (Selecting both gives you greater flexibility. Participation in both settings is not required but allows for a more comprehensive treatment approach.)",
+        ],
+        preferredServices,
+        ""
+    );
 
     return (
         <View>
@@ -57,8 +67,11 @@ const PrpServicesConsent = ({ data }) => {
                 <Paragraph>
                     Please indicate your preferred service setting:
                 </Paragraph>
-                {preferredServices.map((choice, index) => (
-                    <FlexGapContainer containerStyle={{alignItems: "flex-start"}} key={index}>
+                {formattedPreferredServices.map((choice, index) => (
+                    <FlexGapContainer
+                        containerStyle={{ alignItems: "flex-start" }}
+                        key={index}
+                    >
                         <CheckboxImage
                             src={choice.value ? checkedImg : uncheckedImg}
                         />

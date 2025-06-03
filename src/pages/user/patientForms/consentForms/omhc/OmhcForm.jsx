@@ -43,17 +43,6 @@ const OmhcForm = ({ formData, setFormData, onChange }) => {
                     </h4>
 
                     <div className="space-y-8">
-                        {/* <CheckboxGroup
-                            label="You are the:"
-                            smallLabel=""
-                            name="whoYouAre"
-                            options={whoYouAreOptions}
-                            formData={formData}
-                            setFormData={setFormData}
-                            isRequired={true}
-                            layout="horizontal"
-                        /> */}
-
                         <RadioField
                             label="You are the:"
                             data={whoYouAreOptions}

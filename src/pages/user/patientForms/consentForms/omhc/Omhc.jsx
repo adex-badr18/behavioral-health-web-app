@@ -207,7 +207,7 @@ const Omhc = () => {
     };
 
     const formSteps = {
-        steps: ["Read Consent", "Enter Your Details", "Preview & Submit"],
+        steps: ["Read Consent", "Fill Form", "Preview & Submit"],
         forms: [
             {
                 id: 1,

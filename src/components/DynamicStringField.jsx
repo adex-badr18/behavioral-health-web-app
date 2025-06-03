@@ -111,7 +111,6 @@ const DynamicStringField = ({
                             className="text-white bg-originalGreen text-sm p-1 rounded flex items-center gap-2"
                         >
                             <span className="">{item}</span>
-                            {/* <button className="" onClick={}><MdClose className="text-sm text-vividRed" /></button> */}
                         </div>
                     ))}
                 </div>
