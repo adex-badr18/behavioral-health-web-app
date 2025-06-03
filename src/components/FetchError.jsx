@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const Error = ({
+const FetchError = ({
     title = "Error",
     message = "Sorry, something went wrong.",
     homeLink = "/",
@@ -8,7 +8,7 @@ const Error = ({
     const navigate = useNavigate();
 
     return (
-        <div className="w-full px-16 md:px-0 h-[100vh] flex items-center justify-center">
+        <section className="py-8 md:py-20">
             <div className="bg-white border flex flex-col items-center justify-center px-4 md:px-8 lg:px-24 py-8 rounded-lg">
                 <p className="text-2xl md:text-3xl lg:text-5xl font-bold tracking-wider text-vividRed mt-4">
                     {`${title}!`}
@@ -38,8 +38,8 @@ const Error = ({
                     </button>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
-export default Error;
+export default FetchError;

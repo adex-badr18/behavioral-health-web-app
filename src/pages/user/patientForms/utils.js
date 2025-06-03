@@ -44,7 +44,12 @@ export const formatCamelCase = (text) => {
 };
 
 // Handle form element change
-export const handleFormElementChange = (section, fieldPath, value) => {
+export const handleFormElementChange = (
+    setFormData,
+    section,
+    fieldPath,
+    value
+) => {
     setFormData((prev) => {
         const keys = fieldPath.split(".");
 
@@ -71,4 +76,63 @@ export const handleFormElementChange = (section, fieldPath, value) => {
             [section]: updateNestedField(prev[section], keys, value),
         };
     });
+};
+
+export const getFullName = (user) => {
+    if (!user || typeof user !== "object") return "";
+
+    const { firstName, middleName, lastName } = user;
+
+    if (!firstName || typeof firstName !== "string" || !firstName.trim())
+        return "";
+    if (!lastName || typeof lastName !== "string" || !lastName.trim())
+        return "";
+
+    const fullName = [firstName.trim(), middleName?.trim(), lastName.trim()]
+        .filter(Boolean)
+        .join(" ");
+
+    return fullName;
+};
+
+export const getFullAddress = (address) => {
+    if (!address || typeof address !== "object") return "";
+
+    const { streetName, city, state, zipCode } = address;
+
+    if (!streetName || typeof streetName !== "string" || !streetName.trim())
+        return "";
+    if (!city || typeof city !== "string" || !city.trim()) return "";
+    if (!state || typeof state !== "string" || !state.trim()) return "";
+    if (!zipCode || typeof zipCode !== "string" || !zipCode.trim()) return "";
+
+    const fullAddress = [
+        streetName.trim(),
+        city.trim(),
+        state.trim(),
+        zipCode.trim(),
+    ]
+        .filter(Boolean)
+        .join(" ");
+
+    return fullAddress;
+};
+
+export const formatOptionsForPdf = (
+    allStandardOptions,
+    selectedOptions,
+    otherOption
+) => {
+    const allOptions = allStandardOptions.map((option) => ({
+        title: option,
+        value: selectedOptions.includes(option),
+    }));
+
+    // const otherOptionItem = [{ title: "Others", value: otherOption?.trim() }];
+
+    const otherOptionItem = otherOption?.trim()
+        ? [{ title: "Others", value: otherOption?.trim() }]
+        : [];
+
+    return [...allOptions, ...otherOptionItem];
 };

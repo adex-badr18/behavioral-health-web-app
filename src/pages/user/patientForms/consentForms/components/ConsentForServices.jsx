@@ -15,8 +15,8 @@ const ConsentForServices = ({ data }) => {
     const { signature, date } = data;
 
     return (
-        <View>
-            <Title>Consent For Services</Title>
+        <View style={{ fontSize: 11 }}>
+            <Title style={{marginVertical: 10}}>Consent For Services</Title>
 
             <Paragraph>Dear</Paragraph>
             <NumberedList
@@ -25,7 +25,7 @@ const ConsentForServices = ({ data }) => {
                 bulletListStyle={{ paddingLeft: 50 }}
             />
 
-            <FlexBetweenContainer>
+            <FlexBetweenContainer style={{ marginVertical: 0 }}>
                 <FlexGapContainer>
                     <BoldText>Participant Signature:</BoldText>
                     <SignatureImage src={signature} />

@@ -23,12 +23,6 @@ const RadioField = ({
         orientationClass = "flex flex-col gap-4";
     }
 
-    // const orientationClas =
-    //     orientation === "horizontal"
-    //         ? "flex-row items-center gap-8"
-    //         : "flex-col gap-4";
-    // console.log(name, value);
-
     return (
         <div className="space-y-2">
             <p className={`${labelClass} text-deepGrey`}>
@@ -42,7 +36,7 @@ const RadioField = ({
                     <label
                         key={option.id}
                         htmlFor={`${name}-${option.name}`}
-                        className="text-deepGrey flex items-center gap-2 cursor-pointer"
+                        className="text-deepGrey flex gap-3 cursor-pointer"
                     >
                         <input
                             type="radio"
@@ -57,7 +51,7 @@ const RadioField = ({
                                     field,
                                     e.target.value
                                 )
-                            }                            
+                            }
                             {...rest}
                         />
                         <div className="w-5 h-5 rounded-full border-2 border-gray-500 peer-checked:bg-darkBlue flex-shrink-0 flex items-center justify-center">

@@ -14,6 +14,7 @@ import {
 } from "./pdfFormComponents";
 import checkedImg from "../../../../../assets/checked.png";
 import uncheckedImg from "../../../../../assets/unchecked.png";
+import { formatOptionsForPdf } from "../../utils";
 
 const MedicationAgreement = ({ data }) => {
     const {
@@ -25,6 +26,7 @@ const MedicationAgreement = ({ data }) => {
         signature,
         date,
     } = data;
+    const formattedWhoYouAre = formatOptionsForPdf(["Client", "Parent"], whoYouAre, "")
 
     return (
         <View>
@@ -45,7 +47,7 @@ const MedicationAgreement = ({ data }) => {
             <FlexGapContainer containerStyle={{ gap: 30 }}>
                 <Paragraph>I am the: </Paragraph>
 
-                {whoYouAre.map((choice, index) => (
+                {formattedWhoYouAre.map((choice, index) => (
                     <FlexGapContainer key={index}>
                         <CheckboxImage
                             src={choice.value ? checkedImg : uncheckedImg}

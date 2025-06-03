@@ -16,6 +16,7 @@ import {
     getRegInfoById,
     generatePatientId,
     updateRegInfo,
+    createConsentForm,
 } from "../api/patientApi";
 import { useToast } from "../components/ToastContext";
 import { useNavigate } from "react-router-dom";
@@ -67,7 +68,8 @@ export const useFetchBasicPatient = (id) => {
     return useQuery({
         queryKey: ["patients", id],
         queryFn: () => fetchBasicPatientById(id),
-        enabled: false, // Disables automatic fetch
+        enabled: !!id, // Ensures the query runs only when id is avaialble
+        retry: 2
     });
 };
 
@@ -278,10 +280,18 @@ export const useUploadFile = ({
     });
 };
 
-// Upload patient file
+// Create patient form
 export const useCreateForm = (options = {}) => {
     return useMutation({
         mutationFn: createForm,
+        ...options,
+    });
+};
+
+// Create patient form
+export const useCreateConsentForm = (options = {}) => {
+    return useMutation({
+        mutationFn: createConsentForm,
         ...options,
     });
 };

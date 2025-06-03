@@ -75,6 +75,8 @@ const ReleaseReceive = () => {
         upload: { file: "" },
     });
 
+    console.log(formData)
+
     useEffect(() => {
         if (formData.consent.isMinor.toLowerCase() === "no") {
             setFormData((prev) => ({
@@ -197,28 +199,28 @@ const ReleaseReceive = () => {
         ];
 
         if (step === 1) {
-            const dataObj = formData.verification;
+            // const dataObj = formData.verification;
 
-            for (const key in dataObj) {
-                const value = dataObj[key];
+            // for (const key in dataObj) {
+            //     const value = dataObj[key];
 
-                if (!requiredFields.includes(key)) {
-                    continue;
-                }
+            //     if (!requiredFields.includes(key)) {
+            //         continue;
+            //     }
 
-                if (value !== null && typeof value === "object") {
-                    for (const key in value) {
-                        const nestedValue = value[key];
-                        if (nestedValue === "" || nestedValue === null) {
-                            return false;
-                        }
-                    }
-                }
+            //     if (value !== null && typeof value === "object") {
+            //         for (const key in value) {
+            //             const nestedValue = value[key];
+            //             if (nestedValue === "" || nestedValue === null) {
+            //                 return false;
+            //             }
+            //         }
+            //     }
 
-                if (value === "" || value === null || value === undefined) {
-                    return false;
-                }
-            }
+            //     if (value === "" || value === null || value === undefined) {
+            //         return false;
+            //     }
+            // }
 
             return true;
         }

@@ -154,3 +154,9 @@ export const createForm = async ({ payload, endpoint }) => {
 
     return response.data;
 };
+
+// Create patient consent form
+export const createConsentForm = async ({ payload, endpoint, options }) => {
+    const response = await api.post(endpoint, payload, options);
+    return response.data;
+};

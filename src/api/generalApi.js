@@ -1,7 +1,7 @@
 import { objectToFormData } from "../pages/utils";
 import api from "./axiosInstance";
 
-// Create adhd form
+// Create patient form
 export const createForm = async (formData, endpoint) => {
     const options = {
         headers: {
@@ -13,6 +13,7 @@ export const createForm = async (formData, endpoint) => {
 
     return response.data;
 };
+
 
 // Search for patients based on search terms
 export const fetchPaginatedData = async ({

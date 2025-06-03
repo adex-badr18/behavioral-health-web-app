@@ -7,15 +7,15 @@ import { TbLibraryPlus } from "react-icons/tb";
 const DynamicStringField = ({
     label,
     name,
-    title,
+    value,
     section,
     fieldPath,
     placeholder,
     onChange,
     type,
-    moreText="more"
+    moreText = "more",
 }) => {
-    const [fields, setFields] = useState([""]); // Start with one empty field by default
+    const [fields, setFields] = useState(value.length > 0 ? value : [""]); // Start with one empty field by default
 
     // Add a single field
     const addFieldHandler = (e) => {
@@ -47,56 +47,75 @@ const DynamicStringField = ({
     };
 
     return (
-        <div className="space-y-1">
-            <label htmlFor={`${section}-${name}`} className="block text-deepGrey capitalize">
-                {label}
-            </label>
-
-            {fields.map((field, index) => (
-                <div
-                    key={index}
-                    id={`${section}-${name}`}
-                    className="flex items-center justify-between gap-2"
+        <div className="space-y-4">
+            <div className="space-y-1">
+                <label
+                    htmlFor={`${section}-${name}`}
+                    className="block text-deepGrey capitalize"
                 >
-                    {type === "text" && (
-                        <input
-                            type="text"
-                            placeholder={placeholder}
-                            className="input"
-                            value={field}
-                            onChange={(e) =>
-                                inputChangeHandler(index, e.target.value)
-                            }
-                        />
-                    )}
+                    {label}
+                </label>
 
-                    {type === "textarea" && (
-                        <textarea
-                            placeholder={placeholder}
-                            className="input"
-                            value={field}
-                            onChange={(e) =>
-                                inputChangeHandler(index, e.target.value)
-                            }
-                        ></textarea>
-                    )}
-
-                    <button
-                        onClick={(e) => removeFieldHandler(e, index)}
-                        className="flex items-center justify-center p-1 rounded border border-transparent hover:border-vividRed text-vividRed hover:bg-vividRed hover:text-white transition duration-300"
+                {fields.map((field, index) => (
+                    <div
+                        key={index}
+                        id={`${section}-${name}`}
+                        className="flex items-center justify-between gap-2"
                     >
-                        <MdClose className="text-xl" />
-                    </button>
-                </div>
-            ))}
+                        {type === "text" && (
+                            <input
+                                type="text"
+                                placeholder={placeholder}
+                                className="input"
+                                value={field}
+                                onChange={(e) =>
+                                    inputChangeHandler(index, e.target.value)
+                                }
+                            />
+                        )}
 
-            <button
-                onClick={addFieldHandler}
-                className={`text-darkBlue flex items-center gap-2`}
-            >
-                <TbLibraryPlus />
-                <span className="underline capitalize">{`Add ${moreText}`}</span>
-            </button>
+                        {type === "textarea" && (
+                            <textarea
+                                placeholder={placeholder}
+                                className="input"
+                                value={field}
+                                onChange={(e) =>
+                                    inputChangeHandler(index, e.target.value)
+                                }
+                            ></textarea>
+                        )}
+
+                        <button
+                            onClick={(e) => removeFieldHandler(e, index)}
+                            className="flex items-center justify-center p-1 rounded border border-transparent hover:border-vividRed text-vividRed hover:bg-vividRed hover:text-white transition duration-300"
+                        >
+                            <MdClose className="text-xl" />
+                        </button>
+                    </div>
+                ))}
+
+                <button
+                    onClick={addFieldHandler}
+                    className={`text-darkBlue flex items-center gap-2`}
+                >
+                    <TbLibraryPlus />
+                    <span className="underline capitalize">{`Add ${moreText}`}</span>
+                </button>
+            </div>
+
+            {value.length > 0 && (
+                <div className="flex items-center gap-1 flex-wrap">
+                    {value.map((item, index) => (
+                        <div
+                            key={index}
+                            className="text-white bg-originalGreen text-sm p-1 rounded flex items-center gap-2"
+                        >
+                            <span className="">{item}</span>
+                            {/* <button className="" onClick={}><MdClose className="text-sm text-vividRed" /></button> */}
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

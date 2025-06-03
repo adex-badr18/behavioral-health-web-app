@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
         gap: 5,
     },
     signatureImage: {
-        width: 120,
+        width: 300,
         height: 50,
         objectFit: "contain",
     },

@@ -90,7 +90,7 @@ export const convertBooleanToText = (value) => {
 
 export const convertIsoDateToReadable = (date) => {
     if (!date) {
-        return;
+        return "";
     }
 
     return new Date(date).toLocaleString("en-US", {

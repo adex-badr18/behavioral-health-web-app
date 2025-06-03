@@ -15,7 +15,8 @@ import {
 } from "./pdfFormComponents";
 import checkedImg from "../../../../../assets/checked.png";
 import uncheckedImg from "../../../../../assets/unchecked.png";
-import { formatCamelCase } from "../../utils";
+import { formatCamelCase, formatOptionsForPdf } from "../../utils";
+import { useMemo } from "react";
 
 const ReleaseReceive = ({ data }) => {
     const {
@@ -25,13 +26,56 @@ const ReleaseReceive = ({ data }) => {
         permissions,
         secondParty,
         itemsCovered,
+        otherItemsCovered,
         date,
         signature,
     } = data;
 
+    const allPrograms = [
+        "Mental Health Services",
+        "PRP",
+        "Substance Use Treatment",
+    ];
+    const allPermissions = [
+        "Release",
+        "Receive",
+        "Verbally discuss the information checked with the second party as directed below",
+    ];
+    const allItemsCovered = [
+        "Acknowledgement of receipt of services",
+        "Diagnosis",
+        "Lab Results",
+        "Progress Note",
+        "Medication Record",
+        "Intake Assessment",
+        "Treatment Plan",
+        "Clinical Summmary",
+    ];
+
+    const { formattedPrograms, formattedPermissions, formattedItemsCovered } =
+        useMemo(() => {
+            return {
+                formattedPrograms: formatOptionsForPdf(
+                    allPrograms,
+                    programs,
+                    ""
+                ),
+                formattedPermissions: formatOptionsForPdf(
+                    allPermissions,
+                    permissions,
+                    ""
+                ),
+                formattedItemsCovered: formatOptionsForPdf(
+                    allItemsCovered,
+                    itemsCovered,
+                    otherItemsCovered
+                ),
+            };
+        }, [programs, permissions, itemsCovered, otherItemsCovered]);
+
     return (
         <View>
-            <Title>AUTHOURIZATION TO RELEASE/RECEIVE INFORMATION</Title>
+            <Title>AUTHORIZATION TO RELEASE/RECEIVE INFORMATION</Title>
 
             <FlexColContainer>
                 <FlexGapContainer containerStyle={{ alignItems: "flex-start" }}>
@@ -49,7 +93,7 @@ const ReleaseReceive = ({ data }) => {
                 <FlexGapContainer containerStyle={{ gap: 30 }}>
                     <BoldText>Program: </BoldText>
 
-                    {programs.map((choice, index) => (
+                    {formattedPrograms.map((choice, index) => (
                         <FlexGapContainer key={index}>
                             <CheckboxImage
                                 src={choice.value ? checkedImg : uncheckedImg}
@@ -85,7 +129,7 @@ const ReleaseReceive = ({ data }) => {
             </Paragraph>
 
             <FlexColContainer containerStyle={{ gap: 0 }}>
-                {permissions.map((choice, index) => (
+                {formattedPermissions.map((choice, index) => (
                     <FlexGapContainer key={index}>
                         <CheckboxImage
                             src={choice.value ? checkedImg : uncheckedImg}
@@ -109,10 +153,6 @@ const ReleaseReceive = ({ data }) => {
                     <BoldText>Phone Number:</BoldText>
                     <OrdinaryText>{secondParty.phone}</OrdinaryText>
                 </FlexGapContainer>
-                <FlexGapContainer>
-                    <BoldText>Fax:</BoldText>
-                    <OrdinaryText>{secondParty.fax}</OrdinaryText>
-                </FlexGapContainer>
             </FlexColContainer>
 
             <FlexColContainer>
@@ -127,7 +167,7 @@ const ReleaseReceive = ({ data }) => {
                         flexWrap: "wrap",
                     }}
                 >
-                    {itemsCovered.map((choice, index) => (
+                    {formattedItemsCovered.map((choice, index) => (
                         <FlexGapContainer key={index}>
                             <CheckboxImage
                                 src={choice.value ? checkedImg : uncheckedImg}

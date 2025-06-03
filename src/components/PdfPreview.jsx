@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { PDFViewer, pdf } from "@react-pdf/renderer";
 
-const PdfPreview = ({ Doc }) => {
+const PdfPreview = ({ Doc, ...rest }) => {
     const [loading, setLoading] = useState(false);
 
     const sendPdfToServer = async () => {
@@ -29,7 +29,7 @@ const PdfPreview = ({ Doc }) => {
     };
 
     return (
-        <PDFViewer style={{ width: "100%", height: "800px" }}>{Doc}</PDFViewer>
+        <PDFViewer style={{ width: "100%", height: "800px" }} {...rest}>{Doc}</PDFViewer>
     );
 };
 

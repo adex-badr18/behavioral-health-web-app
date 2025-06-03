@@ -18,7 +18,7 @@ const TelehealthConsent = ({ data }) => {
 
     return (
         <View style={{ fontSize: 11 }}>
-            <Title>Telehealth Services Informed Consent</Title>
+            <Title style={{marginVertical: 10}}>Telehealth Services Informed Consent</Title>
 
             <FlexColContainer>
                 <BoldText>Definition of Telehealth</BoldText>

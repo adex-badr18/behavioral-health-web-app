@@ -10,15 +10,22 @@ import {
     BoldText,
     UnderlinedText,
     CheckboxImage,
-    OrdinaryText
+    OrdinaryText,
 } from "./pdfFormComponents";
 import { professionalConductList } from "./data";
 
 import checkedImg from "../../../../../assets/checked.png";
 import uncheckedImg from "../../../../../assets/unchecked.png";
+import { formatOptionsForPdf } from "../../utils";
 
 const ProfessionalConduct = ({ data }) => {
     const { fullName, dob, initial, acceptanceChoices, signature, date } = data;
+    const allAcceptanceChoices = [
+        "Yes, I understand and have been given the opportunity to ask questions about Advance Directives and the MOLST form.",
+        "No, I decline to discuss this at this time.",
+    ];
+
+    const formattedAcceptanceChoices = formatOptionsForPdf(allAcceptanceChoices, acceptanceChoices, "")
 
     return (
         <View>
@@ -53,7 +60,7 @@ const ProfessionalConduct = ({ data }) => {
             <Paragraph>Please select one:</Paragraph>
 
             <FlexColContainer containerStyle={{ gap: 0 }}>
-                {acceptanceChoices.map((choice, index) => (
+                {formattedAcceptanceChoices.map((choice, index) => (
                     <FlexGapContainer key={index}>
                         <CheckboxImage
                             src={choice.value ? checkedImg : uncheckedImg}
