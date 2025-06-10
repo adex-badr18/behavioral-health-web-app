@@ -223,10 +223,7 @@ const Prp = () => {
                 id: 1,
                 name: "Read Consent",
                 component: (
-                    <PdfPreview
-                        key={7}
-                        Doc={<PrpDoc formData={formData} showToolbar={false} />}
-                    />
+                    <PdfPreview key={7} Doc={<PrpDoc showToolbar={false} />} />
                 ),
             },
             {

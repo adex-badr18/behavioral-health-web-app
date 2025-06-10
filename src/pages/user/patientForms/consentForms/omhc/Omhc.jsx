@@ -213,7 +213,7 @@ const Omhc = () => {
                 id: 1,
                 name: "Read Consent",
                 component: (
-                    <PdfPreview key={7} Doc={<OmhcDoc formData={formData} showToolbar={false} />} />
+                    <PdfPreview key={7} Doc={<OmhcDoc showToolbar={false} />} />
                 ),
             },
             {

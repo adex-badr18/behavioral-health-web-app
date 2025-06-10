@@ -25,12 +25,12 @@ import { convertIsoDateToReadable, formatToMMDDYYYY } from "../../../../utils";
 
 const OmhcDoc = ({ formData }) => {
     const fullName = getFullName({
-        firstName: formData.basicInfo.firstName,
-        middleName: formData.basicInfo.middleName,
-        lastName: formData.basicInfo.lastName,
+        firstName: formData?.basicInfo?.firstName || "",
+        middleName: formData?.basicInfo?.middleName || "",
+        lastName: formData?.basicInfo?.lastName || "",
     });
 
-    const fullAddress = getFullAddress(formData.basicInfo?.address);
+    const fullAddress = getFullAddress(formData?.basicInfo?.address || "");
 
     return (
         <Document>
@@ -53,161 +53,161 @@ const OmhcDoc = ({ formData }) => {
                 />,
                 <ClientRight
                     data={{
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <RightAcknowledgement
                     data={{
                         fullName,
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <ConsentForServices
                     data={{
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <MedicationAgreement
                     data={{
                         fullName,
-                        whoYouAre: formData.whoYouAre,
-                        dob: formatToMMDDYYYY(formData?.basicInfo?.dob) || "",
-                        pharmacy: formData.data.pharmacy,
+                        whoYouAre: formData?.whoYouAre || [],
+                        dob: formatToMMDDYYYY(formData?.basicInfo?.dob || ""),
+                        pharmacy: formData?.data?.pharmacy || "",
                         prescribedMedications:
-                            formData.data.prescribedMedications,
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                            formData?.data?.prescribedMedications || [],
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <Hipaa
                     data={{
-                        signature: formData.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <MarylandNotice
                     data={{
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <BillInsurance
                     data={{
                         fullName,
                         clientAddress: fullAddress,
-                        insuranceCompany: formData.data.insuranceCompany,
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        insuranceCompany: formData?.data?.insuranceCompany || "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <ReleaseReceive
                     data={{
                         fullName,
-                        programs: formData.programs,
-                        dob: formatToMMDDYYYY(formData?.basicInfo?.dob) || "",
-                        permissions: formData.permissions,
-                        secondParty: formData.secondParty,
-                        itemsCovered: formData.itemsCovered,
-                        otherItemsCovered: formData.data.otherItemsCovered,
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        programs: formData?.programs || [],
+                        dob: formatToMMDDYYYY(formData?.basicInfo?.dob || ""),
+                        permissions: formData?.permissions || [],
+                        secondParty: formData?.secondParty || [],
+                        itemsCovered: formData?.itemsCovered || [],
+                        otherItemsCovered: formData?.data?.otherItemsCovered || "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <GrievancePolicy
                     data={{
                         fullName,
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                         otherText:
                             "For questions or assistance with filing a grievance, contact the Client Rights Representative during business hours (9:00 AM - 4:00 PM).",
                     }}
                 />,
                 <TelehealthConsent
                     data={{
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <MessageRemindersConsent
                     data={{
                         fullName,
-                        phone: formData.basicInfo.phone,
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        phone: formData?.basicInfo?.phone || "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <CounsellingConfidentialityConsent
                     data={{
                         fullName,
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <CareCoordinationConsent
                     data={{
                         fullName,
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <ItpConsent
                     data={{
                         fullName,
-                        dob: formatToMMDDYYYY(formData?.basicInfo?.dob) || "",
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        dob: formatToMMDDYYYY(formData?.basicInfo?.dob || ""),
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <ProfessionalConduct
                     data={{
                         fullName,
-                        dob: formatToMMDDYYYY(formData?.basicInfo?.dob) || "",
-                        initial: formData.data.initial,
-                        acceptanceChoices: formData.acceptanceChoices,
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        dob: formatToMMDDYYYY(formData?.basicInfo?.dob || ""),
+                        initial: formData?.data?.initial || "",
+                        acceptanceChoices: formData?.acceptanceChoices || [],
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
                 <ClientOrientation
                     data={{
                         fullName,
-                        signature: formData?.data?.signature,
-                        date:
-                            convertIsoDateToReadable(formData?.data?.date) ||
-                            "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
                     }}
                 />,
             ].map((consentForm, index) => (
