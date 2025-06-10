@@ -124,7 +124,7 @@ export const programForms = [
         shortName: "PRP - Adults",
         description: "",
         link: "/forms/consent/prp-consent/1",
-        component: <Prp />,
+        component: <Prp title="PRP - Adults" consentType="prp-consent" />,
     },
     {
         id: 3,
@@ -142,7 +142,12 @@ export const programForms = [
         shortName: "ASAM Level 1.0 Outpatient Treatment",
         description: "",
         link: "/forms/consent/asam-1.0-outpatient-treatment/1",
-        component: <Outpatient />,
+        component: (
+            <Outpatient
+                title="ASAM Level 1.0 Outpatient Treatment"
+                consentType="asam-1.0-outpatient-treatment"
+            />
+        ),
     },
     {
         id: 5,
@@ -151,7 +156,12 @@ export const programForms = [
         shortName: "ASAM Level 2.1 Outpatient Treatment",
         description: "",
         link: "/forms/consent/asam-2.1-outpatient-treatment/1",
-        component: <Outpatient />,
+        component: (
+            <Outpatient
+                title="ASAM Level 2.1 Outpatient Treatment"
+                consentType="asam-2.1-outpatient-treatment"
+            />
+        ),
     },
     {
         id: 6,
@@ -160,7 +170,12 @@ export const programForms = [
         shortName: "ASAM Level 2.5 Outpatient Treatment",
         description: "",
         link: "/forms/consent/asam-2.5-outpatient-treatment/1",
-        component: <Outpatient />,
+        component: (
+            <Outpatient
+                title="ASAM Level 2.5 Outpatient Treatment"
+                consentType="asam-2.5-outpatient-treatment"
+            />
+        ),
     },
     {
         id: 7,
@@ -187,7 +202,12 @@ export const programForms = [
         shortName: "Supported Employment",
         description: "",
         link: "/forms/consent/supported-employment/1",
-        component: <Prp />,
+        component: (
+            <Prp
+                title="Supported Employment"
+                consentType="supported-employment"
+            />
+        ),
     },
     {
         id: 10,

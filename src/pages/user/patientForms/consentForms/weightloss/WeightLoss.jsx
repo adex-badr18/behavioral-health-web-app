@@ -113,7 +113,7 @@ const WeightLoss = () => {
     const submitHandler = async (e) => {
         setIsPdfGenerating(true);
         // prepare pdf file payload
-        const pdfBlob = await pdf(<PrpDoc formData={formData} />).toBlob();
+        const pdfBlob = await pdf(<WeightLossDoc formData={formData} />).toBlob();
         const pdfFile = new File(
             [pdfBlob],
             `medication-assisted-weight-loss-consent-${formData.basicInfo.patientId}.pdf`,

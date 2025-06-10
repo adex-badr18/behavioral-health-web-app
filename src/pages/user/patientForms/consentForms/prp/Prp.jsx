@@ -15,7 +15,7 @@ import { pdf } from "@react-pdf/renderer";
 import { objectToFormData } from "../../../../utils";
 import PrpForm from "./PrpForm";
 
-const Prp = () => {
+const Prp = ({title, consentType}) => {
     const { id } = useParams();
     const { showToast } = useToast();
     const [successModalData, setSuccessModalData] = useState({});
@@ -144,7 +144,7 @@ const Prp = () => {
         const pdfBlob = await pdf(<PrpDoc formData={formData} />).toBlob();
         const pdfFile = new File(
             [pdfBlob],
-            `omhc-consent-${formData.basicInfo.patientId}.pdf`,
+            `${consentType}-${formData.basicInfo.patientId}.pdf`,
             {
                 type: "application/pdf",
             }
@@ -153,7 +153,7 @@ const Prp = () => {
         // Prepare submission payload
         const data = {
             patientId: formData.basicInfo.patientId,
-            consentType: "prp-consent",
+            consentType,
             patientSignDate: convertToISO(new Date(formData.data.date)),
             file: pdfFile,
         };
@@ -234,6 +234,7 @@ const Prp = () => {
                         formData={formData}
                         setFormData={setFormData}
                         onChange={handleFormElementChange}
+                        title={title}
                     />
                 ),
             },

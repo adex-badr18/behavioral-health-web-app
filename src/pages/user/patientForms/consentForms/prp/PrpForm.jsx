@@ -16,13 +16,13 @@ import SelectField from "../../../../../components/SelectField";
 import { insuranceNames } from "../../../appointment/data";
 import RadioField from "../../../../../components/RadioField";
 
-const PrpForm = ({ formData, setFormData, onChange }) => {
+const PrpForm = ({ formData, setFormData, onChange, title }) => {
   return (
     <form className="">
         <div className="space-y-4 md:space-y-8">
             <div className="space-y-3 text-center">
                 <h3 className="font-semibold text-xl md:text-2xl text-darkBlue">
-                    PRP Consent Forms
+                    {title}
                 </h3>
 
                 <p className="text-originalGreen">
