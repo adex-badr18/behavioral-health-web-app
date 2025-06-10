@@ -244,7 +244,7 @@ const WeightLossConsent = ({ data }) => {
 
                 <FlexGapContainer>
                     <BoldText>Signature:</BoldText>
-                    <SignatureImage src={signature} />
+                    <SignatureImage src={signature} style={{ width: 200 }} />
                 </FlexGapContainer>
             </FlexBetweenContainer>
 
