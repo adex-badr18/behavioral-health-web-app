@@ -1,0 +1,141 @@
+import { Document } from "@react-pdf/renderer";
+import ClientRight from "../components/ClientRight";
+import RightAcknowledgement from "../components/RightAcknowledgement";
+import ConsentForServices from "../components/ConsentForServices";
+import { PageWrapper } from "../components/pdfFormComponents";
+import BillInsurance from "../components/BillInsurance";
+import GrievancePolicy from "../components/GrievancePolicy";
+import TelehealthConsent from "../components/TelehealthConsent";
+import MessageRemindersConsent from "../components/MessageRemindersConsent";
+import ClientOrientation from "../components/ClientOrientation";
+import Packets from "../components/Packets";
+import HousingOverview from "../components/HousingOverview";
+import ResidentialCare from "../components/ResidentialCare";
+import HousingRules from "../components/HousingRules";
+import DischargePlanning from "../components/DischargePlanning";
+import HousingConsent from "../components/HousingConsent";
+
+import { getFullAddress, getFullName } from "../../utils";
+import { convertIsoDateToReadable } from "../../../../utils";
+
+const CommunityHousingDoc = ({ formData }) => {
+    const fullName = getFullName({
+        firstName: formData?.basicInfo?.firstName || "",
+        middleName: formData?.basicInfo?.middleName || "",
+        lastName: formData?.basicInfo?.lastName || "",
+    });
+
+    const fullAddress = getFullAddress(formData?.basicInfo?.address || "");
+
+    return (
+        <Document>
+            {[
+                <Packets
+                    list={[
+                        "Copy of Photo ID -Send or Bring in during first visit",
+                        "Copy of Insurance Card- Send or Bring in during first visit",
+                        "Client’s Rights Acknowledgement",
+                        "Consent for the Services",
+                        "HIPAA Authorization Form",
+                        "Notice of Policies and Practices to Protect the Privacy of Your Health Information.",
+                        "Grievance Policy",
+                    ]}
+                    title="Residential Supportive Housing Program (ASAM Level 3.1)"
+                    subtitle="Admission & Consent Packet"
+                    otherText="Effective Date: 2025"
+                />,
+                <ClientRight
+                    data={{
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
+                    }}
+                />,
+                <RightAcknowledgement
+                    data={{
+                        fullName,
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
+                    }}
+                />,
+                <ConsentForServices
+                    data={{
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
+                    }}
+                />,
+                <HousingOverview />,
+                <ResidentialCare />,
+                <HousingRules />,
+                <DischargePlanning />,
+                <HousingConsent
+                    data={{
+                        fullName,
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
+                    }}
+                />,
+                <BillInsurance
+                    data={{
+                        fullName,
+                        clientAddress: fullAddress,
+                        insuranceCompany: formData?.data?.insuranceCompany || "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
+                    }}
+                />,
+                <GrievancePolicy
+                    data={{
+                        fullName,
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
+                        otherText:
+                            "For questions or assistance with filing a grievance, contact the Client Rights Representative during business hours (9:00 AM - 4:00 PM).",
+                    }}
+                />,
+                <TelehealthConsent
+                    data={{
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
+                    }}
+                />,
+                <MessageRemindersConsent
+                    data={{
+                        fullName,
+                        phone: formData?.basicInfo?.phone || "",
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
+                    }}
+                />,
+                <ClientOrientation
+                    data={{
+                        fullName,
+                        signature: formData?.data?.signature || "",
+                        date: convertIsoDateToReadable(
+                            formData?.data?.date || ""
+                        ),
+                    }}
+                />,
+            ].map((consentForm, index) => (
+                <PageWrapper key={index}>{consentForm}</PageWrapper>
+            ))}
+        </Document>
+    );
+};
+
+export default CommunityHousingDoc;

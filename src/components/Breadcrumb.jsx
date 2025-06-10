@@ -25,7 +25,7 @@ const Breadcrumb = ({ obj, page }) => {
 
     return (
         <div
-            className={`flex flex-col items-center justify-center gap-[10px] px-3 font-poppins h-[350px] ${
+            className={`hidden blg:flex flex-col items-center justify-center gap-[10px] px-3 font-poppins h-[350px] ${
                 page.toLowerCase() === "services"
                     ? "bg-services-breadcrumb-bg"
                     : page.toLowerCase() === "programs"
