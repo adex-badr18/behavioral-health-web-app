@@ -92,7 +92,7 @@ const VerificationStep = ({ formData, setFormData, id }) => {
                                 value={patientId}
                                 onChange={(e) => setPatientId(e.target.value)}
                                 readOnly={
-                                    isSuccess || formData.verification.patientId
+                                    isSuccess || formData.verification?.patientId
                                 }
                             />
                         </div>
@@ -107,7 +107,7 @@ const VerificationStep = ({ formData, setFormData, id }) => {
                         isDisabled={
                             isLoading ||
                             isSuccess ||
-                            formData.verification.patientId
+                            formData.verification?.patientId
                         }
                     />
                 </div>
