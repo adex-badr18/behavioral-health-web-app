@@ -41,10 +41,10 @@ const OtherHistory = ({ formData, onChange }) => {
                                 fieldPath="pastMedicalHistory"
                                 section="otherHistory"
                                 placeholder="Type description here"
-                                title="Past Medical History"
                                 onChange={onChange}
                                 type="textarea"
                                 moreText="medical history"
+                                value={formData.otherHistory.pastMedicalHistory}
                             />
                         </div>
                     </div>
@@ -63,10 +63,10 @@ const OtherHistory = ({ formData, onChange }) => {
                             fieldPath="pastSurgicalHistory"
                             section="otherHistory"
                             placeholder="Type description here"
-                            title="Past Surgical History"
                             onChange={onChange}
                             type="textarea"
                             moreText="surgical history"
+                            value={formData.otherHistory.pastSurgicalHistory}
                         />
                     </div>
                 </div>
@@ -82,6 +82,10 @@ const OtherHistory = ({ formData, onChange }) => {
                             fieldPath="relativesWithMentalIllnessOrSuicide"
                             section="otherHistory"
                             onChange={onChange}
+                            value={
+                                formData.otherHistory
+                                    .relativesWithMentalIllnessOrSuicide
+                            }
                             objStructure={relativesObjStructure}
                             title="Relatives with Mental illness or Suicide"
                             moreText="more relatives"
@@ -101,10 +105,10 @@ const OtherHistory = ({ formData, onChange }) => {
                             fieldPath="allergies"
                             section="otherHistory"
                             placeholder="Type allergy"
-                            title="allergy"
                             onChange={onChange}
                             type="text"
                             moreText="allergy"
+                            value={formData.otherHistory.allergies}
                         />
                     </div>
                 </div>

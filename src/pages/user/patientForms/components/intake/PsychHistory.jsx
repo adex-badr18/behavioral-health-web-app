@@ -43,6 +43,7 @@ const PsychHistory = ({ formData, onChange }) => {
                         fieldPath="pastProviders"
                         section="psychHistory"
                         onChange={onChange}
+                        value={formData.psychHistory.pastProviders}
                         objStructure={providersObjStructure}
                         title="Past Providers"
                         moreText="provider"
@@ -55,6 +56,7 @@ const PsychHistory = ({ formData, onChange }) => {
                         fieldPath="currentMedications"
                         section="psychHistory"
                         onChange={onChange}
+                        value={formData.psychHistory.currentMedications}
                         objStructure={medicationsObjStructure}
                         title="Current Medications"
                         moreText="medication"
@@ -67,6 +69,7 @@ const PsychHistory = ({ formData, onChange }) => {
                         fieldPath="pastMedications"
                         section="psychHistory"
                         onChange={onChange}
+                        value={formData.psychHistory.pastMedications}
                         objStructure={medicationsObjStructure}
                         title="Past Medications"
                         moreText="medication"

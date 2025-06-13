@@ -52,11 +52,11 @@ const IntakeForm = () => {
             },
         },
         intro: {
-            doYouShareHome: "",
-            complaints: "",
-            sexPreference: "",
-            onProbation: "",
-            inLawsuit: "",
+            doYouShareHome: "Yes",
+            complaints: "Depression",
+            sexPreference: "Bisexual",
+            onProbation: "Yes",
+            inLawsuit: "Yes",
             childrenCount: 0,
             marriageCount: 0,
             pastMarriagesInfo: [
@@ -66,59 +66,59 @@ const IntakeForm = () => {
         psychHistory: {
             pastProviders: [],
             currentMedications: [],
-            hasAttemptedSuicide: "",
-            isPsychHospitalized: "",
+            hasAttemptedSuicide: "No",
+            isPsychHospitalized: "Yes",
             pastMedications: [],
         },
         alcoholDrugHistory: {
             alcohol: {
-                usageFrequency: "",
-                brand: "",
-                lastUsed: "",
+                usageFrequency: "Rarely",
+                brand: "Brandy",
+                lastUsed: "2 weeks ago",
                 drinkGuiltCheck: "",
             },
             substanceUsages: [
                 {
-                    substanceName: "",
-                    ageAtFirstUse: "",
-                    qtyUse: "",
-                    usageFrequency: "",
-                    lastUsed: "",
+                    substanceName: "Marijuana",
+                    ageAtFirstUse: "21",
+                    qtyUse: "3 bottles",
+                    usageFrequency: "Often",
+                    lastUsed: "last month",
                 },
             ],
             weeklyAverageSpending: 0,
             pastTreatmentInfo: [
-                {
-                    facility: "",
-                    date: new Date(),
-                    drugTreated: "",
-                    isTreatmentCompleted: "",
-                },
+                // {
+                //     facility: "",
+                //     date: new Date(),
+                //     drugTreated: "",
+                //     isTreatmentCompleted: "",
+                // },
             ],
-            isPastStepRecoveryParticipant: "",
-            isCurrentStepRecoveryParticipant: "",
+            isPastStepRecoveryParticipant: "Yes",
+            isCurrentStepRecoveryParticipant: "Yes",
         },
         psychosocialHistory: {
-            birthPlace: "",
-            growthPlace: "",
-            raisedBy: "",
-            siblingsCount: 0,
-            childhoodInfo: "",
-            wasPhysicallyAbused: "",
-            wasEmotionallyAbused: "",
-            wasSexuallyAbused: "",
+            birthPlace: "Osborn",
+            growthPlace: "Chicago",
+            raisedBy: "Parent",
+            siblingsCount: 2,
+            childhoodInfo: "Lively with chaos",
+            wasPhysicallyAbused: "No",
+            wasEmotionallyAbused: "No",
+            wasSexuallyAbused: "No",
         },
         otherHistory: {
-            hasMedicalDisability: "",
+            hasMedicalDisability: "No",
             pastMedicalHistory: [],
             pastSurgicalHistory: [],
-            allergies: [],
+            allergies: ["Cattarh", "Eye Itches"],
             relativesWithMentalIllnessOrSuicide: [],
-            otherUsefulInfo: "",
+            otherUsefulInfo: "None",
         },
     });
 
-    // console.log(formData);
+    console.log(formData);
 
     // Handle form element change
     const handleFormElementChange = (section, fieldPath, value) => {

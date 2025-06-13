@@ -133,53 +133,53 @@ const VerificationStep = ({ formData, setFormData, id }) => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <FieldItem
                                 label="First Name"
-                                value={formData.verification.firstName}
+                                value={formData?.verification?.firstName}
                             />
                             <FieldItem
                                 label="Middle Name"
-                                value={formData.verification.middleName}
+                                value={formData?.verification?.middleName}
                             />
                             <FieldItem
                                 label="Last Name"
-                                value={formData.verification.lastName}
+                                value={formData?.verification?.lastName}
                             />
                             <FieldItem
                                 label="Date of Birth"
                                 value={
-                                    formData.verification.dob
+                                    formData?.verification?.dob
                                         ? new Date(
-                                              formData.verification.dob
+                                              formData?.verification?.dob
                                           ).toLocaleDateString()
                                         : ""
                                 }
                             />
                             <FieldItem
                                 label="Gender"
-                                value={formData.verification.gender}
+                                value={formData?.verification?.gender}
                             />
                             <FieldItem
                                 label="Phone Number"
-                                value={formData.verification.phone}
+                                value={formData?.verification?.phone}
                             />
                             <FieldItem
                                 label="Email"
-                                value={formData.verification.email}
+                                value={formData?.verification?.email}
                             />
                             <FieldItem
                                 label="Street Address"
-                                value={formData.verification.address.streetName}
+                                value={formData?.verification?.address?.streetName}
                             />
                             <FieldItem
                                 label="City"
-                                value={formData.verification.address.city}
+                                value={formData?.verification?.address?.city}
                             />
                             <FieldItem
                                 label="State"
-                                value={formData.verification.address.state}
+                                value={formData?.verification?.address?.state}
                             />
                             <FieldItem
                                 label="Zip Code"
-                                value={formData.verification.address.zipCode}
+                                value={formData?.verification?.address?.zipCode}
                             />
                         </div>
                     </div>

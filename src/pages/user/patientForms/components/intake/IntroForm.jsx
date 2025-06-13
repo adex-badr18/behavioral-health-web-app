@@ -103,6 +103,7 @@ const IntroForm = ({ formData, onChange }) => {
                                 fieldPath="pastMarriagesInfo"
                                 section="intro"
                                 onChange={onChange}
+                                value={formData.intro.pastMarriagesInfo}
                                 objStructure={marriagesObjStructure}
                                 title="Past Marriages"
                                 moreText="marriage"

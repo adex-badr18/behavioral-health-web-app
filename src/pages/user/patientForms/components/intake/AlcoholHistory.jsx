@@ -39,7 +39,9 @@ const AlcoholHistory = ({ formData, onChange }) => {
         }
     };
 
-    const isOptionExist = (option) => alcoholAssessment.includes(option);
+    const isOptionExist = (option) =>
+        alcoholAssessment.includes(option) ||
+        formData?.alcoholDrugHistory?.alcohol?.drinkGuiltCheck?.includes(option);
 
     return (
         <form className="">
@@ -129,6 +131,7 @@ const AlcoholHistory = ({ formData, onChange }) => {
                             fieldPath="substanceUsages"
                             section="alcoholDrugHistory"
                             onChange={onChange}
+                            value={formData.alcoholDrugHistory.substanceUsages}
                             objStructure={drugsObjStructure}
                             title="Drugs & Substances Usage"
                             moreText="drug/substance"
@@ -193,6 +196,7 @@ const AlcoholHistory = ({ formData, onChange }) => {
                                 fieldPath="pastTreatmentInfo"
                                 section="alcoholDrugHistory"
                                 onChange={onChange}
+                                value={formData.alcoholDrugHistory.pastTreatmentInfo}
                                 objStructure={drugTreatmentObjStructure}
                                 title="Substance Care History"
                                 moreText="care history"

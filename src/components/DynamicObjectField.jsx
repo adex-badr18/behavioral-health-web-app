@@ -11,12 +11,20 @@ const DynamicObjectField = ({
     fieldPath,
     objStructure,
     onChange,
+    value,
     moreText = "more",
     isRequired,
 }) => {
-    const [instances, setInstances] = useState([
-        objStructure.reduce((acc, field) => ({ ...acc, [field.name]: "" }), {}),
-    ]);
+    const [instances, setInstances] = useState(
+        value.length > 0
+            ? value
+            : [
+                  objStructure.reduce(
+                      (acc, field) => ({ ...acc, [field.name]: "" }),
+                      {}
+                  ),
+              ]
+    );
 
     const handleStateChange = (index, fieldName, value) => {
         const updatedInstances = [...instances];
