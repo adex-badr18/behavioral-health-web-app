@@ -53,9 +53,9 @@ const PersonalStep = ({ formData, handleInputChange }) => {
                     />
                     <TextField
                         type="text"
-                        label="Middle Name"
+                        label="Middle Initial"
                         name="middleName"
-                        placeholder="Middle Name"
+                        placeholder="Middle Initial"
                         section="personal"
                         field="middleName"
                         value={formData.personal.middleName}

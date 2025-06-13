@@ -227,7 +227,7 @@ const router = createBrowserRouter([
                         element: <Faq />,
                     },
                     {
-                        path: "/forms/:slug",
+                        path: "/forms/:slug/:id?",
                         element: <PatientForm />,
                         loader: patientFormLoader,
                     },

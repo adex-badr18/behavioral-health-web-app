@@ -10,11 +10,18 @@ import { useFetchBasicPatient } from "../hooks/usePatients";
 import { useToast } from "./ToastContext";
 import Spinner from "./Spinner";
 
-const VerificationStep = ({ formData, setFormData }) => {
+const VerificationStep = ({ formData, setFormData, id }) => {
     const { showToast } = useToast();
-    const [patientId, setPatientId] = useState("");
-    const { refetch, isLoading, isSuccess, isError, error } =
+    const [patientId, setPatientId] = useState(id || "");
+    const { refetch, isLoading, isSuccess, isError, error, data } =
         useFetchBasicPatient(patientId);
+
+    console.log(data);
+
+    useEffect(() => {
+      setFormData(prev => ({...prev, verification: data}))
+    }, [data])
+    
 
     // Fetch patient info by Id
     const verifyIdHandler = async (e) => {
@@ -32,6 +39,8 @@ const VerificationStep = ({ formData, setFormData }) => {
 
         try {
             const response = await refetch(); // returns {data, error, status}
+
+            console.log(response);
 
             if (response?.data) {
                 showToast({

@@ -9,12 +9,14 @@ import PsychoSocial from "./PsychoSocial";
 import OtherHistory from "./OtherHistory";
 import IntroForm from "./IntroForm";
 import Preview from "./Preview";
+import { useParams } from "react-router-dom";
 
 import { useToast } from "../../../../../components/ToastContext";
 import { useCreateForm } from "../../../../../hooks/usePatients";
 import { objectToFormData, convertToBoolean } from "../../../../utils";
 
 const IntakeForm = () => {
+    const { id } = useParams();
     const { showToast } = useToast();
     const [successModalData, setSuccessModalData] = useState({});
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
@@ -307,7 +309,7 @@ const IntakeForm = () => {
             "phone",
             "email",
             "address",
-            "patientId"
+            "patientId",
         ];
 
         if (step === 1) {
@@ -363,6 +365,7 @@ const IntakeForm = () => {
                         key={1}
                         formData={formData}
                         setFormData={setFormData}
+                        id={id}
                     />
                 ),
             },
