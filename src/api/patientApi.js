@@ -46,7 +46,7 @@ export const getRegInfoById = async (patientId) => {
     const response = await api.get(`/patients/forms/register/${patientId}`, {
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${user?.token || "no-token"}`,
         },
     });
     return response.data;

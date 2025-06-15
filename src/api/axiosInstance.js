@@ -17,26 +17,43 @@ api.interceptors.response.use(
 
         let errorMessage = "An error occurred. Please try again later.";
 
+        // Case 1: Server responded with a status outside 2xx
         if (error.response) {
-            // Server responded with a status outside 2xx
 
-            return Promise.reject(error?.response?.data);
-        } else if (error.request) {
-            // No response from server
-            errorMessage =
-                "No response from server. Please check your network.";
+            const status = error.response.status;
+
+            // Unauthorized
+            if (status === 401) {
+                return Promise.reject({
+                    status: error.response.data.status,
+                    statusCode: status,
+                    message: error.response.data?.message || "Unauthorized",
+                });
+            }
+
+            // Other server errors
             return Promise.reject({
-                status: "NO_RESPONSE",
-                message: errorMessage,
-                orifinal: error,
-            });
-        } else {
-            return Promise.reject({
-                status: "REQUEST_SETUP_ERROR",
-                message: error?.message || "Request setup error",
-                orifinal: error,
+                status: error.response.data.status,
+                statusCode: status,
+                message: error.response.data?.message || "Server Error",
             });
         }
+
+        // Case 2: No response from server
+        if (error.request) {
+            return Promise.reject({
+                status: "NO_RESPONSE",
+                message: "No response from server. Please check your network.",
+                original: error,
+            });
+        }
+
+        // Case 3: Error during request setup
+        return Promise.reject({
+            status: "REQUEST_SETUP_ERROR",
+            message: error?.message || "Request setup error",
+            original: error,
+        });
     }
 );
 

@@ -14,7 +14,6 @@ export const createForm = async (formData, endpoint) => {
     return response.data;
 };
 
-
 // Search for patients based on search terms
 export const fetchPaginatedData = async ({
     endpoint,
@@ -23,12 +22,12 @@ export const fetchPaginatedData = async ({
     payload = {},
 }) => {
     // console.log(payload)
-    const user = JSON.parse(sessionStorage.getItem("user"));
+    const { token } = JSON.parse(sessionStorage.getItem("user"));
     const response = await api.post(endpoint, objectToFormData(payload), {
         params: { page: pageParam, limit },
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${token || "no-token"}`,
         },
     });
 
