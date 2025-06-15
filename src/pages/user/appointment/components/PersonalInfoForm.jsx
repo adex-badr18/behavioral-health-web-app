@@ -17,9 +17,18 @@ import IdField from "../../patientForms/components/patientReg/IdField";
 
 const PersonalInfoForm = ({ formData, handleInputChange, setFormData }) => {
     const { showToast } = useToast();
-    const [patientId, setPatientId] = useState("");
-    const { refetch, isLoading, isSuccess, isError, error } =
+    const [patientId, setPatientId] = useState(
+        formData.personal?.patientId || ""
+    );
+    const { refetch, isLoading, isSuccess, isError, error, data } =
         useFetchBasicPatient(patientId);
+
+    useEffect(() => {
+        setFormData((prev) => ({
+            ...prev,
+            personal: { ...prev.personal, ...data },
+        }));
+    }, [data]);
 
     // Fetch patient info by Id
     const verifyIdHandler = async (e) => {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import SectionHeader from "../../../components/SectionHeader";
 import StepIndicator from "./components/StepIndicator";
@@ -19,6 +19,7 @@ import {
 } from "../../utils";
 
 const Appointment = () => {
+    const { id } = useParams();
     const navigate = useNavigate();
     const { showToast } = useToast();
     const {
@@ -39,7 +40,7 @@ const Appointment = () => {
         personal: {
             isNew: "",
             verificationStatus: "",
-            patientId: "",
+            patientId: id || "",
             firstName: "",
             middleName: "",
             lastName: "",
@@ -137,12 +138,12 @@ const Appointment = () => {
             "firstName",
             "lastName",
             "gender",
-            // "dob",
+            "dob",
             "maritalStatus",
             "phone",
             "email",
             "address",
-            // "patientId",
+            "patientId",
             "appointmentType",
             "purpose",
             "service",

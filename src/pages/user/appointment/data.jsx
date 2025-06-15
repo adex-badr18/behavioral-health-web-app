@@ -20,7 +20,7 @@ export const services = [
     {
         id: 5,
         text: "Psychiatric Rehab.",
-        value: "Psychiatric Rehabilitation",
+        value: "Psychiatric Rehab.",
     },
 ];
 
