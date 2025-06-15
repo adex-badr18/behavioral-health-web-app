@@ -390,6 +390,10 @@ const PatientRegistrationForm = () => {
                 }
             }
 
+            if (!regForm.identification.patientId) {
+                return false
+            }
+
             return true;
         }
 

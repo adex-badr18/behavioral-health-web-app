@@ -8,9 +8,24 @@ import AnxietyDisorderForm from "./forms/AnxietyDisorderForm";
 import DepressionAssessmentForm from "./forms/DepressionAssessmentForm";
 import IntakeForm from "./forms/IntakeForm";
 import MoodDisorderAssessmentForm from "./forms/MoodDisorderAssessmentForm";
-import ScreeningForm from "./forms/ScreeningForm";
 
 const PDF_FORM_KEYS = [
+    "omhc-consent",
+    "prp-consent",
+    "asam-0.5-early-intervention",
+    "asam-1.0-outpatient-treatment",
+    "asam-2.1-outpatient-treatment",
+    "asam-2.5-outpatient-treatment",
+    "community-housing",
+    "dui-dwi",
+    "supported-employment",
+    "medication-assisted-weight-loss",
+];
+
+const IRRELEVANT_ITEMS = [
+    "id",
+    "patientId",
+    "relativeWithMentalIllnessOrSuicide",
     "patientInformationConsentAndFinancialPolicyForm",
     "initialEvaluationForm",
     "controlledSubstanceForm",
@@ -21,12 +36,7 @@ const PDF_FORM_KEYS = [
     "selfPayForm",
     "treatmentConsentTelehealthInPersonTreatmentConsent",
     "terminationPolicy",
-];
-
-const IRRELEVANT_ITEMS = [
-    "id",
-    "patientId",
-    "relativeWithMentalIllnessOrSuicide",
+    "screeningForm",
 ];
 
 const FormsTab = ({ forms }) => {
@@ -39,10 +49,20 @@ const FormsTab = ({ forms }) => {
         const otherForms = {};
 
         relevantForms.forEach(([key, value]) => {
-            if (PDF_FORM_KEYS.includes(key)) {
-                pdfDocForms[key] = value;
+            if (key === "consentForms") {
+                value.forEach((consentForm) => {
+                    const { consentType } = consentForm;
+
+                    if (PDF_FORM_KEYS.includes(consentType)) {
+                        pdfDocForms[consentType] = consentForm;
+                    }
+                });
             } else {
-                otherForms[key] = value;
+                if (PDF_FORM_KEYS.includes(key)) {
+                    pdfDocForms[key] = value;
+                } else {
+                    otherForms[key] = value;
+                }
             }
         });
 
@@ -50,19 +70,15 @@ const FormsTab = ({ forms }) => {
             ([key, value], index) => ({
                 id: index + 1,
                 title: formatTitle(key),
-                url: value?.file
-                    ? value?.file
-                    : value?.patientRegForm
-                    ? value?.patientRegForm
-                    : "",
+                url: value?.file ? value?.file : "",
                 pdf: true,
             })
         );
 
         const uiForms = Object.entries(otherForms).map(
             ([key, value], index) => {
-                console.log(key, value)
                 const otherUiForms = {
+                    intakeForm: value ? <IntakeForm data={value} /> : "",
                     adhdForm: value ? <AdhdForm data={value} /> : "",
                     anxietyDisorderForm: value ? (
                         <AnxietyDisorderForm data={value} />
@@ -74,13 +90,11 @@ const FormsTab = ({ forms }) => {
                     ) : (
                         ""
                     ),
-                    intakeForm: value ? <IntakeForm data={value} /> : "",
                     moodDisorderAssessmentForm: value ? (
                         <MoodDisorderAssessmentForm data={value} />
                     ) : (
                         ""
                     ),
-                    screeningForm: value ? <ScreeningForm data={value} /> : "",
                 };
 
                 return {
@@ -99,14 +113,6 @@ const FormsTab = ({ forms }) => {
     const [documents, setDocuments] = useState(formDocs || []);
     const [selectedDoc, setSelectedDoc] = useState(null);
     const [isDocsSidebarOpen, setIsDocsSidebarOpen] = useState(false);
-
-    const toggleDocSidebar = () => {
-        setIsDocsSidebarOpen(!isDocsSidebarOpen);
-    };
-
-    // console.log(pdfDocs)
-    // console.log(uiForms)
-    // console.log(selectedDoc);
 
     return (
         <div className="relative flex flex-col sm:flex-row gap-4 md:gap-6 h-screen">

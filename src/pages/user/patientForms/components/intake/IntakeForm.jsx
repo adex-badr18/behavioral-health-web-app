@@ -194,7 +194,7 @@ const IntakeForm = () => {
         const pastProviders = formData.psychHistory.pastProviders.map(
             (pastProvider) => ({
                 id: "",
-                provider: pastProvider["providerName"],
+                provider: pastProvider["provider"],
                 appointmentDate: pastProvider["appointmentDate"],
             })
         );
@@ -203,7 +203,7 @@ const IntakeForm = () => {
             (medication) => ({
                 id: "",
                 medication: medication["medication"],
-                usageInstruction: medication["instruction"],
+                usageInstruction: medication["usageInstruction"],
                 conditionTreated: medication["conditionTreated"],
                 prescription: medication["prescription"],
                 category: "",
@@ -214,7 +214,7 @@ const IntakeForm = () => {
             (medication) => ({
                 id: "",
                 medication: medication["medication"],
-                usageInstruction: medication["instruction"],
+                usageInstruction: medication["usageInstruction"],
                 conditionTreated: medication["conditionTreated"],
                 prescription: medication["prescription"],
                 category: "",
@@ -276,13 +276,6 @@ const IntakeForm = () => {
                 lastUsed: formData.alcoholDrugHistory.alcohol.lastUsed,
                 drinkGuiltCheck:
                     formData.alcoholDrugHistory.alcohol.drinkGuiltCheck,
-                // drinkGuiltCheck: {
-                //     // Later
-                //     haveCutBack: true,
-                //     angeredByCritics: true,
-                //     feelGuilt: true,
-                //     upWithDrink: true,
-                // },
                 substanceUsages: [...substanceUsages],
                 weeklyAverageSpending:
                     formData.alcoholDrugHistory.weeklyAverageSpending,

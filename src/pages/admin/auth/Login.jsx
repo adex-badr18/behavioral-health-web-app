@@ -9,7 +9,10 @@ import { useLogin } from "../../../hooks/useGeneral";
 import { objectToFormData } from "../../utils";
 
 const Login = () => {
-    const [formData, setFormData] = useState({ email: "admin@admin.com", password: "password" });
+    const [formData, setFormData] = useState({
+        email: "fronteers.dev@gmail.com",
+        password: "password",
+    });
     const { login } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
@@ -26,11 +29,11 @@ const Login = () => {
         e.preventDefault();
 
         const payload = objectToFormData(formData);
-        // mutate(payload);
+        mutate(payload);
 
         // Temporary login
-        login(formData)
-        navigate(from, { replace: true });
+        // login(formData)
+        // navigate(from, { replace: true });
     };
 
     return (

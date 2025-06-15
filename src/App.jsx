@@ -30,7 +30,6 @@ import Settings, { settingsLoader } from "./pages/admin/settings/Settings";
 import Login from "./pages/admin/auth/Login";
 import AdminAuthLayout from "./pages/admin/components/layout/AdminAuthLayout";
 import RootLayout from "./components/layout/RootLayout";
-import UpdateForm from "./pages/admin/patients/UpdateForm";
 import UpdateRegistration from "./pages/admin/patients/UpdateRegistration";
 import Faq from "./pages/user/faq/Faq";
 

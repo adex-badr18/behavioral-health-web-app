@@ -106,6 +106,7 @@ const PaginatedList = ({
                 entity={queryKey[0]}
                 isIncludePagination={true}
                 isIncludeSearchBox={true}
+                isRowClickable={true}
                 tableTitle={queryKey[0]}
                 columnFilters={[]}
                 setIsSearchModalOpen={setIsSearchModalOpen}

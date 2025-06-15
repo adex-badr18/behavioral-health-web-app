@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const initialPatientRegFormData = {
     identification: {
         id: "",
@@ -92,8 +94,7 @@ export const initialPatientRegFormData = {
                 firstName: "",
                 middleName: "",
                 lastName: "",
-                relationship:
-                    "",
+                relationship: "",
                 phone: "",
                 dob: null,
             },
@@ -147,13 +148,13 @@ export const initialPatientRegFormData = {
         date: "",
     },
     upload: { file: "" },
-}
+};
 
 export const patientsColumns = [
-    {
-        accessorKey: "patientId",
-        header: "Patient ID",
-    },
+    // {
+    //     accessorKey: "patientId",
+    //     header: "Patient ID",
+    // },
     {
         accessorKey: "firstName",
         header: "First Name",
@@ -2523,7 +2524,53 @@ export const appointmentsColumns = [
     },
 ];
 
+export const programsColumns = [
+    {
+        accessorKey: "name",
+        header: "Program",
+    },
+    {
+        accessorKey: "submittedConsentForm",
+        header: "Consent Form Submission Status",
+        cell: (prop) => {
+            const value = prop.getValue();
+            return (
+                <span
+                    className={`p-1 w-20 block text-center rounded text-xs text-offWhite capitalize ${
+                        value ? "bg-originalGreen" : "bg-yellow-600"
+                    }`}
+                >
+                    {value ? "Submitted" : "Pending"}
+                </span>
+            );
+        },
+    },
+    {
+        accessorKey: "consentForm",
+        header: "Form Preview",
+        cell: (prop) => {
+            const value = prop.getValue() || "";
+
+            return value ? (
+                <Link to={value} target="_blank" className="underline">
+                    View
+                </Link>
+            ) : (
+                <span className="">No preview</span>
+            );
+        },
+    },
+];
+
 export const formDocs = [
-    { id: 1, title: "Registration Form", url: "https://www.pleasantcarebhc.com/wp-content/themes/pleasantcareol/pdf/Patient_Information.pdf" },
-    { id: 2, title: "Notice of Privacy Practices", url: "https://www.pleasantcarebhc.com/wp-content/themes/pleasantcareol/pdf/policy.pdf" },
+    {
+        id: 1,
+        title: "Registration Form",
+        url: "https://www.pleasantcarebhc.com/wp-content/themes/pleasantcareol/pdf/Patient_Information.pdf",
+    },
+    {
+        id: 2,
+        title: "Notice of Privacy Practices",
+        url: "https://www.pleasantcarebhc.com/wp-content/themes/pleasantcareol/pdf/policy.pdf",
+    },
 ];

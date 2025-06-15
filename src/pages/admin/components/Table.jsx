@@ -21,6 +21,7 @@ const Table = ({
     entity,
     isIncludeSearchBox,
     isSnapshot,
+    isRowClickable,
     setIsSearchModalOpen,
     isGlobalSearch,
     setGlobalSearch,
@@ -31,7 +32,7 @@ const Table = ({
     const navigate = useNavigate();
     const entityUrl = `/admin/${entity}`;
 
-    console.log(isGlobalSearch)
+    console.log(isGlobalSearch);
 
     const { defaultSearchReqBody } = useMemo(() => {
         let defaultSearchReqBody;
@@ -56,9 +57,9 @@ const Table = ({
             } else if (entity === "reviews") {
                 defaultSearchReqBody = {
                     patientId: patientId,
-                    nickName: "string",
-                    email: "user@example.com",
-                    rating: 5,
+                    nickName: "",
+                    email: "",
+                    rating: "",
                     status: "",
                 };
             }
@@ -203,10 +204,13 @@ const Table = ({
                                 return (
                                     <tr
                                         key={row.id}
-                                        className="cursor-pointer"
-                                        onClick={() =>
-                                            handleRowClick(singleEntityData)
-                                        }
+                                        className={`${isRowClickable && "cursor-pointer"}`}
+                                        {...(isRowClickable && {
+                                            onClick: () =>
+                                                handleRowClick(
+                                                    singleEntityData
+                                                ),
+                                        })}
                                     >
                                         {row.getVisibleCells().map((cell) => (
                                             <td key={cell.id} className="p-4">

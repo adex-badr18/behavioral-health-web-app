@@ -13,22 +13,29 @@ import { useGetPatient } from "../../../hooks/usePatients";
 import { useParams } from "react-router-dom";
 import { useToast } from "../../../components/ToastContext";
 import Spinner from "../../../components/Spinner";
+import ProgramsTab from "./components/ProgramsTab";
 
 const Patient = () => {
     const [tabIndex, setTabIndex] = useState(1);
     const { showToast } = useToast();
     const { id } = useParams();
-    const { data: patient, isLoading, isSuccess, isError, error } = useGetPatient(
-        id || ""
-    );
-    const { forms, appointments, reviews, patientId } = useMemo(() => {
-        return {
-            forms: patient?.forms || {},
-            appointments: patient?.appointments || [],
-            reviews: patient?.reviews,
-            patientId: patient?.patientId,
-        };
-    }, [patient]);
+    const {
+        data: patient,
+        isLoading,
+        isSuccess,
+        isError,
+        error,
+    } = useGetPatient(id || "");
+    const { forms, appointments, programs, reviews, patientId } =
+        useMemo(() => {
+            return {
+                forms: patient?.forms || {},
+                appointments: patient?.appointments || [],
+                programs: patient?.programs || [],
+                reviews: patient?.reviews || [],
+                patientId: patient?.patientId,
+            };
+        }, [patient]);
 
     useEffect(() => {
         if (isError) {
@@ -52,9 +59,10 @@ const Patient = () => {
 
     const tabButtons = [
         { id: 1, tabName: "General" },
-        { id: 2, tabName: "Patient Forms" },
+        { id: 2, tabName: "Programs" },
         { id: 3, tabName: "Appointments" },
         { id: 4, tabName: "Reviews" },
+        { id: 5, tabName: "Patient Forms" },
     ];
 
     if (isError) {
@@ -126,11 +134,21 @@ const Patient = () => {
                 <GeneralTab patient={forms.patientRegistrationForm} />
             )}
 
-            {tabIndex === 2 && <FormsTab forms={forms} />}
+            {tabIndex === 2 && (
+                <ProgramsTab programs={programs} patientId={patientId} />
+            )}
 
-            {tabIndex === 3 && <AppointmentsTab appointments={appointments} patientId={patientId} />}
+            {tabIndex === 3 && (
+                <AppointmentsTab
+                    appointments={appointments}
+                    patientId={patientId}
+                />
+            )}
 
-            {tabIndex === 4 && <ReviewsTab reviews={reviews} patientId={patientId} />}
+            {tabIndex === 4 && (
+                <ReviewsTab reviews={reviews} patientId={patientId} />
+            )}
+            {tabIndex === 5 && <FormsTab forms={forms} />}
         </section>
     );
 };

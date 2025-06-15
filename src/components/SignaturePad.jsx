@@ -10,6 +10,7 @@ const SignaturePad = ({
     signature,
 }) => {
     const sigCanvasRef = useRef(null);
+    const fileUploadRef = useRef(null)
 
     useEffect(() => {
         if (signature && sigCanvasRef.current) {
@@ -37,6 +38,7 @@ const SignaturePad = ({
         handleInputChange(section, fieldPath, "");
         handleInputChange(dateSection, dateFieldPath, "");
         sigCanvasRef.current.clear();
+        fileUploadRef.current.value = ""
     };
 
     // Handle image upload
@@ -94,6 +96,7 @@ const SignaturePad = ({
                     accept="image/*"
                     onChange={handleSignatureUpload}
                     className="block text-sm text-deepGrey"
+                    ref={fileUploadRef}
                 />
             </div>
         </div>

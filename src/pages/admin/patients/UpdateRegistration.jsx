@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { useToast } from "../../../components/ToastContext";
 import { pdf } from "@react-pdf/renderer";
@@ -20,6 +20,7 @@ import PdfUpload from "./components/forms/PdfUpload";
 import { initialPatientRegFormData } from "./data";
 import Spinner from "../../../components/Spinner";
 import { convertBooleanToText } from "../../utils";
+import BackButton from "../../../components/BackButton";
 
 const UpdateRegistration = () => {
     const [tabIndex, setTabIndex] = useState(1);
@@ -362,7 +363,7 @@ const UpdateRegistration = () => {
         { id: 3, tabName: "Guarantor", isDisabled: false },
         { id: 4, tabName: "Emergency", isDisabled: false },
         { id: 5, tabName: "Payment Info", isDisabled: false },
-        { id: 6, tabName: "Consents", isDisabled: false },
+        // { id: 6, tabName: "Consents", isDisabled: false },
         { id: 7, tabName: "Upload", isDisabled: isConsentsFilled() },
     ];
 
@@ -398,7 +399,7 @@ const UpdateRegistration = () => {
 
     if (isError) {
         return (
-            <section className="py-8 md:py-20">
+            <section className="py-8 md:py-10">
                 <PageTitle title={"Patient's Registration Update"} />
                 <div className="flex flex-col items-center justify-center gap-4 font-poppins">
                     <h1 className="capitalize text-vividRed text-3xl font-bold">
@@ -432,7 +433,9 @@ const UpdateRegistration = () => {
 
     return (
         <section className="p-4 md:p-8">
-            <PageTitle title={"Patient's Registration Update"} />
+            <PageTitle title={"Patient's Registration Update"}>
+                <BackButton />
+            </PageTitle>
 
             <TabPanel
                 tabButtons={tabButtons}
