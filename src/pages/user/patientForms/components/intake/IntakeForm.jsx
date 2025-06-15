@@ -100,7 +100,8 @@ const IntakeForm = () => {
                 usageFrequency: "Rarely",
                 brand: "Brandy",
                 lastUsed: "2 weeks ago",
-                drinkGuiltCheck: "I have tried to cut back on my drinking. I feel guilty about my drinking.",
+                drinkGuiltCheck:
+                    "I have tried to cut back on my drinking. I feel guilty about my drinking.",
             },
             substanceUsages: [
                 {
@@ -273,13 +274,15 @@ const IntakeForm = () => {
                     formData.alcoholDrugHistory.alcohol.usageFrequency,
                 brand: formData.alcoholDrugHistory.alcohol.brand,
                 lastUsed: formData.alcoholDrugHistory.alcohol.lastUsed,
-                drinkGuiltCheck: {
-                    // Later
-                    haveCutBack: true,
-                    angeredByCritics: true,
-                    feelGuilt: true,
-                    upWithDrink: true,
-                },
+                drinkGuiltCheck:
+                    formData.alcoholDrugHistory.alcohol.drinkGuiltCheck,
+                // drinkGuiltCheck: {
+                //     // Later
+                //     haveCutBack: true,
+                //     angeredByCritics: true,
+                //     feelGuilt: true,
+                //     upWithDrink: true,
+                // },
                 substanceUsages: [...substanceUsages],
                 weeklyAverageSpending:
                     formData.alcoholDrugHistory.weeklyAverageSpending,
