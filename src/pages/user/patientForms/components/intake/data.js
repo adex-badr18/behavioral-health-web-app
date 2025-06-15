@@ -74,7 +74,7 @@ export const providersObjStructure = [
     {
         id: 1,
         label: "Provider",
-        name: "providerName",
+        name: "provider",
         type: "text",
         placeholder: "Name of Provider",
     },
@@ -122,7 +122,7 @@ export const medicationsObjStructure = [
     {
         id: 2,
         label: "Usage Instruction",
-        name: "instruction",
+        name: "usageInstruction",
         type: "text",
         placeholder: "Usage Instruction",
     },

@@ -81,6 +81,8 @@ export const objectToFormData = (
 };
 
 export const convertToBoolean = (value) => {
+    if (typeof value === "boolean") return value;
+
     return value.toLowerCase() === "yes" ? true : false;
 };
 

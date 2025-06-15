@@ -58,24 +58,49 @@ const IntakeForm = () => {
             onProbation: "Yes",
             inLawsuit: "Yes",
             childrenCount: 0,
-            marriageCount: 0,
+            marriageCount: 1,
             pastMarriagesInfo: [
-                { marriageDescription: "", duration: "", divorceReason: "" },
+                {
+                    marriageDescription: "First wedding",
+                    duration: "2 years",
+                    divorceReason: "Misunderstanding",
+                },
             ],
         },
         psychHistory: {
-            pastProviders: [],
-            currentMedications: [],
+            pastProviders: [
+                {
+                    provider: "Ameri Health",
+                    appointmentDate: "2025-06-15",
+                },
+            ],
+            currentMedications: [
+                {
+                    medication: "Paracetamol",
+                    usageInstruction: "Twice daily",
+                    conditionTreated: "Headache",
+                    prescription: "For 3 days",
+                    category: "",
+                },
+            ],
             hasAttemptedSuicide: "No",
             isPsychHospitalized: "Yes",
-            pastMedications: [],
+            pastMedications: [
+                {
+                    medication: "Paracetamol",
+                    usageInstruction: "Twice daily",
+                    conditionTreated: "Headache",
+                    prescription: "For 3 days",
+                    category: "",
+                },
+            ],
         },
         alcoholDrugHistory: {
             alcohol: {
                 usageFrequency: "Rarely",
                 brand: "Brandy",
                 lastUsed: "2 weeks ago",
-                drinkGuiltCheck: "",
+                drinkGuiltCheck: "I have tried to cut back on my drinking. I feel guilty about my drinking.",
             },
             substanceUsages: [
                 {
@@ -88,12 +113,12 @@ const IntakeForm = () => {
             ],
             weeklyAverageSpending: 0,
             pastTreatmentInfo: [
-                // {
-                //     facility: "",
-                //     date: new Date(),
-                //     drugTreated: "",
-                //     isTreatmentCompleted: "",
-                // },
+                {
+                    facility: "Facility",
+                    date: "2025-06-15",
+                    drugTreated: "depression",
+                    isTreatmentCompleted: true,
+                },
             ],
             isPastStepRecoveryParticipant: "Yes",
             isCurrentStepRecoveryParticipant: "Yes",
