@@ -160,3 +160,18 @@ export const createConsentForm = async ({ payload, endpoint, options }) => {
     const response = await api.post(endpoint, payload, options);
     return response.data;
 };
+
+// Enrol patient in a program
+export const enrolProgram = async (patientId, programType) => {
+    const { token } = JSON.parse(sessionStorage.getItem("user"));
+    const response = await api.get(
+        `/patients/${patientId}/programs/enrol/${programType}`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    );
+    return response?.data;
+};

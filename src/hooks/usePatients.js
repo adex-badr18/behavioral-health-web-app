@@ -17,6 +17,7 @@ import {
     generatePatientId,
     updateRegInfo,
     createConsentForm,
+    enrolProgram,
 } from "../api/patientApi";
 import { useToast } from "../components/ToastContext";
 import { useNavigate } from "react-router-dom";
@@ -69,6 +70,16 @@ export const useFetchBasicPatient = (id) => {
         queryKey: ["patients", id],
         queryFn: () => fetchBasicPatientById(id),
         enabled: !!id, // Ensures the query runs only when id is avaialble
+        retry: 2
+    });
+};
+
+// Enrol Patient in a program
+export const useEnrolProgram = (patientId, programType) => {
+    return useQuery({
+        queryKey: ["program", patientId, programType],
+        queryFn: () => enrolProgram(patientId, programType),
+        enabled: !!patientId, // Ensures the query runs only when patientId is avaialble
         retry: 2
     });
 };

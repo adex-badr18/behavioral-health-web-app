@@ -2562,6 +2562,39 @@ export const programsColumns = [
     },
 ];
 
+export const programOptions = [
+    { id: 1, text: "OMHC", value: "OMHC" },
+    { id: 2, text: "PRP-Adults", value: "PRP-Adults" },
+    {
+        id: 3,
+        text: "ASAM 0.5 Early Intervention",
+        value: "ASAM 0.5 Early Intervention",
+    },
+    {
+        id: 4,
+        text: "ASAM Level 1.0 Outpatient Treatment",
+        value: "ASAM Level 1.0 Outpatient Treatment",
+    },
+    {
+        id: 5,
+        text: "ASAM Outpatient Treatment Level 2.1",
+        value: "ASAM Outpatient Treatment Level 2.1",
+    },
+    {
+        id: 6,
+        text: "ASAM Level Outpatient Treatment 2.5",
+        value: "ASAM Level Outpatient Treatment 2.5",
+    },
+    { id: 7, text: "3.1 Community Housing", value: "3.1 Community Housing" },
+    { id: 8, text: "DUI/DWI", value: "DUI/DWI" },
+    { id: 9, text: "Supported Employment", value: "Supported Employment" },
+    {
+        id: 10,
+        text: "Medication assisted Weightloss",
+        value: "Medication assisted Weightloss",
+    },
+];
+
 export const formDocs = [
     {
         id: 1,
