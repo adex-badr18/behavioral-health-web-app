@@ -6,7 +6,7 @@ import { RiMenuUnfoldLine, RiMenuUnfold2Line } from "react-icons/ri";
 import AdhdForm from "./forms/AdhdForm";
 import AnxietyDisorderForm from "./forms/AnxietyDisorderForm";
 import DepressionAssessmentForm from "./forms/DepressionAssessmentForm";
-import IntakeForm from "./forms/IntakeForm";
+import IntakeForm from "./forms/intake/IntakeForm";
 import MoodDisorderAssessmentForm from "./forms/MoodDisorderAssessmentForm";
 
 const PDF_FORM_KEYS = [

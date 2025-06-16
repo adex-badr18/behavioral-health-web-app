@@ -128,6 +128,26 @@ export const updateRegInfo = async ({ payload, endpoint }) => {
     return response.data;
 };
 
+// Update Intake form
+export const updateIntake = async ({ payload, endpoint }) => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+
+    const options = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.token}`,
+        },
+    };
+
+    const response = await api.put(
+        endpoint,
+        objectToFormData(payload),
+        options
+    );
+
+    return response.data;
+};
+
 // Patient File Upload
 export const uploadFile = async (payload) => {
     const options = {

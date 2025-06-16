@@ -35,6 +35,7 @@ import Faq from "./pages/user/faq/Faq";
 
 import Programs from "./pages/user/programs/Programs";
 import ConsentForm, { consentFormLoader } from "./pages/user/patientForms/ConsentForm";
+import IntakeUpdate from "./pages/admin/patients/components/forms/intake/IntakeUpdate";
 
 const router = createBrowserRouter([
     {
@@ -132,6 +133,10 @@ const router = createBrowserRouter([
                             {
                                 path: "patients/:id/update",
                                 element: <UpdateRegistration />,
+                            },
+                            {
+                                path: "patients/:id/intake/update",
+                                element: <IntakeUpdate />,
                             },
                             { path: "reviews", element: <Reviews /> },
                             {

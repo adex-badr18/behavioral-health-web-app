@@ -1,14 +1,17 @@
 import React, { useMemo } from "react";
-import TextAreaField from "../../../../../components/TextAreaField";
-import FieldItem from "../../../../../components/FieldItem";
-import { getFormattedKeyValues } from "../../../utils";
-import StaticDivider from "../../../../../components/StaticDivider";
-import DynamicObjField from "./DynamicObjField";
-import DynamicStringField from "./DynamicStringField";
-import { convertBooleanToText } from "../../../../utils";
+import TextAreaField from "../../../../../../components/TextAreaField";
+import FieldItem from "../../../../../../components/FieldItem";
+import { getFormattedKeyValues } from "../../../../utils";
+import StaticDivider from "../../../../../../components/StaticDivider";
+import DynamicObjField from "../DynamicObjField";
+import DynamicStringField from "../DynamicStringField";
+import { convertBooleanToText } from "../../../../../utils";
+import { Link } from "react-router-dom";
+import { MdOutlineEdit } from "react-icons/md";
 
 const IntakeForm = ({ data }) => {
-    console.log("Intake", data)
+    console.log("Intake", data);
+
     const formData = {
         intro: {
             id: data?.id,
@@ -25,8 +28,12 @@ const IntakeForm = ({ data }) => {
         psychHistory: {
             pastProviders: data?.pastProviders,
             currentMedications: data?.currentMedications,
-            hasAttemptedSuicide: convertBooleanToText(data?.hasAttemptedSuicide),
-            isPsychHospitalized: convertBooleanToText(data?.isPsychHospitalized),
+            hasAttemptedSuicide: convertBooleanToText(
+                data?.hasAttemptedSuicide
+            ),
+            isPsychHospitalized: convertBooleanToText(
+                data?.isPsychHospitalized
+            ),
             pastMedications: data?.pastMedications,
         },
         alcoholDrugHistory: {
@@ -132,9 +139,20 @@ const IntakeForm = ({ data }) => {
     return (
         <form className="space-y-6 md:space-y-10 w-full max-w-2xl mx-auto">
             <div className="space-y-4 md:space-y-8">
-                <h3 className="font-semibold text-xl md:text-2xl text-darkBlue">
-                    Intake Form
-                </h3>
+                <div className="flex justify-between items-center gap-4">
+                    <h3 className="font-semibold text-xl md:text-2xl text-darkBlue">
+                        Intake Form
+                    </h3>
+
+                    <Link
+                        to={`/admin/patients/${data?.patientId}/intake/update`}
+                        state={{ intakeFormData: formData }}
+                        className="rounded-lg px-3 py-2 text-sm flex items-center justify-center gap-2 divide-x-2 font-poppins font-semibold text-nowrap transition-colors duration-300 bg-deepGreen text-white divide-white hover:bg-originalGreen"
+                    >
+                        <span className="">Edit</span>
+                        <MdOutlineEdit className="text-2xl pl-2" />
+                    </Link>
+                </div>
 
                 <TextAreaField
                     label="Describe the Reason for Seeking Help"

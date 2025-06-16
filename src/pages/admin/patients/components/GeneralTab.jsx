@@ -39,7 +39,7 @@ const GeneralTab = ({ patient }) => {
                     value={patient.personalInfo.firstName}
                 />
                 <FieldItem
-                    label="Middle Name"
+                    label="Middle Initial"
                     value={patient.personalInfo.middleName}
                 />
                 <FieldItem

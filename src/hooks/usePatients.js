@@ -18,6 +18,7 @@ import {
     updateRegInfo,
     createConsentForm,
     enrolProgram,
+    updateIntake,
 } from "../api/patientApi";
 import { useToast } from "../components/ToastContext";
 import { useNavigate } from "react-router-dom";
@@ -189,6 +190,70 @@ export const useUpdatePatient = () => {
             queryClient.invalidateQueries(["patients"]); // Refresh patient list
             queryClient.invalidateQueries([
                 "patient",
+                data?.patientId,
+            ]); // Refresh updated patient
+
+            // Navigate to patient details page after 5secs
+            // setTimeout(() => {
+            //     navigate(`/admin/patients/${data?.patientId}`)
+            // }, 5500);
+        },
+    });
+};
+
+// Update intake
+export const useUpdateIntake = () => {
+    const queryClient = useQueryClient();
+    const { showToast } = useToast();
+    const navigate = useNavigate()
+
+    return useMutation({
+        mutationFn: ({ patientId, payload, endpoint }) =>
+            updateIntake({payload, endpoint}),
+        onMutate: async ({ patientId, payload }) => {
+            await queryClient.cancelQueries(["intake", patientId]);
+
+            const previousIntake = queryClient.getQueryData(["intake", patientId]);
+
+            queryClient.setQueryData(["intake", patientId], (prev) => ({
+                ...prev,
+                ...payload,
+            }));
+
+            return { previousIntake };
+        },
+        onError: (error, variables, context) => {
+            const errorMessage =
+                (typeof error === "string" && error) ||
+                error?.message ||
+                "An unexpected error occurred. Please try again";
+
+            showToast({
+                message: errorMessage,
+                type: "error",
+                duration: 5000,
+            });
+
+            if (context?.previousIntake) {
+                queryClient.setQueryData(
+                    ["intake", variables.patientId],
+                    context.previousIntake
+                );
+            }
+        },
+        onSuccess: (data, variables, context) => {
+            console.log("OnSuccess data:", data);
+            console.log("OnSuccess variables:", variables);
+            console.log("OnSuccess context:", context);
+
+            showToast({
+                message: "Intake form updated successfully!",
+                type: "success",
+                duration: 5000,
+            });
+            queryClient.invalidateQueries(["intake"]); // Refresh patient list
+            queryClient.invalidateQueries([
+                "intake",
                 data?.patientId,
             ]); // Refresh updated patient
 
