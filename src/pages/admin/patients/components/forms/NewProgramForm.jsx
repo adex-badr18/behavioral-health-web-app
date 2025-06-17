@@ -7,10 +7,8 @@ import Spinner from "../../../../../components/Spinner";
 
 const NewProgramForm = ({ patientId, setIsModalOpen }) => {
     const [formData, setFormData] = useState({ data: { program: "" } });
-
     const { showToast } = useToast();
-    const { refetch, isLoading, isSuccess, isError, error, data } =
-        useEnrolProgram(patientId, formData.data.program);
+    const { mutate, isPending } = useEnrolProgram();
 
     // Handle form element change
     function handleFormElementChange(section, fieldPath, value) {
@@ -55,30 +53,31 @@ const NewProgramForm = ({ patientId, setIsModalOpen }) => {
             return;
         }
 
-        try {
-            const response = await refetch(); // returns {data, error, status}
+        mutate(
+            { patientId, programType: formData.data.program },
+            {
+                onSuccess: (data) => {
+                    showToast({
+                        message:
+                            data?.message ||
+                            `Patient successfully enrolled into ${formData.data.program}`,
+                        type: "success",
+                        duration: 5000,
+                    });
 
-            console.log(response);
-
-            if (response?.data) {
-                showToast({
-                    message: `Patient successfully enrolled into ${formData.data.program}`,
-                    type: "success",
-                    duration: 5000,
-                });
-
-                setIsModalOpen(false);
-            } else if (response?.error) {
-                throw response.error;
+                    setIsModalOpen(false);
+                },
+                onError: (error) => {
+                    showToast({
+                        message:
+                            error?.message ||
+                            `Something went wrong, please try again.`,
+                        type: "error",
+                        duration: 5000,
+                    });
+                },
             }
-        } catch (error) {
-            showToast({
-                message:
-                    error?.message || `Something went wrong, please try again.`,
-                type: "error",
-                duration: 5000,
-            });
-        }
+        );
     };
 
     return (
@@ -103,7 +102,15 @@ const NewProgramForm = ({ patientId, setIsModalOpen }) => {
                     className={`py-2 px-4 font-semibold text-center border border-lightGreen rounded-lg text-lightGreen hover:text-white hover:bg-lightGreen transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent disabled:hover:text-lightGreen`}
                     disabled={!formData.data.program || !patientId}
                 >
-                    {isLoading ? <Spinner secondaryText="Enrolling..." spinnerSize="w-5 h-5"  /> : "Enroll"}
+                    {isPending ? (
+                        <Spinner
+                            secondaryText="Enrolling..."
+                            spinnerSize="w-6 h-6"
+                            borderClass="border-originalGreen"
+                        />
+                    ) : (
+                        "Enroll"
+                    )}
                 </button>
             </div>
         </form>

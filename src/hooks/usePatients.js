@@ -50,7 +50,7 @@ export const useSearchPatients = (searchParams, payload) => {
 // Fetch a patient by ID
 export const useGetPatient = (patientId) => {
     return useQuery({
-        queryKey: ["patients", patientId],
+        queryKey: ["patient", patientId],
         queryFn: () => getPatientById(patientId),
         enabled: !!patientId, // Ensures the query runs only when id is avaialble
     });
@@ -68,21 +68,31 @@ export const useGetRegInfo = (patientId) => {
 // Fetch a basic patient by ID
 export const useFetchBasicPatient = (id) => {
     return useQuery({
-        queryKey: ["patients", id],
+        queryKey: ["basicPatient", id],
         queryFn: () => fetchBasicPatientById(id),
         enabled: !!id, // Ensures the query runs only when id is avaialble
-        retry: 2
+        retry: 2,
     });
 };
 
 // Enrol Patient in a program
-export const useEnrolProgram = (patientId, programType) => {
-    return useQuery({
-        queryKey: ["program", patientId, programType],
-        queryFn: () => enrolProgram(patientId, programType),
-        enabled: !!patientId, // Ensures the query runs only when patientId is avaialble
-        retry: 2
+export const useEnrolProgram = () => {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+        mutationFn: ({ patientId, programType }) =>
+            enrolProgram(patientId, programType),
+        onSuccess: (_, variables) => {
+            queryClient.invalidateQueries(["patient", variables.patientId]);
+        },
     });
+
+    // return useQuery({
+    //     queryKey: ["program", patientId, programType],
+    //     queryFn: () => enrolProgram(patientId, programType),
+    //     enabled: false,
+    //     retry: 2
+    // });
 };
 
 // Upload patient file
@@ -141,15 +151,18 @@ export const useCreatePatient = ({ openModal, showToast }) => {
 export const useUpdatePatient = () => {
     const queryClient = useQueryClient();
     const { showToast } = useToast();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return useMutation({
         mutationFn: ({ patientId, payload, endpoint }) =>
-            updateRegInfo({payload, endpoint}),
+            updateRegInfo({ payload, endpoint }),
         onMutate: async ({ patientId, payload }) => {
             await queryClient.cancelQueries(["patient", patientId]);
 
-            const previousPatient = queryClient.getQueryData(["patient", patientId]);
+            const previousPatient = queryClient.getQueryData([
+                "patient",
+                patientId,
+            ]);
 
             queryClient.setQueryData(["patient", patientId], (prev) => ({
                 ...prev,
@@ -188,10 +201,7 @@ export const useUpdatePatient = () => {
                 duration: 5000,
             });
             queryClient.invalidateQueries(["patients"]); // Refresh patient list
-            queryClient.invalidateQueries([
-                "patient",
-                data?.patientId,
-            ]); // Refresh updated patient
+            queryClient.invalidateQueries(["patient", data?.patientId]); // Refresh updated patient
 
             // Navigate to patient details page after 5secs
             // setTimeout(() => {
@@ -205,15 +215,18 @@ export const useUpdatePatient = () => {
 export const useUpdateIntake = () => {
     const queryClient = useQueryClient();
     const { showToast } = useToast();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return useMutation({
         mutationFn: ({ patientId, payload, endpoint }) =>
-            updateIntake({payload, endpoint}),
+            updateIntake({ payload, endpoint }),
         onMutate: async ({ patientId, payload }) => {
             await queryClient.cancelQueries(["intake", patientId]);
 
-            const previousIntake = queryClient.getQueryData(["intake", patientId]);
+            const previousIntake = queryClient.getQueryData([
+                "intake",
+                patientId,
+            ]);
 
             queryClient.setQueryData(["intake", patientId], (prev) => ({
                 ...prev,
@@ -252,10 +265,7 @@ export const useUpdateIntake = () => {
                 duration: 5000,
             });
             queryClient.invalidateQueries(["intake"]); // Refresh patient list
-            queryClient.invalidateQueries([
-                "intake",
-                data?.patientId,
-            ]); // Refresh updated patient
+            queryClient.invalidateQueries(["intake", data?.patientId]); // Refresh updated patient
 
             // Navigate to patient details page after 5secs
             // setTimeout(() => {
@@ -269,7 +279,7 @@ export const useUpdateIntake = () => {
 export const useUploadPatientRegPdf = () => {
     const queryClient = useQueryClient();
     const { showToast } = useToast();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return useMutation({
         mutationFn: ({ patientId, payload }) =>
@@ -277,7 +287,10 @@ export const useUploadPatientRegPdf = () => {
         onMutate: async ({ patientId, payload }) => {
             await queryClient.cancelQueries(["patient", patientId]);
 
-            const previousPatient = queryClient.getQueryData(["patient", patientId]);
+            const previousPatient = queryClient.getQueryData([
+                "patient",
+                patientId,
+            ]);
 
             queryClient.setQueryData(["patient", patientId], (prev) => ({
                 ...prev,
@@ -316,14 +329,11 @@ export const useUploadPatientRegPdf = () => {
                 duration: 5000,
             });
             queryClient.invalidateQueries(["patients"]); // Refresh patient list
-            queryClient.invalidateQueries([
-                "patient",
-                data?.patientId,
-            ]); // Refresh updated patient
+            queryClient.invalidateQueries(["patient", data?.patientId]); // Refresh updated patient
 
             // Navigate to patient details page after 5secs
             setTimeout(() => {
-                navigate(`/admin/patients/${data?.patientId}`)
+                navigate(`/admin/patients/${data?.patientId}`);
             }, 5500);
         },
     });
