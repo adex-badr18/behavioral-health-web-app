@@ -51,7 +51,11 @@ export const toggleReviewStatus = async ({ endpoint }) => {
         },
     };
 
+    console.log(user)
+
     const response = await api.put(endpoint, options);
+
+    console.log("Toggle review API function response:", response)
 
     return response.data;
 };

@@ -10,7 +10,7 @@ import { paymentMethods } from "../../../user/appointment/data";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { convertToISO, isFormEmpty } from "../../utils";
-import { formatToYYYYMMDD } from "../../../utils";
+import { formatToYYYYMMDD, removeEmptyProps } from "../../../utils";
 
 const AppointmentsSearchComponent = ({
     setIsSearchModalOpen,
@@ -89,13 +89,15 @@ const AppointmentsSearchComponent = ({
     const searchHandler = async (e) => {
         e.preventDefault();
 
-        onSearch({
-            ...reqBody.data,
-            dob: reqBody.data.dob ? formatToYYYYMMDD(reqBody.data.dob) : "",
-            appointmentDateTime: reqBody.data.appointmentDateTime
-                ? convertToISO(reqBody.data.appointmentDateTime)
-                : "",
-        });
+        onSearch(
+            removeEmptyProps({
+                ...reqBody.data,
+                dob: reqBody.data.dob ? formatToYYYYMMDD(reqBody.data.dob) : "",
+                appointmentDateTime: reqBody.data.appointmentDateTime
+                    ? convertToISO(reqBody.data.appointmentDateTime)
+                    : "",
+            })
+        );
         setIsSearchModalOpen(false);
     };
 

@@ -85,27 +85,28 @@ export const useToggleReviewStatus = ({ setIsConfirmModalOpen }) => {
     return useMutation({
         mutationFn: ({ id, payload, endpoint }) =>
             toggleReviewStatus({ endpoint }),
-        onMutate: async ({ id, payload }) => {
-            // This callback runs before the server call happens
+        // onMutate: async ({ id, payload }) => {
+        //     // This callback runs before the server call happens
 
-            // cancel any ongoing operation for this review
-            await queryClient.cancelQueries(["review", id]);
+        //     // cancel any ongoing operation for this review
+        //     await queryClient.cancelQueries(["review", id]);
 
-            // get hold of the current review, to e used for rollback on request failure
-            const previousReview = queryClient.getQueryData(["review", id]);
+        //     // get hold of the current review, to e used for rollback on request failure
+        //     const previousReview = queryClient.getQueryData(["review", id]);
 
-            // Set the review in cache to the payload, Optimistically update the UI before the response
-            // is returned from the server
-            queryClient.setQueryData(["review", id], (prev) => ({
-                ...prev,
-                ...payload,
-            }));
+        //     // Set the review in cache to the payload, Optimistically update the UI before the response
+        //     // is returned from the server
+        //     queryClient.setQueryData(["review", id], (prev) => ({
+        //         ...prev,
+        //         ...payload,
+        //     }));
 
-            // The returned object can be used to rollback the data in cases of failure
-            // This will be available in the context params of onError and onSettled callbacks
-            return { previousReview };
-        },
+        //     // The returned object can be used to rollback the data in cases of failure
+        //     // This will be available in the context params of onError and onSettled callbacks
+        //     return { previousReview };
+        // },
         onError: (error, variables, context) => {
+            console.log("onError:", error)
             const errorMessage =
                 (typeof error === "string" && error) ||
                 error?.message ||
@@ -133,10 +134,10 @@ export const useToggleReviewStatus = ({ setIsConfirmModalOpen }) => {
                 type: "success",
                 duration: 5000,
             });
-            queryClient.invalidateQueries(["appointments"]); // Refresh appointment list
+            queryClient.invalidateQueries(["reviews"]); // Refresh review list
             queryClient.invalidateQueries([
-                "appointment",
-                updatedAppointment.id,
+                "review",
+                updatedReview.id,
             ]); // Refresh updated appointment
         },
     });

@@ -30,8 +30,8 @@ const PaginatedList = ({
     // const tableData = queryKey[0] in (data || {}) ? data[queryKey[0]] : [];
     const tableData = (!isError && data && data[queryKey[0]]) || [];
 
-    console.log(reqBody);
-    console.log(data);
+    console.log("reqBody:", reqBody);
+    console.log("Paginated Patients data:", data);
 
     // Reset page to 1 when payload changes
     useEffect(() => {

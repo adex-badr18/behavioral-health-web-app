@@ -36,6 +36,22 @@ export const objectToFormDataPrev = (
     return formData;
 };
 
+export const removeEmptyProps = (obj) => {
+    if (!obj) {
+        return {};
+    }
+
+    const modifiedObj = {};
+
+    Object.entries(obj).forEach(([key, value]) => {
+        if (value) {
+            modifiedObj[key] = value;
+        }
+    });
+
+    return modifiedObj;
+};
+
 export const objectToFormData = (
     obj,
     formData = new FormData(),

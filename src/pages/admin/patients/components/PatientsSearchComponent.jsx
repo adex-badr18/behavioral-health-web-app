@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DateField from "../../../../components/DateField";
 import TextField from "../../../../components/TextField";
 import SelectField from "../../../../components/SelectField";
@@ -7,6 +7,7 @@ import {
     maritalStatusOptions,
 } from "../../../user/patientForms/data";
 import { paymentMethods } from "../../../user/appointment/data";
+import { convertIsoDateToReadable, formatToYYYYMMDD, removeEmptyProps } from "../../../utils";
 
 const PatientsSearchComponent = ({
     setIsSearchModalOpen,
@@ -65,7 +66,12 @@ const PatientsSearchComponent = ({
     const searchHandler = async (e) => {
         e.preventDefault();
 
-        onSearch({ ...reqBody.data });
+        onSearch(
+            removeEmptyProps({
+                ...reqBody.data,
+                dob: formatToYYYYMMDD(reqBody.data?.dob),
+            })
+        );
         setIsSearchModalOpen(false);
     };
 

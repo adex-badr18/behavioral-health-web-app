@@ -4,6 +4,7 @@ import SelectField from "../../../../components/SelectField";
 import DateField from "../../../../components/DateField";
 import { ratingOptions, statusOptions } from "../data";
 import { convertToISO, isFormEmpty } from "../../utils";
+import { removeEmptyProps } from "../../../utils";
 
 const ReviewsSearchComponent = ({
     setIsSearchModalOpen,
@@ -57,12 +58,12 @@ const ReviewsSearchComponent = ({
     const searchHandler = async (e) => {
         e.preventDefault();
 
-        onSearch({
+        onSearch(removeEmptyProps({
             ...reqBody.data,
             createdAt: reqBody.data.createdAt
                 ? convertToISO(reqBody.data.createdAt)
                 : "",
-        });
+        }));
         setIsSearchModalOpen(false);
     };
 

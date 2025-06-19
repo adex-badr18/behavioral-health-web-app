@@ -73,7 +73,7 @@ const Review = () => {
     };
 
     const returnHome = () => {
-        setIsSubmitModalOpen(false);
+        setIsSuccessModalOpen(false);
         navigate("/");
     };
 

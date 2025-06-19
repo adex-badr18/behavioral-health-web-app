@@ -13,13 +13,12 @@ const api = axios.create({
 api.interceptors.response.use(
     (response) => response,
     (error) => {
-        console.log("Axios Instance Error", error);
+        // console.log("Axios Instance Error", error);
 
         let errorMessage = "An error occurred. Please try again later.";
 
         // Case 1: Server responded with a status outside 2xx
         if (error.response) {
-
             const status = error.response.status;
 
             // Unauthorized
@@ -41,9 +40,12 @@ api.interceptors.response.use(
 
         // Case 2: No response from server
         if (error.request) {
+            console.log("Axios Instance Error (No response):", error);
             return Promise.reject({
                 status: "NO_RESPONSE",
-                message: "No response from server. Please check your network.",
+                message:
+                    error?.message ||
+                    "No response from server. Please check your network.",
                 original: error,
             });
         }

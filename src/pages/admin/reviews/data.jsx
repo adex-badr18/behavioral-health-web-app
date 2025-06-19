@@ -58,8 +58,8 @@ export const ratingOptions = [
 ];
 
 export const statusOptions = [
-    { id: 1, text: "Published", value: "Published" },
-    { id: 2, text: "Draft", value: "Draft" },
+    { id: 1, text: "Published", value: "published" },
+    { id: 2, text: "Draft", value: "draft" },
 ];
 
 export const reviewsColumns = [
