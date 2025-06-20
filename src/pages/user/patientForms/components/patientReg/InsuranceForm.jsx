@@ -90,9 +90,9 @@ const InsuranceForm = ({ formData, handleInputChange }) => {
                                     />
                                     <TextField
                                         type="text"
-                                        label="Middle Name"
+                                        label="Middle Initial"
                                         name="middleName"
-                                        placeholder="Middle Name"
+                                        placeholder="Middle Initial"
                                         section="insurance"
                                         field="primaryInsurance.policyHolder.middleName"
                                         value={
@@ -309,10 +309,10 @@ const InsuranceForm = ({ formData, handleInputChange }) => {
                                         />
                                         <TextField
                                             type="text"
-                                            label="Name"
+                                            label="City"
                                             name="city"
                                             field="primaryInsurance.insuranceProvider.address.city"
-                                            placeholder="Name"
+                                            placeholder="City"
                                             section="insurance"
                                             value={
                                                 formData.insurance
