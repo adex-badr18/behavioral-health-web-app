@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 import { useToast } from "../../../components/ToastContext";
 import Spinner from "../../../components/Spinner";
 import ProgramsTab from "./components/ProgramsTab";
+import FetchError from "../../../components/FetchError";
 
 const Patient = () => {
     const [tabIndex, setTabIndex] = useState(1);
@@ -67,22 +68,7 @@ const Patient = () => {
 
     if (isError) {
         return (
-            <section className="py-8 md:py-20">
-                <div className="flex flex-col items-center justify-center gap-4 font-poppins">
-                    <h1 className="capitalize text-vividRed text-3xl font-bold">
-                        Error!
-                    </h1>
-                    <p className="text-grey text-lg font-medium">
-                        {error.message}
-                    </p>
-                    {/* <LinkButton
-                        name="Home"
-                        to="/"
-                        bgColor="green"
-                        icon={<MdOutlineHome className="text-xl" />}
-                    /> */}
-                </div>
-            </section>
+            <FetchError homeLink="/admin/patients" />
         );
     }
 

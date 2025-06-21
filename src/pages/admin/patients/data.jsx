@@ -150,6 +150,59 @@ export const initialPatientRegFormData = {
     upload: { file: "" },
 };
 
+export const initialIntakeFormData = {
+    intro: {
+        id: "",
+        patientId: "",
+        doYouShareHome: "",
+        complaints: "",
+        sexPreference: "",
+        onProbation: "",
+        inLawsuit: "",
+        childrenCount: "",
+        marriageCount: "",
+        pastMarriagesInfo: [],
+    },
+    psychHistory: {
+        pastProviders: [],
+        currentMedications: [],
+        hasAttemptedSuicide: "",
+        isPsychHospitalized: "",
+        pastMedications: [],
+    },
+    alcoholDrugHistory: {
+        alcohol: {
+            usageFrequency: "",
+            brand: "",
+            lastUsed: "",
+            drinkGuiltCheck: "",
+        },
+        substanceUsages: [],
+        weeklyAverageSpending: "",
+        pastTreatmentInfo: [],
+        isPastStepRecoveryParticipant: "",
+        isCurrentStepRecoveryParticipant: "",
+    },
+    psychosocialHistory: {
+        birthPlace: "",
+        growthPlace: "",
+        raisedBy: "",
+        siblingsCount: "",
+        childhoodInfo: "",
+        wasPhysicallyAbused: "",
+        wasEmotionallyAbused: "",
+        wasSexuallyAbused: "",
+    },
+    otherHistory: {
+        hasMedicalDisability: "",
+        pastMedicalHistory: "",
+        pastSurgicalHistory: "",
+        allergies: "",
+        relativesWithMentalIllnessOrSuicide: [],
+        otherUsefulInfo: "",
+    },
+};
+
 export const patientsColumns = [
     // {
     //     accessorKey: "patientId",

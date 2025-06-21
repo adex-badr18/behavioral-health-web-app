@@ -21,6 +21,7 @@ import { initialPatientRegFormData } from "./data";
 import Spinner from "../../../components/Spinner";
 import { convertBooleanToText } from "../../utils";
 import BackButton from "../../../components/BackButton";
+import FetchError from "../../../components/FetchError";
 
 const UpdateRegistration = () => {
     const [tabIndex, setTabIndex] = useState(1);
@@ -39,12 +40,12 @@ const UpdateRegistration = () => {
     // console.log(patient);
     // console.log(formData.personal.dob);
 
-    const [consents, setConsents] = useState({
-        dataAccuracy: true,
-        insuranceAuth: true,
-        finResponsible: true,
-        infoRelease: true,
-    });
+    // const [consents, setConsents] = useState({
+    //     dataAccuracy: true,
+    //     insuranceAuth: true,
+    //     finResponsible: true,
+    //     infoRelease: true,
+    // });
 
     useEffect(() => {
         if (isSuccess && patient) {
@@ -339,21 +340,21 @@ const UpdateRegistration = () => {
     //     setTabIndex(index);
     // };
 
-    const isConsentsFilled = () => {
-        for (const key in consents) {
-            const value = consents[key];
+    // const isConsentsFilled = () => {
+    //     for (const key in consents) {
+    //         const value = consents[key];
 
-            if (!value) {
-                return true;
-            }
-        }
+    //         if (!value) {
+    //             return true;
+    //         }
+    //     }
 
-        if (!formData.consent.signature) {
-            return true;
-        }
+    //     if (!formData.consent.signature) {
+    //         return true;
+    //     }
 
-        return false;
-    };
+    //     return false;
+    // };
 
     console.log(formData);
 
@@ -364,7 +365,7 @@ const UpdateRegistration = () => {
         { id: 4, tabName: "Emergency", isDisabled: false },
         { id: 5, tabName: "Payment Info", isDisabled: false },
         // { id: 6, tabName: "Consents", isDisabled: false },
-        { id: 7, tabName: "Upload", isDisabled: isConsentsFilled() },
+        // { id: 7, tabName: "Upload", isDisabled: false },
     ];
 
     // Handle form element change
@@ -399,24 +400,7 @@ const UpdateRegistration = () => {
 
     if (isError) {
         return (
-            <section className="py-8 md:py-10">
-                <PageTitle title={"Patient's Registration Update"} />
-                <div className="flex flex-col items-center justify-center gap-4 font-poppins">
-                    <h1 className="capitalize text-vividRed text-3xl font-bold">
-                        Error!
-                    </h1>
-                    <p className="text-grey text-lg font-medium">
-                        {error.message ||
-                            "Failed to load patient's information. Please try again later."}
-                    </p>
-                    {/* <LinkButton
-                        name="Home"
-                        to="/"
-                        bgColor="green"
-                        icon={<MdOutlineHome className="text-xl" />}
-                    /> */}
-                </div>
-            </section>
+            <FetchError homeLink="/admin/patients" />
         );
     }
 
@@ -479,16 +463,16 @@ const UpdateRegistration = () => {
                     />
                 )}
 
-                {tabIndex === 6 && (
+                {/* {tabIndex === 6 && (
                     <ConsentUpdateForm
                         formData={formData}
                         onChange={handleFormElementChange}
                         consents={consents}
                         setConsents={setConsents}
                     />
-                )}
+                )} */}
 
-                {tabIndex === 7 && <PdfUpload formData={formData} />}
+                {/* {tabIndex === 7 && <PdfUpload formData={formData} />} */}
             </div>
         </section>
     );

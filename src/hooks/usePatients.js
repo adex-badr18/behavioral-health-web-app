@@ -19,6 +19,7 @@ import {
     createConsentForm,
     enrolProgram,
     updateIntake,
+    getPatientIntakeById,
 } from "../api/patientApi";
 import { useToast } from "../components/ToastContext";
 import { useNavigate } from "react-router-dom";
@@ -65,6 +66,15 @@ export const useGetRegInfo = (patientId) => {
     });
 };
 
+// Fetch a patient by ID
+export const useGetPatientIntake = (patientId) => {
+    return useQuery({
+        queryKey: ["patient", patientId],
+        queryFn: () => getPatientIntakeById(patientId),
+        enabled: !!patientId, // Ensures the query runs only when id is avaialble
+    });
+};
+
 // Fetch a basic patient by ID
 export const useFetchBasicPatient = (id) => {
     return useQuery({
@@ -86,13 +96,6 @@ export const useEnrolProgram = () => {
             queryClient.invalidateQueries(["patient", variables.patientId]);
         },
     });
-
-    // return useQuery({
-    //     queryKey: ["program", patientId, programType],
-    //     queryFn: () => enrolProgram(patientId, programType),
-    //     enabled: false,
-    //     retry: 2
-    // });
 };
 
 // Upload patient file
@@ -191,21 +194,21 @@ export const useUpdatePatient = () => {
             }
         },
         onSuccess: (data, variables, context) => {
-            console.log("OnSuccess data:", data);
-            console.log("OnSuccess variables:", variables);
-            console.log("OnSuccess context:", context);
+            // console.log("OnSuccess data:", data);
+            // console.log("OnSuccess variables:", variables);
+            // console.log("OnSuccess context:", context);
 
             showToast({
-                message: "Patient information updated successfully!",
+                message: data?.message || "Patient information updated successfully!",
                 type: "success",
                 duration: 5000,
             });
             queryClient.invalidateQueries(["patients"]); // Refresh patient list
-            queryClient.invalidateQueries(["patient", data?.patientId]); // Refresh updated patient
+            queryClient.invalidateQueries(["patient", variables?.patientId]); // Refresh updated patient
 
             // Navigate to patient details page after 5secs
             // setTimeout(() => {
-            //     navigate(`/admin/patients/${data?.patientId}`)
+            //     navigate(`/admin/patients/${variables?.patientId}`)
             // }, 5500);
         },
     });

@@ -257,10 +257,10 @@ const SecondaryInsurance = ({ formData, handleInputChange }) => {
                             />
                             <TextField
                                 type="text"
-                                label="Name"
+                                label="City"
                                 name="city"
                                 field="secondaryInsurance.insuranceProvider.address.city"
-                                placeholder="Name"
+                                placeholder="City"
                                 section="insurance"
                                 value={
                                     formData.insurance.secondaryInsurance

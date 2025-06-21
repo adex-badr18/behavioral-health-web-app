@@ -1,4 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import { useToast } from "../../../../../../components/ToastContext";
+
 import PageTitle from "../../../../components/PageTitle";
 import BackButton from "../../../../../../components/BackButton";
 import TabPanel from "../../../../components/TabPanel";
@@ -7,13 +10,116 @@ import PsychHistoryUpdate from "./PsychHistoryUpdate";
 import AlcoholHistoryUpdate from "./AlcoholHistoryUpdate";
 import PsychosocialUpdate from "./PsychosocialUpdate";
 import OtherHistoryUpdate from "./OtherHistoryUpdate";
-import { useState } from "react";
+import FetchError from "../../../../../../components/FetchError";
+import { useGetPatientIntake } from "../../../../../../hooks/usePatients";
+import { initialIntakeFormData } from "../../../data";
+import Spinner from "../../../../../../components/Spinner";
+import { convertBooleanToText } from "../../../../../utils";
 
 const IntakeUpdate = () => {
-    const { state } = useLocation();
-    const { intakeFormData } = state;
     const [tabIndex, setTabIndex] = useState(1);
-    const [formData, setFormData] = useState(intakeFormData);
+    const { showToast } = useToast();
+    const { intakeId } = useParams();
+    const {
+        data: intakeFormData,
+        isLoading,
+        isSuccess,
+        isError,
+        error,
+    } = useGetPatientIntake(intakeId || "");
+
+    const [formData, setFormData] = useState(initialIntakeFormData);
+
+    // TODO: useEffect to update intake state, restructure data as in reg update
+    useEffect(() => {
+        if (isSuccess && intakeFormData) {
+            setFormData((prev) => ({
+                ...prev,
+                intro: {
+                    id: intakeFormData?.id,
+                    patientId: intakeFormData?.patientId,
+                    doYouShareHome: intakeFormData?.doYouShareHome,
+                    complaints: intakeFormData?.complaints,
+                    sexPreference: intakeFormData?.sexPreference,
+                    onProbation: intakeFormData?.onProbation,
+                    inLawsuit: intakeFormData?.inLawsuit,
+                    childrenCount: intakeFormData?.childrenCount,
+                    marriageCount: intakeFormData?.marriageCount,
+                    pastMarriagesInfo: intakeFormData?.pastMarriagesInfo,
+                },
+                psychHistory: {
+                    pastProviders: intakeFormData?.pastProviders,
+                    currentMedications: intakeFormData?.currentMedications,
+                    hasAttemptedSuicide: convertBooleanToText(
+                        intakeFormData?.hasAttemptedSuicide
+                    ),
+                    isPsychHospitalized: convertBooleanToText(
+                        intakeFormData?.isPsychHospitalized
+                    ),
+                    pastMedications: intakeFormData?.pastMedications,
+                },
+                alcoholDrugHistory: {
+                    alcohol: {
+                        usageFrequency:
+                            intakeFormData?.alcoholDrugHistory?.usageFrequency,
+                        brand: intakeFormData?.alcoholDrugHistory?.brand,
+                        lastUsed: intakeFormData?.alcoholDrugHistory?.lastUsed,
+                        drinkGuiltCheck:
+                            intakeFormData?.alcoholDrugHistory?.drinkGuiltCheck,
+                    },
+                    substanceUsages:
+                        intakeFormData?.alcoholDrugHistory?.substanceUsages,
+                    weeklyAverageSpending:
+                        intakeFormData?.alcoholDrugHistory
+                            ?.weeklyAverageSpending,
+                    pastTreatmentInfo:
+                        intakeFormData?.alcoholDrugHistory?.pastTreatmentInfo,
+                    isPastStepRecoveryParticipant: convertBooleanToText(
+                        intakeFormData?.alcoholDrugHistory
+                            ?.isPastStepRecoveryParticipant
+                    ),
+                    isCurrentStepRecoveryParticipant: convertBooleanToText(
+                        intakeFormData?.alcoholDrugHistory
+                            ?.isCurrentStepRecoveryParticipant
+                    ),
+                },
+                psychosocialHistory: {
+                    birthPlace: intakeFormData?.alcoholDrugHistory?.birthPlace,
+                    growthPlace:
+                        intakeFormData?.alcoholDrugHistory?.growthPlace,
+                    raisedBy: intakeFormData?.alcoholDrugHistory?.raisedBy,
+                    siblingsCount:
+                        intakeFormData?.alcoholDrugHistory?.siblingsCount,
+                    childhoodInfo:
+                        intakeFormData?.alcoholDrugHistory?.childhoodInfo,
+                    wasPhysicallyAbused: convertBooleanToText(
+                        intakeFormData?.alcoholDrugHistory?.wasPhysicallyAbused
+                    ),
+                    wasEmotionallyAbused: convertBooleanToText(
+                        intakeFormData?.alcoholDrugHistory?.wasEmotionallyAbused
+                    ),
+                    wasSexuallyAbused: convertBooleanToText(
+                        intakeFormData?.alcoholDrugHistory?.wasSexuallyAbused
+                    ),
+                },
+                otherHistory: {
+                    hasMedicalDisability: convertBooleanToText(
+                        intakeFormData?.alcoholDrugHistory?.hasMedicalDisability
+                    ),
+                    pastMedicalHistory:
+                        intakeFormData?.alcoholDrugHistory?.pastMedicalHistory,
+                    pastSurgicalHistory:
+                        intakeFormData?.alcoholDrugHistory?.pastSurgicalHistory,
+                    allergies: intakeFormData?.alcoholDrugHistory?.allergies,
+                    relativesWithMentalIllnessOrSuicide:
+                        intakeFormData?.alcoholDrugHistory
+                            ?.relativesWithMentalIllnessOrSuicide,
+                    otherUsefulInfo:
+                        intakeFormData?.alcoholDrugHistory?.otherUsefulInfo,
+                },
+            }));
+        }
+    }, [intakeFormData]);
 
     console.log(formData);
 
@@ -53,6 +159,21 @@ const IntakeUpdate = () => {
                 [section]: updateNestedField(prev[section], keys, value),
             };
         });
+    }
+
+    if (isError) {
+        return <FetchError homeLink="/admin/patients" />;
+    }
+
+    if (isLoading) {
+        return (
+            <Spinner
+                secondaryText={`Loading patient's information...`}
+                spinnerSize="w-10 h-10"
+                textClass="text-lg text-darkBlue font-semibold"
+                borderClass="border-lightGreen"
+            />
+        );
     }
 
     return (

@@ -390,7 +390,7 @@ export const langOptions = [
 export const ethnicityOptions = [
     { id: 1, text: "Hispanic or Latino", value: "Hispanic or Latino" },
     { id: 2, text: "Not Hispanic or Latino", value: "Not Hispanic or Latino" },
-    { id: 3, text: "Prefer Not to Say", value: "Prefer Not to Say" },
+    { id: 3, text: "Prefer Not to Say", value: "Prefer Not To Say" },
 ];
 
 export const familyRoleOptions = [

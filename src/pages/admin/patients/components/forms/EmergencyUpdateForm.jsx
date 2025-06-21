@@ -52,7 +52,7 @@ const EmergencyUpdateForm = ({ formData, handleInputChange }) => {
                             field="homePhone"
                             placeholder="Home Phone"
                             section="emergency"
-                            value={formData.emergency.phone}
+                            value={formData.emergency.homePhone}
                             handleInputChange={handleInputChange}
                         />
                         <TextField

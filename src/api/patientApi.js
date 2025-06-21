@@ -52,6 +52,20 @@ export const getRegInfoById = async (patientId) => {
     return response.data;
 };
 
+
+// Fetch a patient by ID
+export const getPatientIntakeById = async (patientId) => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const response = await api.get(`/patients/forms/intake/${patientId}`, {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.token}`,
+        },
+    });
+    
+    return response.data;
+};
+
 // Fetch a basic patient info by ID
 export const fetchBasicPatientById = async (patientId) => {
     const response = await api.get(`/patients/validate/${patientId}`, {

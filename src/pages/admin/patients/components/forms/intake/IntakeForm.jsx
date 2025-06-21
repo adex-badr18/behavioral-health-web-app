@@ -145,7 +145,7 @@ const IntakeForm = ({ data }) => {
                     </h3>
 
                     <Link
-                        to={`/admin/patients/${data?.patientId}/intake/update`}
+                        to={`/admin/patients/${data?.patientId}/intake/${data?.id}/update`}
                         state={{ intakeFormData: formData }}
                         className="rounded-lg px-3 py-2 text-sm flex items-center justify-center gap-2 divide-x-2 font-poppins font-semibold text-nowrap transition-colors duration-300 bg-deepGreen text-white divide-white hover:bg-originalGreen"
                     >
