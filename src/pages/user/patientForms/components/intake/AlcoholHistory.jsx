@@ -13,7 +13,11 @@ import {
 } from "./data";
 
 const AlcoholHistory = ({ formData, onChange }) => {
-    const [alcoholAssessment, setAlcoholAssessment] = useState([]);
+    const [alcoholAssessment, setAlcoholAssessment] = useState(
+        formData.alcoholDrugHistory.alcohol.drinkGuiltCheck
+            ? formData.alcoholDrugHistory.alcohol.drinkGuiltCheck.split(" ")
+            : []
+    );
 
     useEffect(() => {
         if (alcoholAssessment.length > 0) {
@@ -24,8 +28,6 @@ const AlcoholHistory = ({ formData, onChange }) => {
             );
         }
     }, [alcoholAssessment]);
-
-    // console.log(formData.alcoholDrugHistory);
 
     const handleCheckboxChange = (e) => {
         const { value } = e.target;
@@ -41,7 +43,9 @@ const AlcoholHistory = ({ formData, onChange }) => {
 
     const isOptionExist = (option) =>
         alcoholAssessment.includes(option) ||
-        formData?.alcoholDrugHistory?.alcohol?.drinkGuiltCheck?.includes(option);
+        formData?.alcoholDrugHistory?.alcohol?.drinkGuiltCheck?.includes(
+            option
+        );
 
     return (
         <form className="">
@@ -196,7 +200,10 @@ const AlcoholHistory = ({ formData, onChange }) => {
                                 fieldPath="pastTreatmentInfo"
                                 section="alcoholDrugHistory"
                                 onChange={onChange}
-                                value={formData.alcoholDrugHistory.pastTreatmentInfo}
+                                value={
+                                    formData.alcoholDrugHistory
+                                        .pastTreatmentInfo
+                                }
                                 objStructure={drugTreatmentObjStructure}
                                 title="Substance Care History"
                                 moreText="care history"

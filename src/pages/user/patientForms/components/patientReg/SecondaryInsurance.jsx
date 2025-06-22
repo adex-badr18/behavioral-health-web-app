@@ -87,6 +87,10 @@ const SecondaryInsurance = ({ formData, handleInputChange }) => {
                             defaultDate={
                                 formData.insurance.secondaryInsurance
                                     .policyHolder.dob
+                                    ? new Date(
+                                          formData.insurance.secondaryInsurance.policyHolder.dob
+                                      )
+                                    : null
                             }
                         />
                         <SelectField
@@ -106,7 +110,7 @@ const SecondaryInsurance = ({ formData, handleInputChange }) => {
                 </div>
 
                 {/* Insurance Provider */}
-                <div className="space-y-2 p-4 border rounded-lg">
+                <div className="space-y-6 p-4 border rounded-lg">
                     <h4 className="text-base md:text-lg font-semibold text-darkBlue">
                         Insurance Provider
                     </h4>
@@ -217,6 +221,10 @@ const SecondaryInsurance = ({ formData, handleInputChange }) => {
                             defaultDate={
                                 formData.insurance.secondaryInsurance
                                     .policyHolder.coverageStartDate
+                                    ? new Date(
+                                          formData.insurance.secondaryInsurance.policyHolder.coverageStartDate
+                                      )
+                                    : null
                             }
                         />
                         <DateField
@@ -232,6 +240,10 @@ const SecondaryInsurance = ({ formData, handleInputChange }) => {
                             defaultDate={
                                 formData.insurance.secondaryInsurance
                                     .policyHolder.coverageEndDate
+                                    ? new Date(
+                                          formData.insurance.secondaryInsurance.policyHolder.coverageEndDate
+                                      )
+                                    : null
                             }
                         />
                     </div>

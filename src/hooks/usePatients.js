@@ -22,7 +22,7 @@ import {
     getPatientIntakeById,
 } from "../api/patientApi";
 import { useToast } from "../components/ToastContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 // Fetch list of patients
 export const useFetchPatients = (page = 1, searchParams) => {
@@ -133,6 +133,7 @@ export const useCreatePatient = ({ openModal, showToast }) => {
 
     return useMutation({
         mutationFn: createPatient,
+        mutationKey: ["patients"],
         onSuccess: (response) => {
             openModal(response.data);
             queryClient.invalidateQueries(["patients"]);
@@ -155,6 +156,7 @@ export const useUpdatePatient = () => {
     const queryClient = useQueryClient();
     const { showToast } = useToast();
     const navigate = useNavigate();
+    const { pathname } = useLocation();
 
     return useMutation({
         mutationFn: ({ patientId, payload, endpoint }) =>
@@ -175,6 +177,7 @@ export const useUpdatePatient = () => {
             return { previousPatient };
         },
         onError: (error, variables, context) => {
+            console.log("Custom Hook error:", error)
             const errorMessage =
                 (typeof error === "string" && error) ||
                 error?.message ||
@@ -192,6 +195,10 @@ export const useUpdatePatient = () => {
                     context.previousPatient
                 );
             }
+
+            if (error?.statusCode === 401) {
+                navigate("/admin", { state: { from: pathname }, replace });
+            }
         },
         onSuccess: (data, variables, context) => {
             // console.log("OnSuccess data:", data);
@@ -199,7 +206,9 @@ export const useUpdatePatient = () => {
             // console.log("OnSuccess context:", context);
 
             showToast({
-                message: data?.message || "Patient information updated successfully!",
+                message:
+                    data?.message ||
+                    "Patient information updated successfully!",
                 type: "success",
                 duration: 5000,
             });
@@ -263,12 +272,11 @@ export const useUpdateIntake = () => {
             console.log("OnSuccess context:", context);
 
             showToast({
-                message: "Intake form updated successfully!",
+                message: data.message || "Intake form updated successfully!",
                 type: "success",
                 duration: 5000,
             });
-            queryClient.invalidateQueries(["intake"]); // Refresh patient list
-            queryClient.invalidateQueries(["intake", data?.patientId]); // Refresh updated patient
+            queryClient.invalidateQueries(["intake", variables?.patientId]); // Refresh updated intake
 
             // Navigate to patient details page after 5secs
             // setTimeout(() => {

@@ -6,13 +6,15 @@ import { useParams } from "react-router-dom";
 
 const IntroFormUpdate = ({ formData, onChange }) => {
     const { mutate, isPending, error, data } = useUpdateIntake();
-    const { id } = useParams();
+    const { id, intakeId } = useParams();
 
     const { intro } = formData;
 
     const handleSubmit = () => {
         // Prepare personal info update payload
         const formattedData = {
+            patientId: id,
+            intakeId,
             doYouShareHome: intro?.doYouShareHome,
             complaints: intro?.complaints,
             sexPreference: intro?.sexPreference,
@@ -23,13 +25,14 @@ const IntroFormUpdate = ({ formData, onChange }) => {
             pastMarriagesInfo: intro?.pastMarriagesInfo,
         };
 
-        console.log(formattedData)
-        // TODO: Update personal info
-        // mutate({
-        //     patientId: id,
-        //     payload: formattedData,
-        //     endpoint: `patients/forms/register/${id}/personal-info`,
-        // });
+        console.log("Intro Update Payload:", formattedData)
+
+        // TODO: Update intro
+        mutate({
+            patientId: id,
+            payload: formattedData,
+            endpoint: `patients/forms/intake/${intakeId}/update/intro`,
+        });
     };
 
     return (

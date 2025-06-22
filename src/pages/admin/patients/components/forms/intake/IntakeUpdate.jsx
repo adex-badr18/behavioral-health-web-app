@@ -126,9 +126,7 @@ const IntakeUpdate = () => {
     const tabButtons = [
         { id: 1, tabName: "Intro", isDisabled: false },
         { id: 2, tabName: "Psychiatric History", isDisabled: false },
-        { id: 3, tabName: "Alcohol/Drug", isDisabled: false },
-        { id: 4, tabName: "Psychosocial", isDisabled: false },
-        { id: 5, tabName: "Other History", isDisabled: false },
+        { id: 3, tabName: "Psychosocial & Health Profile", isDisabled: false },
     ];
 
     // Handle form element change
@@ -210,6 +208,13 @@ const IntakeUpdate = () => {
                     />
                 )}
 
+                {/* {tabIndex === 3 && (
+                    <AlcoholHistoryUpdate
+                        formData={formData}
+                        onChange={handleFormElementChange}
+                    />
+                )}
+
                 {tabIndex === 4 && (
                     <PsychosocialUpdate
                         formData={formData}
@@ -222,7 +227,7 @@ const IntakeUpdate = () => {
                         formData={formData}
                         onChange={handleFormElementChange}
                     />
-                )}
+                )} */}
             </div>
         </section>
     );

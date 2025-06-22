@@ -1,35 +1,51 @@
 import React from "react";
-import { convertBooleanToText } from "../../../../../utils";
+import {
+    convertBooleanToText,
+    convertToBoolean,
+    formatToYYYYMMDD,
+} from "../../../../../utils";
 import PsychHistory from "../../../../../user/patientForms/components/intake/PsychHistory";
 import SubmitButton from "../../../../../../components/SubmitButton";
 import { useUpdateIntake } from "../../../../../../hooks/usePatients";
 import { useParams } from "react-router-dom";
 
-const PsychHistoryUpdate = ({formData, onChange}) => {
+const PsychHistoryUpdate = ({ formData, onChange }) => {
     const { mutate, isPending, error, data } = useUpdateIntake();
-    const { id } = useParams();
+    const { id, intakeId } = useParams();
 
     const { psychHistory } = formData;
 
     const handleSubmit = () => {
         // Prepare personal info update payload
+
+        const pastProviders = psychHistory.pastProviders.map((provider) => {
+            return {
+                ...provider,
+                appointmentDate: formatToYYYYMMDD(provider.appointmentDate),
+            };
+        });
+
         const formattedData = {
-            pastProviders: psychHistory?.pastProviders,
+            patientId: id,
+            intakeId,
+            pastProviders: pastProviders,
             currentMedications: psychHistory?.currentMedications,
-            hasAttemptedSuicide: convertBooleanToText(
+            hasAttemptedSuicide: convertToBoolean(
                 psychHistory?.hasAttemptedSuicide
             ),
-            isPsychHospitalized: convertBooleanToText(
+            isPsychHospitalized: convertToBoolean(
                 psychHistory?.isPsychHospitalized
             ),
             pastMedications: psychHistory?.pastMedications,
         };
 
+        console.log("Psych History Payload:", formattedData);
+
         // TODO: Update personal info
         mutate({
             patientId: id,
             payload: formattedData,
-            endpoint: `patients/forms/register/${id}/personal-info`,
+            endpoint: `patients/forms/intake/${intakeId}/update/psych-history`,
         });
     };
 

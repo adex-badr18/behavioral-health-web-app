@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 
 import { useToast } from "../../../../../components/ToastContext";
 import { useCreateForm } from "../../../../../hooks/usePatients";
-import { objectToFormData, convertToBoolean } from "../../../../utils";
+import { objectToFormData, convertToBoolean, formatToYYYYMMDD } from "../../../../utils";
 
 const IntakeForm = () => {
     const { id } = useParams();
@@ -195,7 +195,7 @@ const IntakeForm = () => {
             (pastProvider) => ({
                 id: "",
                 provider: pastProvider["provider"],
-                appointmentDate: pastProvider["appointmentDate"],
+                appointmentDate: formatToYYYYMMDD(pastProvider["appointmentDate"]),
             })
         );
 

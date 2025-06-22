@@ -37,8 +37,8 @@ const UpdateRegistration = () => {
 
     const [formData, setFormData] = useState(initialPatientRegFormData);
 
-    // console.log(patient);
-    // console.log(formData.personal.dob);
+    console.log("Fetched Patient:", patient);
+    console.log(formData);
 
     // const [consents, setConsents] = useState({
     //     dataAccuracy: true,
@@ -52,10 +52,12 @@ const UpdateRegistration = () => {
             const insurances = patient.paymentStructure?.insurances || [];
 
             const primaryInsurance =
-                insurances.filter((insurance) => !!insurance.primary) || {};
+                insurances.find((insurance) => insurance.primary === true) ||
+                {};
 
             const secondaryInsurance =
-                insurances.filter((insurance) => !insurance.primary) || {};
+                insurances.find((insurance) => insurance.primary === false) ||
+                {};
 
             setFormData({
                 identification: {
@@ -229,7 +231,7 @@ const UpdateRegistration = () => {
                                 ?.coverageEndDate
                                 ? new Date(
                                       primaryInsurance?.insuranceProvider?.coverageEndDate
-                                  ).toLocaleDateString()
+                                  )
                                 : null,
                             address: {
                                 id:
@@ -336,6 +338,77 @@ const UpdateRegistration = () => {
         }
     }, [patient, isSuccess]);
 
+    useEffect(() => {
+        if (formData?.insurance?.paymentMode === "Self Pay") {
+            setFormData((prev) => ({
+                ...prev,
+                insurance: {
+                    ...prev.insurance,
+                    primaryInsurance: {
+                        ...prev.insurance.primaryInsurance,
+                        policyHolder: {
+                            firstName: "",
+                            middleName: "",
+                            lastName: "",
+                            relationship: "",
+                            phone: "",
+                            dob: null,
+                        },
+                        insuranceProvider: {
+                            name: "",
+                            phone: "",
+                            policyId: "",
+                            groupNumber: "",
+                            authorizationId: "",
+                            coPay: "",
+                            coverageStartDate: null,
+                            coverageEndDate: null,
+                            address: {
+                                id:
+                                    prev.insurance.primaryInsurance?.insuranceProvider?.address
+                                        ?.id || "",
+                                streetName: "",
+                                city: "",
+                                state: "",
+                                zipCode: "",
+                            },
+                        },
+                    },
+                    secondaryInsurance: {
+                        ...prev.insurance.secondaryInsurance,
+                        policyHolder: {
+                            firstName: "",
+                            middleName: "",
+                            lastName: "",
+                            relationship: "",
+                            phone: "",
+                            dob: null,
+                        },
+                        insuranceProvider: {
+                            name: "",
+                            phone: "",
+                            policyId: "",
+                            groupNumber: "",
+                            authorizationId: "",
+                            coverageStartDate: null,
+                            coverageEndDate: null,
+                            address: {
+                                id:
+                                    prev.insurance.secondaryInsurance?.insuranceProvider
+                                        ?.address?.id || "",
+                                streetName: "",
+                                city: "",
+                                state: "",
+                                zipCode: "",
+                            },
+                            coPay: "",
+                        },
+                    },
+                },
+            }));
+        }
+    }, [formData?.insurance?.paymentMode]);
+
     // const handleTabChange = (index) => {
     //     setTabIndex(index);
     // };
@@ -399,9 +472,7 @@ const UpdateRegistration = () => {
     }
 
     if (isError) {
-        return (
-            <FetchError homeLink="/admin/patients" />
-        );
+        return <FetchError homeLink="/admin/patients" message={error?.message} />;
     }
 
     if (isLoading) {

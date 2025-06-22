@@ -106,7 +106,7 @@ const NewProgramForm = ({ patientId, setIsModalOpen }) => {
                         <Spinner
                             secondaryText="Enrolling..."
                             spinnerSize="w-6 h-6"
-                            borderClass="border-originalGreen"
+                            borderClass="border-white"
                         />
                     ) : (
                         "Enroll"

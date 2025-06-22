@@ -3,8 +3,10 @@ import SubmitButton from "../../../../../components/SubmitButton";
 import { useUpdatePatient } from "../../../../../hooks/usePatients";
 import { formatToYYYYMMDD, objectToFormData } from "../../../../utils";
 
-const PaymentInfoUpdateForm = ({formData, onChange}) => {
+const PaymentInfoUpdateForm = ({ formData, onChange }) => {
     const { mutate, isPending, error, data } = useUpdatePatient();
+
+    console.log(formData)
 
     const handleSubmit = () => {
         // Prepare personal info update payload
@@ -57,11 +59,13 @@ const PaymentInfoUpdateForm = ({formData, onChange}) => {
             ],
         };
 
+        console.log(formattedData)
+
         // TODO: Update payment structure
         mutate({
             patientId: formData?.identification.patientId,
             payload: formattedData,
-            endpoint: `patients/forms/register/${formData.identification.patientId}/payment-structure/${formData.identification.id}`,
+            endpoint: `patients/forms/register/${formData.identification.patientId}/payment-structure`,
         });
     };
 

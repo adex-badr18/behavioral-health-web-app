@@ -142,6 +142,10 @@ const InsuranceForm = ({ formData, handleInputChange }) => {
                                         defaultDate={
                                             formData.insurance.primaryInsurance
                                                 .policyHolder.dob
+                                                ? new Date(
+                                                      formData.insurance.primaryInsurance.policyHolder.dob
+                                                  )
+                                                : null
                                         }
                                     />
                                     <SelectField
@@ -179,7 +183,7 @@ const InsuranceForm = ({ formData, handleInputChange }) => {
                                         section="insurance"
                                         field="primaryInsurance.insuranceProvider.name"
                                         handleSelectChange={handleInputChange}
-                                    />                                
+                                    />
                                     <TextField
                                         type="text"
                                         label="Contact Phone"
@@ -262,6 +266,10 @@ const InsuranceForm = ({ formData, handleInputChange }) => {
                                             formData.insurance.primaryInsurance
                                                 .insuranceProvider
                                                 .coverageStartDate
+                                                ? new Date(
+                                                      formData.insurance.primaryInsurance.insuranceProvider.coverageStartDate
+                                                  )
+                                                : null
                                         }
                                     />
                                     <DateField
@@ -280,6 +288,10 @@ const InsuranceForm = ({ formData, handleInputChange }) => {
                                             formData.insurance.primaryInsurance
                                                 .insuranceProvider
                                                 .coverageEndDate
+                                                ? new Date(
+                                                      formData.insurance.primaryInsurance.insuranceProvider.coverageEndDate
+                                                  )
+                                                : null
                                         }
                                     />
                                 </div>

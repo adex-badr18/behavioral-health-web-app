@@ -5,7 +5,7 @@ import { booleanOptions } from "../../data";
 import { medicationsObjStructure, providersObjStructure } from "./data";
 
 const PsychHistory = ({ formData, onChange }) => {
-    // console.log(formData.psychHistory);
+    console.log("PsychHistory Data:", formData.psychHistory);
     return (
         <form className="">
             <div className="space-y-4 md:space-y-8">

@@ -182,7 +182,7 @@ const Prp = ({title, consentType}) => {
         }
 
         if (step === 2) {
-            const optionalFields = ["otherItemsCovered"];
+            const optionalFields = ["otherItemsCovered", "prescribedMedications"];
             const dataObj = formData.data;
 
             for (const key in dataObj) {

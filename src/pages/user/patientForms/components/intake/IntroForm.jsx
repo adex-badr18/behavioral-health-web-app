@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import TextField from "../../../../../components/TextField";
 import SelectField from "../../../../../components/SelectField";
 import TextAreaField from "../../../../../components/TextAreaField";
@@ -7,7 +9,14 @@ import { booleanOptions, sexPreferenceOptions } from "../../data";
 import { marriagesObjStructure } from "./data";
 
 const IntroForm = ({ formData, onChange }) => {
+    useEffect(() => {
+      if (formData.intro.pastMarriagesInfo.length > 0) {
+        onChange("intro", "marriageCount", formData.intro.pastMarriagesInfo.length)
+      }
+    }, [formData.intro.pastMarriagesInfo])
+    
     // console.log(formData);
+    
     return (
         <form className="">
             <div className="space-y-4 md:space-y-8">

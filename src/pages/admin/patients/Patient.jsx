@@ -68,7 +68,7 @@ const Patient = () => {
 
     if (isError) {
         return (
-            <FetchError homeLink="/admin/patients" />
+            <FetchError homeLink="/admin/patients" message={error?.message} />
         );
     }
 

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { formatToMMDDYYYY } from "../../utils";
 
 export const initialPatientRegFormData = {
     identification: {
@@ -219,6 +220,9 @@ export const patientsColumns = [
     {
         accessorKey: "dob",
         header: "Date of Birth",
+        cell: (prop) => (
+            <span className="">{formatToMMDDYYYY(prop.getValue())}</span>
+        ),
     },
     {
         accessorKey: "gender",
