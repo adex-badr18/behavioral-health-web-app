@@ -250,15 +250,13 @@ const MultiStepForm = ({
                             <div className="space-y-2 text-center text-deepGrey">
                                 <p className="">
                                     Thank you for completing the form. Your
-                                    information has been successfully submitted
+                                    information has been successfully submitted.
                                 </p>
 
-                                {/* <p className="">
-                                    If you do not receive an email within the
-                                    next few minutes, please check your spam or
-                                    junk folder. If you need further assistance,
-                                    feel free to contact us.
-                                </p> */}
+                                <p className="">
+                                    An email has been sent with instructions to
+                                    proceed with your onboarding.
+                                </p>
                             </div>
                         </div>
 

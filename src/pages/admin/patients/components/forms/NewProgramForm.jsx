@@ -57,10 +57,12 @@ const NewProgramForm = ({ patientId, setIsModalOpen }) => {
             { patientId, programType: formData.data.program },
             {
                 onSuccess: (data) => {
+                    const message = data?.message
+                        ? `${data.message}. An email has been sent with instructions to proceed with your onboarding.`
+                        : `Patient successfully enrolled into ${formData.data.program}. An email has been sent with instructions to proceed with your onboarding.`;
+
                     showToast({
-                        message:
-                            data?.message ||
-                            `Patient successfully enrolled into ${formData.data.program}`,
+                        message,
                         type: "success",
                         duration: 5000,
                     });
@@ -106,7 +108,7 @@ const NewProgramForm = ({ patientId, setIsModalOpen }) => {
                         <Spinner
                             secondaryText="Enrolling..."
                             spinnerSize="w-6 h-6"
-                            borderClass="border-white"
+                            borderClass="border-originalGreen hover:border-white"
                         />
                     ) : (
                         "Enroll"

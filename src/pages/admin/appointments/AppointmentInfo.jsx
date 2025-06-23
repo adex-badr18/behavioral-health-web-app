@@ -60,18 +60,12 @@ const AppointmentInfo = () => {
     const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
     const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 
-    const [selectedDateTime, setSelectedDateTime] = useState(
-        appointment?.appointmentDateTime
-            ? new Date(appointment?.appointmentDateTime)
-            : null
-    );
+    const [selectedDateTime, setSelectedDateTime] = useState(null);
     const [holidays, setHolidays] = useState([]);
     const [excludedTimes, setExcludedTimes] = useState({});
-    const [formData, setFormData] = useState({
-        data: {},
-    });
+    const [formData, setFormData] = useState({ data: {} });
 
-    console.log(selectedDateTime)
+    console.log("Selected Date Time", selectedDateTime);
 
     const { mutate: updateAppointment, isPending: isUpdatingAppointment } =
         useUpdateAppointment({
@@ -79,8 +73,8 @@ const AppointmentInfo = () => {
             setIsConfirmModalOpen,
         });
 
-    // console.log("FormData", formData);
-    // console.log("Appointment", appointment);
+    console.log("FormData", formData);
+    console.log("Appointment", appointment);
     // console.log(selectedDateTime);
 
     useEffect(() => {
@@ -100,6 +94,8 @@ const AppointmentInfo = () => {
             setFormData((prev) => ({
                 data: { ...prev.data, ...appointment },
             }));
+
+            setSelectedDateTime(new Date(appointment.appointmentDateTime));
         }
     }, [isError, isSuccess, appointment]);
 
@@ -239,7 +235,7 @@ const AppointmentInfo = () => {
                 secondaryText={`Loading appointment...`}
                 spinnerSize="w-10 h-10"
                 textClass="text-lg text-darkBlue font-semibold"
-                borderClass="border-lightGreen"
+                borderClass="border-originalGreen"
             />
         );
     }
@@ -307,9 +303,9 @@ const AppointmentInfo = () => {
 
                             <TextField
                                 type="text"
-                                label="Middle Name"
+                                label="Middle Initial"
                                 name="middleName"
-                                placeholder="Middle Name"
+                                placeholder="Middle Initial"
                                 section="data"
                                 field="middleName"
                                 value={formData.data.middleName ?? ""}
