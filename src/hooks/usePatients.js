@@ -98,7 +98,17 @@ export const useEnrolProgram = () => {
     });
 };
 
-// Upload patient file
+// Generate patient Id
+export const usePatientIdGenerate = () => {
+    return useQuery({
+        queryFn: generatePatientId,
+        queryKey: ["patientId"],
+        enabled: true,
+        retry: 2,
+    });
+};
+
+// Generate patient Id
 export const useGeneratePatientId = ({
     handleFormChange,
     section,
@@ -177,7 +187,7 @@ export const useUpdatePatient = () => {
             return { previousPatient };
         },
         onError: (error, variables, context) => {
-            console.log("Custom Hook error:", error)
+            console.log("Custom Hook error:", error);
             const errorMessage =
                 (typeof error === "string" && error) ||
                 error?.message ||

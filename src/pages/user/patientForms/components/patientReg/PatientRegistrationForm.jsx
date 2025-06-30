@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import MultiStepForm from "../../../../../components/MultiStepForm";
 import PersonalStep from "./PersonalStep";
@@ -11,6 +11,7 @@ import PdfDoc from "./PdfDoc";
 import { useToast } from "../../../../../components/ToastContext";
 import {
     useCreatePatient,
+    usePatientIdGenerate,
     useUploadFile,
 } from "../../../../../hooks/usePatients";
 import {
@@ -19,6 +20,8 @@ import {
     formatToYYYYMMDD,
 } from "../../../../utils";
 import { pdf } from "@react-pdf/renderer";
+import Spinner from "../../../../../components/Spinner";
+import FetchError from "../../../../../components/FetchError";
 
 const PatientRegistrationForm = () => {
     const { showToast } = useToast();
@@ -213,6 +216,13 @@ const PatientRegistrationForm = () => {
         setSuccessModalData(data);
         setIsSuccessModalOpen(true);
     }
+
+    const {
+        data: patientId,
+        isLoading: isPatientIdLoading,
+        isError: isPatientIdError,
+        error: patientIdError,
+    } = usePatientIdGenerate();
 
     // Handle form element change
     function handleFormElementChange(section, fieldPath, value) {
@@ -497,6 +507,52 @@ const PatientRegistrationForm = () => {
             // },
         ],
     };
+
+    // Update patientId in state after successful generation
+    useEffect(() => {
+        if (patientId) {
+            handleFormElementChange(
+                "identification",
+                "patientId",
+                patientId?.data?.patientId
+            );
+        }
+    }, [patientId]);
+
+    // Show toast error whenever an error occur
+    useEffect(() => {
+        if (isPatientIdError) {
+            showToast({
+                message:
+                    patientIdError.message ||
+                    `Could not generate Id. Please try again.`,
+                type: "error",
+                duration: 5000,
+            });
+        }
+    }, [isPatientIdError, patientIdError]);
+
+    if (isPatientIdLoading) {
+        return (
+            <Spinner
+                secondaryText={`Loading...`}
+                spinnerSize="w-10 h-10"
+                textClass="text-lg text-darkBlue font-semibold"
+                borderClass="border-originalGreen"
+            />
+        );
+    }
+
+    if (isPatientIdError) {
+        return (
+            <FetchError
+                message={
+                    patientIdError?.message ||
+                    "An error occurred while generating your identification code. Please refresh or try again later."
+                }
+            />
+        );
+    }
 
     return (
         <div>
