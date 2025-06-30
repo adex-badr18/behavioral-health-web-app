@@ -22,6 +22,7 @@ import {
 import { pdf } from "@react-pdf/renderer";
 import Spinner from "../../../../../components/Spinner";
 import FetchError from "../../../../../components/FetchError";
+import { redirect } from "react-router-dom";
 
 const PatientRegistrationForm = () => {
     const { showToast } = useToast();
@@ -155,6 +156,7 @@ const PatientRegistrationForm = () => {
                     relationship: "",
                     phone: "",
                     dob: "",
+                    insuranceCardFile: "",
                 },
                 insuranceProvider: {
                     name: "",
@@ -361,13 +363,9 @@ const PatientRegistrationForm = () => {
         const requiredFields = [
             "firstName",
             "lastName",
-            "gender",
             "dob",
-            "maritalStatus",
             "cellPhone",
             "email",
-            "address",
-            "phone",
             "patientId",
         ];
 
@@ -415,7 +413,9 @@ const PatientRegistrationForm = () => {
                     !regForm.insurance.primaryInsurance.insuranceProvider
                         .name ||
                     !regForm.insurance.primaryInsurance.insuranceProvider
-                        .policyId
+                        .policyId ||
+                    !regForm.insurance.primaryInsurance.policyHolder
+                        .insuranceCardFile
                 ) {
                     return false;
                 }

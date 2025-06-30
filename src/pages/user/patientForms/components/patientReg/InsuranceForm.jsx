@@ -39,7 +39,11 @@ const InsuranceForm = ({ formData, handleInputChange }) => {
                 if (fileUploadRef.current) {
                     fileUploadRef.current.clear();
                     fileUploadRef.current.fromDataURL(imageDataUrl);
-                    handleInputChange(section, fieldPath, imageDataUrl);
+                    handleInputChange(
+                        "insurance",
+                        "primaryInsurance.policyHolder.insuranceCardFile",
+                        imageDataUrl
+                    );
                 }
             };
             reader.readAsDataURL(selectedFile);
@@ -83,9 +87,12 @@ const InsuranceForm = ({ formData, handleInputChange }) => {
                             />
                         ))}
                     </div>
+
+                    <h3 className="font-bold text-xl text-darkBlue">Insurance Information</h3>
+
                     <div className="space-y-5">
                         <SelectField
-                            label="Insurance Name"
+                            label="Insurance Provider Name"
                             name="name"
                             title="-- Select insurance provider --"
                             data={insuranceNames}
@@ -112,8 +119,8 @@ const InsuranceForm = ({ formData, handleInputChange }) => {
                             handleInputChange={handleInputChange}
                         />
 
-                        <div className="space-y-1">
-                            <label htmlFor="" className="">
+                        <div className="space-y-2">
+                            <label htmlFor="" className="text-deepGrey">
                                 Upload Insurance Card
                             </label>
 
@@ -122,7 +129,7 @@ const InsuranceForm = ({ formData, handleInputChange }) => {
                                 name="insuranceCardFile"
                                 accept="image/*"
                                 onChange={handleFileUpload}
-                                className="block text-sm text-deepGrey"
+                                className="block text-deepGrey border rounded-md w-full p-3"
                                 ref={fileUploadRef}
                             />
                         </div>
