@@ -3,9 +3,15 @@ import { useState } from "react";
 import { MdMenu } from "react-icons/md";
 import SearchBox from "../SearchBox";
 import { RxAvatar } from "react-icons/rx";
+import { useGetAdminProfile } from "../../../../hooks/useGeneral";
 
 const TopNav = ({ toggleSideNav, isSideNavOpen }) => {
     const [searchText, setSearchText] = useState("");
+
+    const fullName = `${data.firstName} ${data.lastName}`.trim() || "Admin"
+
+    const { data, isLoading, isSuccess, isError, error } =
+        useGetAdminProfile("1");
 
     const handleSearchText = (e) => {
         setSearchText(e.target.value);
@@ -41,7 +47,7 @@ const TopNav = ({ toggleSideNav, isSideNavOpen }) => {
                 /> */}
                 <RxAvatar className="text-4xl" />
                 <div className="ml-2 text-deepGrey">
-                    <p className="text-sm font-medium">Adetayo Daniel</p>
+                    <p className="text-sm font-medium">{fullName}</p>
                     <p className="text-xs text-grey">Admin</p>
                 </div>
             </div>
