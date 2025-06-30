@@ -55,7 +55,7 @@ const PatientRegistrationForm = () => {
         personal: {
             firstName: "James",
             middleName: "T",
-            lastName: "MIlner",
+            lastName: "Milner",
             gender: "Male",
             dob: "01/01/1985",
             maritalStatus: "Single",
@@ -361,7 +361,7 @@ const PatientRegistrationForm = () => {
             "patientId",
         ];
 
-        if (step === 1 || step === 2) {
+        if (step === 1) {
             const dataObj =
                 step === 1 ? regForm.personal : step === 2 && regForm.parent;
 
@@ -391,7 +391,24 @@ const PatientRegistrationForm = () => {
             }
 
             if (!regForm.identification.patientId) {
-                return false
+                return false;
+            }
+
+            return true;
+        }
+
+        if (step === 2) {
+            if (regForm.insurance.paymentMode === "Self Pay") {
+                return true;
+            } else {
+                if (
+                    !regForm.insurance.primaryInsurance.insuranceProvider
+                        .name ||
+                    !regForm.insurance.primaryInsurance.insuranceProvider
+                        .policyId
+                ) {
+                    return false;
+                }
             }
 
             return true;
@@ -419,8 +436,8 @@ const PatientRegistrationForm = () => {
     const formSteps = {
         steps: [
             "Personal",
-            "Other Contacts",
             "Insurance",
+            // "Other Contacts",
             // "Consent",
             // "Preview",
         ],
@@ -438,17 +455,6 @@ const PatientRegistrationForm = () => {
             },
             {
                 id: 2,
-                name: "Other Contacts",
-                component: (
-                    <OtherContactsForm
-                        key={2}
-                        formData={regForm}
-                        handleInputChange={handleFormElementChange}
-                    />
-                ),
-            },
-            {
-                id: 3,
                 name: "Insurance",
                 component: (
                     <InsuranceForm
@@ -458,6 +464,17 @@ const PatientRegistrationForm = () => {
                     />
                 ),
             },
+            // {
+            //     id: 2,
+            //     name: "Other Contacts",
+            //     component: (
+            //         <OtherContactsForm
+            //             key={2}
+            //             formData={regForm}
+            //             handleInputChange={handleFormElementChange}
+            //         />
+            //     ),
+            // },
             // {
             //     id: 4,
             //     name: "Consent",
