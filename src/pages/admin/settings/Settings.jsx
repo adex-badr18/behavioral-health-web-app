@@ -44,8 +44,6 @@ const Settings = () => {
         },
     });
 
-    console.log("Admin info", data);
-
     useEffect(() => {
         if (data) {
             setFormData((prev) => ({
