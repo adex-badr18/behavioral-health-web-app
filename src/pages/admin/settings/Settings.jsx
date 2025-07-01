@@ -44,21 +44,21 @@ const Settings = () => {
         },
     });
 
-    console.log(formData);
+    console.log("Admin info", data);
 
     useEffect(() => {
-        if (isSuccess) {
+        if (data) {
             setFormData((prev) => ({
                 ...prev,
                 profile: {
                     firstName: data?.firstName,
                     middleName: data?.middleName,
-                    lastName: data?.middleName,
+                    lastName: data?.lastName,
                     email: data?.email,
                 },
             }));
         }
-    }, [isSuccess]);
+    }, [isSuccess, data]);
 
     // Handle form element change
     const handleFormElementChange = (section, field, value) => {

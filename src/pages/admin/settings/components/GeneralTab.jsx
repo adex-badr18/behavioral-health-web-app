@@ -29,6 +29,7 @@ const GeneralTab = ({ formData, onChange }) => {
     const submitHandler = async (e) => {
         const payload = formData.profile;
         mutate({ userId: "1", payload });
+        setIsProfileEditable(false)
     };
 
     const handleProfileEdit = (e) => {

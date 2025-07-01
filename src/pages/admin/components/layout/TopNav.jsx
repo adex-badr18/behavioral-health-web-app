@@ -39,11 +39,6 @@ const TopNav = ({ toggleSideNav, isSideNavOpen }) => {
 
             {/* User Profile */}
             <div className="flex items-center">
-                {/* <img
-                    src={avatar}
-                    alt="User Avatar"
-                    className="w-10 h-10 rounded-full"
-                /> */}
                 <RxAvatar className="text-4xl" />
                 <div className="ml-2 text-deepGrey">
                     <p className="text-sm font-medium capitalize">{fullName}</p>
