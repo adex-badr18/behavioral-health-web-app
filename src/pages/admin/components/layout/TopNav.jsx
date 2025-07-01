@@ -8,10 +8,9 @@ import { useGetAdminProfile } from "../../../../hooks/useGeneral";
 const TopNav = ({ toggleSideNav, isSideNavOpen }) => {
     const [searchText, setSearchText] = useState("");
 
-    const fullName = `${data.firstName} ${data.lastName}`.trim() || "Admin"
+    const { data } = useGetAdminProfile("1");
 
-    const { data, isLoading, isSuccess, isError, error } =
-        useGetAdminProfile("1");
+    const fullName = `${data?.firstName} ${data?.lastName}`.trim() || "Admin";
 
     const handleSearchText = (e) => {
         setSearchText(e.target.value);
@@ -47,7 +46,7 @@ const TopNav = ({ toggleSideNav, isSideNavOpen }) => {
                 /> */}
                 <RxAvatar className="text-4xl" />
                 <div className="ml-2 text-deepGrey">
-                    <p className="text-sm font-medium">{fullName}</p>
+                    <p className="text-sm font-medium capitalize">{fullName}</p>
                     <p className="text-xs text-grey">Admin</p>
                 </div>
             </div>
