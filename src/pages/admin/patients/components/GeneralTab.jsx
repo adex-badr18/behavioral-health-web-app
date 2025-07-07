@@ -25,9 +25,9 @@ const GeneralTab = ({ patient }) => {
 
     // const primaryInsurance = patient?.paymentStructure?.insurances[0]
 
-    console.log(patient);
-    console.log(primaryInsurance);
-    console.log(secondaryInsurance);
+    // console.log(patient);
+    // console.log(primaryInsurance);
+    // console.log(secondaryInsurance);
 
     return (
         <div className="">
@@ -46,7 +46,6 @@ const GeneralTab = ({ patient }) => {
                     label="Last Name"
                     value={patient.personalInfo.lastName}
                 />
-                <FieldItem label="Gender" value={patient.personalInfo.gender} />
                 <FieldItem
                     label="Date of Birth"
                     value={patient.personalInfo.dob}
@@ -56,16 +55,34 @@ const GeneralTab = ({ patient }) => {
                     value={patient.personalInfo.maritalStatus}
                 />
                 <FieldItem
+                    label="Cell Phone"
+                    value={patient.personalInfo.cellPhone}
+                />
+                <FieldItem label="Email" value={patient.personalInfo.email} />
+                <FieldItem
                     label="Social Security Number"
                     value={patient.personalInfo.socialSecurityNumber}
                 />
                 <FieldItem
-                    label="Home Phone"
-                    value={patient.personalInfo.homePhone}
+                    label="Address"
+                    value={patient.personalInfo.address.streetName}
                 />
                 <FieldItem
-                    label="Cell Phone"
-                    value={patient.personalInfo.cellPhone}
+                    label="City"
+                    value={patient.personalInfo.address.city}
+                />
+                <FieldItem
+                    label="State"
+                    value={patient.personalInfo.address.state}
+                />
+                <FieldItem
+                    label="Zip Code"
+                    value={patient.personalInfo.address.zipCode}
+                />
+                <FieldItem label="Gender" value={patient.personalInfo.gender} />
+                <FieldItem
+                    label="Home Phone"
+                    value={patient.personalInfo.homePhone}
                 />
                 <FieldItem
                     label="Work Phone"
@@ -75,11 +92,6 @@ const GeneralTab = ({ patient }) => {
                     label="Preferred Phone"
                     value={patient.personalInfo.preferredPhone}
                 />
-                <FieldItem
-                    label="Appointment Reminder Mode"
-                    value={patient.personalInfo.appointmentReminderMode}
-                />
-                <FieldItem label="Email" value={patient.personalInfo.email} />
                 <FieldItem
                     label="Leave message on home phone?"
                     value={convertBooleanToText(
@@ -105,20 +117,8 @@ const GeneralTab = ({ patient }) => {
                     )}
                 />
                 <FieldItem
-                    label="Address"
-                    value={patient.personalInfo.address.streetName}
-                />
-                <FieldItem
-                    label="City"
-                    value={patient.personalInfo.address.city}
-                />
-                <FieldItem
-                    label="State"
-                    value={patient.personalInfo.address.state}
-                />
-                <FieldItem
-                    label="Zip Code"
-                    value={patient.personalInfo.address.zipCode}
+                    label="Appointment Reminder Mode"
+                    value={patient.personalInfo.appointmentReminderMode}
                 />
                 <FieldItem
                     label="Highest Level of Education"
@@ -303,7 +303,9 @@ const GeneralTab = ({ patient }) => {
                 />
 
                 {!patient?.paymentStructure?.insurances ? (
-                    <p className="text-deepGrey">Insurance information is not available</p>
+                    <p className="text-deepGrey">
+                        Insurance information is not available
+                    </p>
                 ) : (
                     <div>
                         {Object.keys(primaryInsurance).length !== 0 ? (
