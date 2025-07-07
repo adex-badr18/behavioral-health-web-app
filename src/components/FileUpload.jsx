@@ -20,33 +20,13 @@ const FileUpload = ({
     const { showToast } = useToast();
     const [selectedFile, setSelectedFile] = useState("");
     const [fileUploadError, setFileUploadError] = useState("");
-    // const [fileObj, setFileObj] = useState({
-    //     selectedFile: "",
-    //     isUploading: false,
-    //     fileUrl: "",
-    //     uploadStatus: false,
-    // });
-    const { mutate, isPending, isSuccess, isError, error } = useUploadFile({
-        handleFormChange,
-        section,
-        field,
-        showToast
-    });
-
-    // useEffect(() => {
-    //     handleFormChange(section, field, selectedFile);
-    // }, [selectedFile]);
+    
+    const { mutate, isPending, isSuccess, isError, error } = useUploadFile();
 
     const onFileChange = (e) => {
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0];
             setSelectedFile(file);
-            // let reader = new FileReader();
-            // const file = e.target.files[0];
-            // reader.onloadend = () => {
-            //     setSelectedFile(reader.result);
-            // };
-            // reader.readAsDataURL(file);
         }
     };
 
@@ -66,7 +46,20 @@ const FileUpload = ({
             file: selectedFile,
         });
 
-        mutate(payload);
+        mutate(payload, {
+            onSuccess: (response) => {
+                handleFormChange(section, field, response?.data?.fileUrl);
+            },
+            onError: (error) => {
+                showToast({
+                    message:
+                        `${error?.message}` ||
+                        "An error occurred. Please try again.",
+                    type: "error",
+                    duration: 5000,
+                });
+            },
+        });
     });
 
     return (

@@ -361,29 +361,24 @@ export const useUploadPatientRegPdf = () => {
 };
 
 // Upload patient file
-export const useUploadFile = ({
-    handleFormChange,
-    section,
-    field,
-    showToast,
-}) => {
+export const useUploadFile = () => {
     const queryClient = useQueryClient();
 
     return useMutation({
         mutationFn: uploadFile,
-        onSuccess: (response) => {
-            handleFormChange(section, field, response.data.fileUrl);
-            queryClient.invalidateQueries(["patients"]);
-        },
-        onError: (error) => {
-            showToast({
-                message:
-                    `${error?.message}` ||
-                    "An error occurred. Please try again.",
-                type: "error",
-                duration: 5000,
-            });
-        },
+        // onSuccess: (response) => {
+        //     handleFormChange(section, field, response.data.fileUrl);
+        //     queryClient.invalidateQueries(["patients"]);
+        // },
+        // onError: (error) => {
+        //     showToast({
+        //         message:
+        //             `${error?.message}` ||
+        //             "An error occurred. Please try again.",
+        //         type: "error",
+        //         duration: 5000,
+        //     });
+        // },
     });
 };
 

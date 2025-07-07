@@ -38,47 +38,41 @@ const PatientRegistrationForm = () => {
 
     const { mutateAsync: mutateFile, isPending: isUploading } = useUploadFile({
         handleFormChange: handleFormElementChange,
-        field: "file",
-        section: "upload",
+        field: "primaryInsurance.insuranceFile",
+        section: "insurance",
         showToast,
     });
 
     const [successModalData, setSuccessModalData] = useState({});
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
-    const [consents, setConsents] = useState({
-        dataAccuracy: true,
-        insuranceAuth: true,
-        finResponsible: true,
-        infoRelease: true,
-    });
     const [regForm, setRegForm] = useState({
         identification: {
             id: "",
             patientId: "",
         },
         personal: {
-            firstName: "James",
-            middleName: "T",
-            lastName: "Milner",
-            gender: "Male",
-            dob: "01/01/1985",
+            firstName: "Samantha",
+            middleName: "B",
+            lastName: "Williams",
+            gender: "",
+            dob: "1994/01/06",
             maritalStatus: "Single",
-            socialSecurityNumber: "",
+            socialSecurityNumber: "1234567890",
             homePhone: "",
-            cellPhone: "09076543212",
+            cellPhone: "4103214562",
             workPhone: "",
             preferredPhone: "",
             appointmentReminderMode: "",
-            email: "badru.2gex@gmail.com",
+            email: "adex.badr18@gmail.com",
             sendMsgToHomePhone: "",
             sendMsgToRelative: "",
             sendMsgToWork: "",
             sendMsgToCellPhone: "",
             address: {
                 id: null,
-                streetName: "Wema",
-                city: "JohnDey",
-                state: "Ospo",
+                streetName: "21, Skyrun Way",
+                city: "Haggerstown",
+                state: "Maryland",
                 zipCode: "123456",
             },
             highestEduLevel: "",
@@ -92,8 +86,8 @@ const PatientRegistrationForm = () => {
         },
         guarantor: {
             id: null,
-            firstName: "Badru",
-            lastName: "Ade",
+            firstName: "",
+            lastName: "",
             dob: "",
             relationship: "",
             address: {
@@ -110,22 +104,22 @@ const PatientRegistrationForm = () => {
         },
         parent: {
             id: null,
-            firstName: "Badr",
-            lastName: "Ade",
-            gender: "Male",
-            maritalStatus: "Married",
-            phone: "124898876",
-            email: "adeey@gmail.com",
-            familyRole: "Father",
-            employmentStatus: "Employed",
-            employer: "Acritech Construction",
-            occupation: "Engineer",
+            firstName: "",
+            lastName: "",
+            gender: "",
+            maritalStatus: "",
+            phone: "",
+            email: "",
+            familyRole: "",
+            employmentStatus: "",
+            employer: "",
+            occupation: "",
             address: {
                 id: null,
-                streetName: "119 Boulevard Street",
-                city: "Wembley",
-                state: "Osborn",
-                zipCode: "123456",
+                streetName: "",
+                city: "",
+                state: "",
+                zipCode: "",
             },
         },
         emergency: {
@@ -145,10 +139,11 @@ const PatientRegistrationForm = () => {
             email: "",
         },
         insurance: {
-            paymentMode: "Self Pay",
+            paymentMode: "Insurance Card",
             primaryInsurance: {
                 id: null,
                 primary: true,
+                insuranceFile: "",
                 policyHolder: {
                     firstName: "",
                     middleName: "",
@@ -156,12 +151,11 @@ const PatientRegistrationForm = () => {
                     relationship: "",
                     phone: "",
                     dob: "",
-                    insuranceCardFile: "",
                 },
                 insuranceProvider: {
-                    name: "",
+                    name: "Medicare",
                     phone: "",
-                    policyId: "",
+                    policyId: "34567",
                     groupNumber: "",
                     authorizationId: "",
                     coPay: "",
@@ -179,6 +173,7 @@ const PatientRegistrationForm = () => {
             secondaryInsurance: {
                 id: null,
                 primary: false,
+                insuranceFile: "",
                 policyHolder: {
                     firstName: "",
                     middleName: "",
@@ -256,22 +251,40 @@ const PatientRegistrationForm = () => {
         });
     }
 
-    // console.log(regForm.personal)
-
     const submitHandler = async () => {
-        // prepare pdf file payload
-        // const pdfBlob = await pdf(<PdfDoc data={regForm} />).toBlob();
-        // const pdfFile = new File([pdfBlob], "registration-form.pdf", {
-        //     type: "application/pdf",
-        // });
-        // const uploadPayload = objectToFormData({
-        //     fileType: "registration-form",
-        //     owner: `${regForm.personal.firstName}-${regForm.personal.lastName}`,
-        //     file: pdfFile,
-        // });
+        // Upload insurance card file
+        const uploadPayload = objectToFormData({
+            fileType: "insurance-card",
+            owner: `${regForm.personal.firstName}-${regForm.personal.lastName}`,
+            file: regForm.insurance.primaryInsurance.insuranceFile,
+        });
 
-        // // TODO: Upload pdf file
-        // await mutateFile(uploadPayload);
+        // Upload insurance card
+        const insuranceUploadResponse = await mutateFile(uploadPayload, {
+            // onSuccess: (response) => {
+            //     handleFormElementChange(
+            //         "insurance",
+            //         "primaryInsurance.insuranceFile",
+            //         response?.data?.fileUrl
+            //     );
+            // },
+            onError: (error) => {
+                showToast({
+                    message:
+                        `${error?.message}` ||
+                        "An error occurred. Please try again.",
+                    type: "error",
+                    duration: 5000,
+                });
+            },
+        });
+
+        const insuranceFile = insuranceUploadResponse?.data?.fileUrl;
+
+        const updatedPrimaryInsurance = {
+            ...regForm.insurance.primaryInsurance,
+            insuranceFile,
+        };
 
         // Prepare register payload
         const formattedData = {
@@ -301,7 +314,7 @@ const PatientRegistrationForm = () => {
                 paymentMode: regForm.insurance.paymentMode,
                 insurances: [
                     {
-                        ...regForm.insurance.primaryInsurance,
+                        ...updatedPrimaryInsurance,
                         policyHolder: {
                             ...regForm.insurance.primaryInsurance.policyHolder,
                             dob: formatToYYYYMMDD(
@@ -351,8 +364,7 @@ const PatientRegistrationForm = () => {
             patientRegForm: regForm.upload.file,
         };
 
-        console.log(formattedData);
-
+        // convert payload into FormData
         const formData = objectToFormData(formattedData);
 
         // TODO: register patient
@@ -414,8 +426,7 @@ const PatientRegistrationForm = () => {
                         .name ||
                     !regForm.insurance.primaryInsurance.insuranceProvider
                         .policyId ||
-                    !regForm.insurance.primaryInsurance.policyHolder
-                        .insuranceCardFile
+                    !regForm.insurance.primaryInsurance.insuranceFile
                 ) {
                     return false;
                 }
@@ -543,16 +554,16 @@ const PatientRegistrationForm = () => {
         );
     }
 
-    if (isPatientIdError) {
-        return (
-            <FetchError
-                message={
-                    patientIdError?.message ||
-                    "An error occurred while generating your identification code. Please refresh or try again later."
-                }
-            />
-        );
-    }
+    // if (isPatientIdError) {
+    //     return (
+    //         <FetchError
+    //             message={
+    //                 patientIdError?.message ||
+    //                 "An error occurred while generating your identification code. Please refresh or try again later."
+    //             }
+    //         />
+    //     );
+    // }
 
     return (
         <div>

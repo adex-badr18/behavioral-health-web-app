@@ -6,8 +6,24 @@ import RadioField from "../../../../../components/RadioField";
 import { relationshipOptions } from "../../data";
 import { booleanOptions } from "./data";
 import { insuranceNames } from "../../../appointment/data";
+import { useRef } from "react";
 
 const SecondaryInsurance = ({ formData, handleInputChange }) => {
+    const fileUploadRef = useRef(null);
+
+    // Handle image upload
+    const handleFileUpload = (e) => {
+        const selectedFile = e.target.files[0];
+
+        if (selectedFile) {
+            handleInputChange(
+                "insurance",
+                "secondaryInsurance.insuranceFile",
+                imageDataUrl
+            );
+        }
+    };
+
     return (
         <div className="space-y-2">
             <h3 className="font-bold text-lg md:text-xl text-darkBlue">
@@ -307,6 +323,21 @@ const SecondaryInsurance = ({ formData, handleInputChange }) => {
                                 handleInputChange={handleInputChange}
                             />
                         </div>
+                    </div>
+
+                    <div className="space-y-2">
+                        <label htmlFor="" className="text-deepGrey">
+                            Upload Insurance Card
+                        </label>
+
+                        <input
+                            type="file"
+                            name="insuranceFile"
+                            accept="image/*"
+                            onChange={handleFileUpload}
+                            className="block text-deepGrey border rounded-md w-full p-3"
+                            ref={fileUploadRef}
+                        />
                     </div>
                 </div>
             </div>
