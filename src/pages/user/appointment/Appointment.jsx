@@ -137,7 +137,7 @@ const Appointment = () => {
         const requiredFields = [
             "firstName",
             "lastName",
-            "gender",
+            // "gender",
             "dob",
             "maritalStatus",
             "phone",

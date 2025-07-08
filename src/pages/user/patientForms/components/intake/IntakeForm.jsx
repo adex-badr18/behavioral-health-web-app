@@ -324,7 +324,7 @@ const IntakeForm = () => {
         const requiredFields = [
             "firstName",
             "lastName",
-            "gender",
+            // "gender",
             // "dob",
             "maritalStatus",
             "phone",

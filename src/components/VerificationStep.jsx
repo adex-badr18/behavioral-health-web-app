@@ -153,10 +153,10 @@ const VerificationStep = ({ formData, setFormData, id }) => {
                                         : ""
                                 }
                             />
-                            <FieldItem
+                            {/* <FieldItem
                                 label="Gender"
                                 value={formData?.verification?.gender}
-                            />
+                            /> */}
                             <FieldItem
                                 label="Phone Number"
                                 value={formData?.verification?.phone}

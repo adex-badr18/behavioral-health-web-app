@@ -193,11 +193,11 @@ const PersonalInfoForm = ({ formData, handleInputChange, setFormData }) => {
                                 }
                                 isRequired={true}
                             />
-                            <FieldItem
+                            {/* <FieldItem
                                 label="Gender"
                                 value={formData.personal.gender}
                                 isRequired={true}
-                            />
+                            /> */}
                             <FieldItem
                                 label="Phone Number"
                                 value={formData.personal.phone}
